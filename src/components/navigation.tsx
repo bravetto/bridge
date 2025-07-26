@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useStableNavigation } from "@/lib/hooks/useStableNavigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -136,7 +136,7 @@ function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
-  const pathname = usePathname();
+  const { pathname } = useStableNavigation();
 
   // Mobile optimization hooks
   const { isMobile } = useMobileOptimization();

@@ -1,5 +1,21 @@
 import { z } from "zod";
-import { RelationshipType, SignatureStyle } from "./types";
+
+// Define relationship and signature enums directly to avoid circular dependency
+export const RelationshipType = {
+  youth_helped: "youth_helped",
+  employer: "employer", 
+  colleague: "colleague",
+  mentor: "mentor",
+  community_leader: "community_leader",
+  friend: "friend",
+  family: "family",
+  other: "other",
+} as const;
+
+export const SignatureStyle = {
+  typed: "typed",
+  uploaded: "uploaded",
+} as const;
 
 /**
  * Zod schema for letter validation

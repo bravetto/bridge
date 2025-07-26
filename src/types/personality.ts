@@ -45,7 +45,7 @@ export interface PersonalityConfig {
  */
 export function convertToAIPersonality(
   config: PersonalityConfig,
-): import("./prompts").AIPersonality {
+): any {
   return {
     name: config.personality?.name || config.name || "Unknown",
     role: config.role || "Bridge Guide",

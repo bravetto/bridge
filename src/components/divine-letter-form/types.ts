@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { letterImpactSchema } from "./schema";
+import { letterImpactSchema, RelationshipType, SignatureStyle } from "./schema";
 
 /**
  * Type for form data derived from the Zod schema

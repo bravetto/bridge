@@ -82,16 +82,6 @@ export default function MasterControlInterface() {
   const [selectedTab, setSelectedTab] = useState<'overview' | 'agents' | 'scripts' | 'mission'>('overview');
 
   // Real-time monitoring
-  useEffect(() => {
-    if (!isMonitoring) return;
-
-    const interval = setInterval(async () => {
-      await refreshSystemData();
-    }, 5000); // Update every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [isMonitoring]);
-
   const refreshSystemData = useCallback(async () => {
     try {
       // Simulate API calls to get real system data
@@ -117,6 +107,17 @@ export default function MasterControlInterface() {
       console.error('Failed to refresh system data:', error);
     }
   }, []);
+
+  // Real-time monitoring
+  useEffect(() => {
+    if (!isMonitoring) return;
+
+    const interval = setInterval(async () => {
+      await refreshSystemData();
+    }, 5000); // Update every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isMonitoring, refreshSystemData]);
 
   // Simulated API calls (replace with real implementations)
   const simulateHealthCheck = async (): Promise<SystemOverview> => {
