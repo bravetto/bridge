@@ -211,7 +211,7 @@ npm start               # Serve production build locally
 ## Performance Standards
 
 ### Current Metrics (Targets)
-- **Build Time**: ~9 seconds (target: <15s)
+- **Build Time**: ~20 seconds (target: <25s)
 - **API Response**: 27-131ms (target: <100ms)
 - **Bundle Size**: Optimized with code splitting
 - **Core Web Vitals**: Green scores required

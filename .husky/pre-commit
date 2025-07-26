@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Check for dangerous patterns
+git diff --cached | grep -E "(rm -rf|find.*-delete)" && echo "❌ Dangerous operation detected" && exit 1
+
+# Run type check to ensure no TypeScript errors
+npm run type-check || exit 1
+
 npx lint-staged

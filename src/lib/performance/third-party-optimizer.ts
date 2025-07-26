@@ -195,7 +195,7 @@ class ThirdPartyOptimizer {
    * Adjust loading strategy based on performance
    */
   private adjustLoadingStrategy(reason: string): void {
-    console.log(`Adjusting third-party loading strategy: ${reason}`);
+    // console.log(`Adjusting third-party loading strategy: ${reason}`);
     // Could implement adaptive loading here
   }
 

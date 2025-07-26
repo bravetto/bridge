@@ -3,14 +3,14 @@
 
 export class PrayerService {
   static async submitPrayer(prayer: any) {
-    console.log("Prayer submitted:", prayer);
+    // console.log("Prayer submitted:", prayer);
     return { id: Date.now(), status: "received" };
   }
 }
 
 export class AnalyticsService {
   static async trackEvent(event: any) {
-    console.log("Event tracked:", event);
+    // console.log("Event tracked:", event);
     return { success: true };
   }
 }

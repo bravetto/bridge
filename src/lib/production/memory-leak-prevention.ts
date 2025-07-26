@@ -433,7 +433,7 @@ export class MemoryLeakDetector {
 
   startDetection(): void {
     if (typeof window === "undefined" || !getPerformanceMemory()) {
-      console.log("Memory leak detection not available in this environment");
+      // console.log("Memory leak detection not available in this environment");
       return;
     }
 
@@ -441,7 +441,7 @@ export class MemoryLeakDetector {
       this.checkForLeaks();
     }, 30000); // Check every 30 seconds
 
-    console.log("🔍 Memory leak detection started");
+    // console.log("🔍 Memory leak detection started");
   }
 
   stopDetection(): void {

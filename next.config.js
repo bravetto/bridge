@@ -13,6 +13,14 @@ const nextConfig = {
     webVitalsAttribution: ["CLS", "LCP", "FCP", "FID", "TTFB", "INP"],
   },
 
+  // 🚀 PRODUCTION OPTIMIZATIONS
+  compiler: {
+    // Remove console logs in production
+    removeConsole: process.env.NODE_ENV === "production" ? {
+      exclude: ["error", "warn"], // Keep error and warn logs
+    } : false,
+  },
+
   // 🛡️ OPTIMIZED WEBPACK CONFIGURATION
   webpack: (config, { isServer, dev }) => {
     // Essential fixes for stability
@@ -47,6 +55,33 @@ const nextConfig = {
   // Enable compression and optimization
   compress: true,
   poweredByHeader: false,
+
+  // 🔒 SECURITY HEADERS
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ]
+      }
+    ];
+  },
 
   // Environment configuration
   env: {

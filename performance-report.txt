@@ -1,0 +1,30 @@
+Performance Report - Sat Jul 26 13:25:39 EDT 2025
+==============================
+
+Bundle Analysis:
+392K	.next/static/chunks/1514-56396f18d7997cef.js
+172K	.next/static/chunks/4bd1b696-9909f507f95988b8.js
+164K	.next/static/chunks/5964-ff2f74db62e9e4fb.js
+152K	.next/static/chunks/3417-faf692b70f7c37a7.js
+140K	.next/static/chunks/framework-f0f34dd321686665.js
+116K	.next/static/chunks/main-cd452f4c4a0459df.js
+112K	.next/static/chunks/polyfills-42372ed130431b0a.js
+112K	.next/static/chunks/4937-3e2a86dfb8bcc22b.js
+100K	.next/static/chunks/6408-7fe42dfc5b9a6c34.js
+ 88K	.next/static/chunks/4934.2d1988c825a82b34.js
+
+Image Analysis:
+324K	public/images/people/full/martha-henderson.jpg
+284K	public/images/people/full/jahmere-webb.jpg
+280K	public/images/people/full/jordan-dungy.jpg
+260K	public/images/people/full/coach-dungy.jpg
+252K	public/images/people/full/michael-mataluni.jpg
+252K	public/images/people/full/jay-forte.jpg
+192K	public/og-image.png
+140K	public/images/optimized/logo.png
+140K	public/images/optimized/logo-dark.png
+132K	public/icon-512.png
+
+Component Analysis:
+Total components:      223
+Pages:       71

@@ -69,7 +69,7 @@ class DivineCircuitBreaker {
       lastReset: Date.now(),
       isOpen: false,
     };
-    console.log(`🔄 Circuit breaker reset for ${this.config.componentName}`);
+    // console.log(`🔄 Circuit breaker reset for ${this.config.componentName}`);
   }
 
   // Record a render attempt

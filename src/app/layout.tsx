@@ -192,7 +192,7 @@ export default function RootLayout({
                 function safeLog(message, data) {
                   try {
                     if (typeof console !== 'undefined' && console.log) {
-                      console.log('[Divine SW]', message, data || '');
+                      // console.log('[Divine SW]', message, data || '');
                     }
                   } catch (e) {
                     // Silent fail

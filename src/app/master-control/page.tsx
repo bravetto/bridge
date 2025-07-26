@@ -213,10 +213,10 @@ export default function MasterControlInterface() {
   };
 
   const executeScript = async (scriptId: string) => {
-    console.log(`Executing script: ${scriptId}`);
+    // console.log(`Executing script: ${scriptId}`);
     // Simulate script execution
     await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(`Script completed: ${scriptId}`);
+    // console.log(`Script completed: ${scriptId}`);
     await refreshSystemData();
   };
 

@@ -219,7 +219,7 @@ export class ProductionLogger {
         this.formatForConsole(logEntry),
         logEntry.level,
       );
-      console.log(colored);
+      // console.log(colored);
     }
   }
 
@@ -283,7 +283,7 @@ export class ProductionLogger {
 
       // For now, just batch log to console in production
       logsToFlush.forEach((log) => {
-        console.log(JSON.stringify(log));
+        // console.log(JSON.stringify(log));
       });
     } catch (error) {
       console.error("Failed to flush logs:", error);

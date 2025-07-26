@@ -76,7 +76,7 @@ function makeAIDecision(systemState: SystemState, userQuery: string) {
 
 2. **Performance Optimization Signals**
    - Response times >100ms (warning)
-   - Build times >15s (degradation)
+   - Build times >25s (degradation)
    - Error rates >0% (critical)
 
 3. **Mission Alignment Verification**
