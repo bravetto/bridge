@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { impactEvents } from "@/components/impact-dashboard";
+// import { impactEvents } from "@/components/impact-dashboard"; // Disabled for MVP
 import { Mail, Heart, ArrowLeft, Send, Users } from "lucide-react";
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
   const handleSupportSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Add letter to impact counter
-    impactEvents.addLetter();
+    // impactEvents.addLetter(); // Disabled for MVP
     setSupportSubmitted(true);
 
     // Show celebration animation
@@ -72,7 +72,7 @@ export default function ContactPage() {
   const handleVolunteerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Add heart to impact counter for volunteers
-    impactEvents.addHeart();
+    // impactEvents.addHeart(); // Disabled for MVP
     setVolunteerSubmitted(true);
     // Here you would typically send the data to your backend
     // TODO: Implement backend API call to submit volunteer form

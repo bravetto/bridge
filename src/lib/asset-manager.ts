@@ -118,9 +118,9 @@ export const generateFallbackUrl = (
         messenger: "messenger-fallback.jpg",
         witness: "witness-fallback.jpg",
         guardian: "guardian-fallback.jpg",
-        default: "default-fallback.jpg",
+        transformer: "transformer-fallback.jpg",
       };
-      return `/images/fallbacks/${roleMap[role]}`;
+      return `/images/fallbacks/${roleMap[role] || "default-fallback.jpg"}`;
 
     default:
       // General image fallback

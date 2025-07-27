@@ -25,10 +25,20 @@ function SupporterCount({
 }: SupporterCountProps) {
   const percentage = Math.min((current / goal) * 100, 100);
 
-  // Animate counter on mount
-  const [displayCount, setDisplayCount] = React.useState(0);
+  // Animate counter on mount - prevent hydration mismatch
+  const [displayCount, setDisplayCount] = React.useState(current); // Start with final value for SSR
+  const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isClient) return;
+
+    // Reset to 0 and animate only on client
+    setDisplayCount(0);
+    
     const duration = 2000; // 2 seconds
     const steps = 60;
     const increment = current / steps;
@@ -45,7 +55,7 @@ function SupporterCount({
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [current]);
+  }, [current, isClient]);
 
   if (variant === "inline") {
     return (
@@ -164,7 +174,7 @@ function SupporterCount({
             ))}
           </div>
           <p className="text-xs text-soft-shadow">
-            +{Math.floor(Math.random() * 10) + 5} in the last hour
+            +{isClient ? Math.floor(Math.random() * 10) + 5 : 7} in the last hour
           </p>
         </div>
       </div>
@@ -175,17 +185,26 @@ function SupporterCount({
 // Live updating version that simulates real-time updates
 export function LiveSupporterCount(props: SupporterCountProps) {
   const [current, setCurrent] = React.useState(props.current);
+  const [isClient, setIsClient] = React.useState(false);
+
+  // Prevent hydration mismatch by only updating on client
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   React.useEffect(() => {
-    // Simulate real-time updates
+    if (!isClient) return;
+    
+    // Simulate real-time updates with deterministic increments
     const interval = setInterval(() => {
-      setCurrent((prev) => prev + Math.floor(Math.random() * 3));
+      setCurrent((prev) => prev + 1); // Deterministic increment instead of random
     }, 30000); // Update every 30 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isClient]);
 
-  return <SupporterCount {...props} current={current} />;
+  // Use props.current for SSR, updated current for client
+  return <SupporterCount {...props} current={isClient ? current : props.current} />;
 }
 
 export default withSafeUI(SupporterCount, {

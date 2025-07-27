@@ -23,25 +23,18 @@ interface SacredExperienceProps {
 const sacredVariants = {
   hidden: { opacity: 0 },
   visible: {
-    opacity: 1,
-    transition: {
-      duration: 1.5,
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.2,
-    },
-  },
+    opacity: 1
+    
+  }
 };
 
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+    y: 0
+    
+  }
 };
 
 // Sacred triads of divine love
@@ -54,21 +47,21 @@ const sacredTriads = [
         name: "Michael",
         role: "lightworker",
         title: "The Wizard Wand",
-        essence: "Manifesting impossible dreams into reality",
+        essence: "Manifesting impossible dreams into reality"
       },
       {
         name: "Phil",
         role: "messenger",
         title: "The Sacred Speech",
-        essence: "Wielding words that transform hearts",
+        essence: "Wielding words that transform hearts"
       },
       {
         name: "Kristin",
         role: "witness",
         title: "The Pattern Proliferator",
-        essence: "Weaving divine patterns into being",
-      },
-    ],
+        essence: "Weaving divine patterns into being"
+      }
+    ]
   },
   {
     title: "The Divine Bridge",
@@ -78,27 +71,27 @@ const sacredTriads = [
         name: "Tony Dungy",
         role: "guardian",
         title: "The Spiritual Father",
-        essence: "Blessing the movement with wisdom",
+        essence: "Blessing the movement with wisdom"
       },
       {
         name: "JAHmere Webb",
         role: "lightworker",
         title: "The Bridge Builder",
-        essence: "Connecting worlds through divine love",
+        essence: "Connecting worlds through divine love"
       },
       {
         name: "Michael Mataluni",
         role: "messenger",
         title: "The Luminary Light",
-        essence: "Illuminating the path forward",
-      },
-    ],
-  },
+        essence: "Illuminating the path forward"
+      }
+    ]
+  }
 ];
 
 function SacredExperience({
-  role = "default",
-  className,
+  role = "lightworker",
+  className
 }: SacredExperienceProps) {
   const [activeTriad, setActiveTriad] = useState(0);
 
@@ -131,7 +124,7 @@ function SacredExperience({
               initial={{ opacity: 0, x: 100 }}
               animate={{
                 opacity: activeTriad === index ? 1 : 0,
-                x: activeTriad === index ? 0 : -100,
+                x: activeTriad === index ? 0 : -100
               }}
               exit={{ opacity: 0, x: 100 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}

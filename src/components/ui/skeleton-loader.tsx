@@ -26,38 +26,22 @@ interface SkeletonProps {
 
 const skeletonVariants = {
   pulse: {
-    opacity: [0.5, 1, 0.5],
-    transition: {
-      duration: 1.5,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
+    opacity: [0.5, 1, 0.5]
+    
   },
   shimmer: {
-    backgroundPosition: ["200% 0", "-200% 0"],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "linear",
-    },
+    backgroundPosition: ["200% 0", "-200% 0"]
+    
   },
   wave: {
-    y: [0, -2, 0],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
+    y: [0, -2, 0]
+    
   },
   divine: {
     opacity: [0.3, 0.8, 0.3],
-    scale: [1, 1.02, 1],
-    transition: {
-      duration: 2.5,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
+    scale: [1, 1.02, 1]
+    
+  }
 };
 
 export function Skeleton({
@@ -78,7 +62,7 @@ export function Skeleton({
     card: "h-32 w-full rounded-lg",
     hero: "h-64 w-full rounded-xl",
     testimonial: "h-24 w-full rounded-lg",
-    prayer: "h-16 w-full rounded-lg border-2 border-hope-gold/20",
+    prayer: "h-16 w-full rounded-lg border-2 border-hope-gold/20"
   };
 
   return (
@@ -91,7 +75,7 @@ export function Skeleton({
           animation === "shimmer"
             ? "linear-gradient(90deg, rgba(245, 158, 11, 0.1) 25%, rgba(245, 158, 11, 0.3) 50%, rgba(245, 158, 11, 0.1) 75%)"
             : undefined,
-        backgroundSize: animation === "shimmer" ? "400% 100%" : undefined,
+        backgroundSize: animation === "shimmer" ? "400% 100%" : undefined
       }}
       {...props}
     >
@@ -306,7 +290,7 @@ export function SmartSkeleton({ type, message, children }: SmartSkeletonProps) {
     prayer: PrayerCountSkeleton,
     analytics: AnalyticsSkeleton,
     countdown: CountdownSkeleton,
-    custom: () => children || <Skeleton />,
+    custom: () => children || <Skeleton />
   };
 
   const SkeletonComponent = skeletonComponents[type];
@@ -353,6 +337,6 @@ export function useProgressiveLoading(stages: string[], duration = 2000) {
     currentStage: stages[currentStage],
     progress: ((currentStage + 1) / stages.length) * 100,
     isComplete,
-    stageIndex: currentStage,
+    stageIndex: currentStage
   };
 }

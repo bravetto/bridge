@@ -24,39 +24,45 @@ const roleConfig = {
     gradientClass: "from-amber-500 via-orange-500 to-yellow-500",
     bgClass: "bg-amber-50 dark:bg-amber-950/30",
     textClass: "text-amber-800 dark:text-amber-300",
-    borderClass: "border-amber-200 dark:border-amber-800/50",
+    borderClass: "border-amber-200 dark:border-amber-800/50"
   },
   messenger: {
     gradientClass: "from-blue-500 via-indigo-500 to-purple-500",
     bgClass: "bg-blue-50 dark:bg-blue-950/30",
     textClass: "text-blue-800 dark:text-blue-300",
-    borderClass: "border-blue-200 dark:border-blue-800/50",
+    borderClass: "border-blue-200 dark:border-blue-800/50"
   },
   witness: {
     gradientClass: "from-emerald-500 via-teal-500 to-cyan-500",
     bgClass: "bg-emerald-50 dark:bg-emerald-950/30",
     textClass: "text-emerald-800 dark:text-emerald-300",
-    borderClass: "border-emerald-200 dark:border-emerald-800/50",
+    borderClass: "border-emerald-200 dark:border-emerald-800/50"
   },
   guardian: {
     gradientClass: "from-purple-500 via-pink-500 to-rose-500",
     bgClass: "bg-purple-50 dark:bg-purple-950/30",
     textClass: "text-purple-800 dark:text-purple-300",
-    borderClass: "border-purple-200 dark:border-purple-800/50",
+    borderClass: "border-purple-200 dark:border-purple-800/50"
+  },
+  transformer: {
+    gradientClass: "from-indigo-500 via-blue-500 to-cyan-500",
+    bgClass: "bg-indigo-50 dark:bg-indigo-950/30",
+    textClass: "text-indigo-800 dark:text-indigo-300",
+    borderClass: "border-indigo-200 dark:border-indigo-800/50"
   },
   default: {
-    gradientClass: "from-hope-gold via-courage-blue to-growth-green",
+    gradientClass: "from-gray-500 via-slate-500 to-zinc-500",
     bgClass: "bg-gray-50 dark:bg-gray-950/30",
     textClass: "text-gray-800 dark:text-gray-300",
-    borderClass: "border-gray-200 dark:border-gray-800/50",
-  },
+    borderClass: "border-gray-200 dark:border-gray-800/50"
+  }
 };
 
 function DivineTransformation({
-  role = "default",
+  role = "lightworker",
   children,
   className,
-  particleVariant = "sacred",
+  particleVariant = "sacred"
 }: DivineTransformationProps) {
   const styles = roleConfig[role];
 

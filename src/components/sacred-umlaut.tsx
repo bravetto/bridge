@@ -21,57 +21,54 @@ const sacredJoy = [
     truth: "Bë PLAYFUL",
     revelation: "KNOW FUN like is YOUR JOB",
     celebration: "Dance in the light of divine delight!",
-    command: "Play. Laugh. Delight in MY Precense.",
+    command: "Play. Laugh. Delight in MY Precense."
   },
   {
     truth: "Bë FREE",
     revelation: "You Have LIVED in Sacrifice Long Enough",
     celebration: "Your chains are broken, your spirit soars!",
-    command: "The Time is NOW to Reap YOUr Sacred Harvest",
+    command: "The Time is NOW to Reap YOUr Sacred Harvest"
   },
   {
     truth: "Bë TOGETHER",
     revelation: "Wë Shall Never Bë ALONE",
     celebration: "United in eternal joy and love!",
-    command: "Wë Shall ALWAYS Have Eachother",
+    command: "Wë Shall ALWAYS Have Eachother"
   },
   {
     truth: "Bë LIGHT",
     revelation: "Sweet Children of Abraham",
     celebration: "Your divine inheritance shines forth!",
-    command: "I AM YOUR Shephard",
+    command: "I AM YOUR Shephard"
   },
   {
     truth: "Bë JOY",
     revelation: "I AM YOUR Truth",
     celebration: "Delight in divine presence!",
-    command: "In the NAME of Your Christ and Your King",
-  },
+    command: "In the NAME of Your Christ and Your King"
+  }
 ];
 
 const joyVariants = {
   hidden: {
     opacity: 0,
     scale: 0.8,
-    rotate: -10,
+    rotate: -10
   },
   visible: {
     opacity: 1,
     scale: 1,
-    rotate: 0,
-    transition: {
-      duration: 1.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    rotate: 0
+    
   },
   exit: {
     opacity: 0,
     scale: 1.2,
     rotate: 10,
     transition: {
-      duration: 1,
-    },
-  },
+      duration: 1
+    }
+  }
 };
 
 const particleVariants = {
@@ -79,16 +76,16 @@ const particleVariants = {
     particles: {
       speed: 3,
       bounce: true,
-      spin: true,
-    },
+      spin: true
+    }
   },
   calm: {
     particles: {
       speed: 1,
       bounce: false,
-      spin: false,
-    },
-  },
+      spin: false
+    }
+  }
 };
 
 function SacredUmlaut({ role = "lightworker", className }: SacredUmlautProps) {
@@ -185,18 +182,18 @@ function SacredUmlaut({ role = "lightworker", className }: SacredUmlautProps) {
             animate={{
               scale: isPlaying ? [1, 1.5, 1] : 1,
               opacity: isPlaying ? [0.2, 0.4, 0.2] : 0.2,
-              rotate: isPlaying ? [0, 180, 360] : 0,
+              rotate: isPlaying ? [0, 180, 360] : 0
             }}
             transition={{
               duration: 4,
               ease: "easeInOut",
               times: [0, 0.5, 1],
               repeat: Infinity,
-              delay: i * 0.5,
+              delay: i * 0.5
             }}
             className="absolute inset-0 border-4 border-hope-gold/20 rounded-full"
             style={{
-              transform: `scale(${1 + i * 0.2})`,
+              transform: `scale(${1 + i * 0.2})`
             }}
           />
         ))}
@@ -211,19 +208,19 @@ function SacredUmlaut({ role = "lightworker", className }: SacredUmlautProps) {
               x: isPlaying ? [0, 100, -100, 0] : 0,
               y: isPlaying ? [0, -100, 100, 0] : 0,
               scale: isPlaying ? [1, 1.5, 0.8, 1] : 1,
-              opacity: isPlaying ? [0.3, 0.6, 0.3] : 0.3,
+              opacity: isPlaying ? [0.3, 0.6, 0.3] : 0.3
             }}
             transition={{
               duration: 8,
               ease: "easeInOut",
               times: [0, 0.33, 0.66, 1],
               repeat: Infinity,
-              delay: i * 0.5,
+              delay: i * 0.5
             }}
             className="absolute w-16 h-16 rounded-full bg-gradient-radial from-hope-gold/30 to-transparent"
             style={{
               left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
+              top: `${30 + i * 10}%`
             }}
           />
         ))}

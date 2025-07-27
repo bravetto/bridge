@@ -4,7 +4,7 @@ import {
   useState,
   useRef,
   useEffect,
-  KeyboardEvent as ReactKeyboardEvent,
+  KeyboardEvent as ReactKeyboardEvent
 } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ import {
   PersonRole,
   JourneyStage,
   PersonTheme,
-  PersonImpactLevel,
+  PersonImpactLevel
 } from "@/types/person";
 import { withErrorBoundary } from "@/components/ui/error-boundary";
 
@@ -76,7 +76,7 @@ function FilterBar({
   filteredCount,
 
   className,
-  onClearAll,
+  onClearAll
 }: FilterBarProps) {
   const [mounted, setMounted] = useState(false);
 
@@ -114,15 +114,15 @@ function FilterBar({
     {
       value: "lightworker",
       label: "Lightworker",
-      count: roleCount["lightworker"] || 0,
+      count: roleCount["lightworker"] || 0
     },
     {
       value: "messenger",
       label: "Messenger",
-      count: roleCount["messenger"] || 0,
+      count: roleCount["messenger"] || 0
     },
     { value: "witness", label: "Witness", count: roleCount["witness"] || 0 },
-    { value: "guardian", label: "Guardian", count: roleCount["guardian"] || 0 },
+    { value: "guardian", label: "Guardian", count: roleCount["guardian"] || 0 }
   ];
 
   const themeOptions: FilterOption<PersonTheme>[] = [
@@ -131,15 +131,15 @@ function FilterBar({
     {
       value: "transformation",
       label: "Transformation",
-      count: themeCount["transformation"] || 0,
+      count: themeCount["transformation"] || 0
     },
     {
       value: "leadership",
       label: "Leadership",
-      count: themeCount["leadership"] || 0,
+      count: themeCount["leadership"] || 0
     },
     { value: "unity", label: "Unity", count: themeCount["unity"] || 0 },
-    { value: "wisdom", label: "Wisdom", count: themeCount["wisdom"] || 0 },
+    { value: "wisdom", label: "Wisdom", count: themeCount["wisdom"] || 0 }
   ];
 
   const impactOptions: FilterOption<PersonImpactLevel>[] = [
@@ -147,10 +147,10 @@ function FilterBar({
     {
       value: "regional",
       label: "Regional",
-      count: impactCount["regional"] || 0,
+      count: impactCount["regional"] || 0
     },
     { value: "global", label: "Global", count: impactCount["global"] || 0 },
-    { value: "eternal", label: "Eternal", count: impactCount["eternal"] || 0 },
+    { value: "eternal", label: "Eternal", count: impactCount["eternal"] || 0 }
   ];
 
   // Type for our filter categories list
@@ -166,7 +166,7 @@ function FilterBar({
       activeFilters: roleFilters,
       setActiveFilters: setRoleFilters,
       colorClass: "text-amber-500",
-      glowClass: "glow-lightworker",
+      glowClass: "glow-lightworker"
     },
     {
       name: "Theme",
@@ -174,7 +174,7 @@ function FilterBar({
       activeFilters: themeFilters,
       setActiveFilters: setThemeFilters,
       colorClass: "text-emerald-500",
-      glowClass: "glow-witness",
+      glowClass: "glow-witness"
     },
     {
       name: "Impact",
@@ -182,8 +182,8 @@ function FilterBar({
       activeFilters: impactFilters,
       setActiveFilters: setImpactFilters,
       colorClass: "text-amber-500",
-      glowClass: "glow-guardian",
-    },
+      glowClass: "glow-guardian"
+    }
   ];
 
   // Generic toggle filter function with proper type safety
@@ -258,25 +258,22 @@ function FilterBar({
     initial: {
       opacity: 0,
       y: 10,
-      scale: 0.95,
+      scale: 0.95
     },
     animate: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1],
-      },
+      scale: 1
+      
     },
     exit: {
       opacity: 0,
       y: -10,
       scale: 0.95,
       transition: {
-        duration: 0.2,
-      },
-    },
+        duration: 0.2
+      }
+    }
   };
 
   return (

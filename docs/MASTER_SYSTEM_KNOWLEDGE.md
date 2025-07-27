@@ -23,6 +23,15 @@
 - **Hosting**: Vercel Edge Network
 - **Port**: 1437 (specific to this project)
 
+### **🚀 TURBOPACK DEVELOPMENT CONFIGURATION**
+- **Development Bundler**: Turbopack (Rust-based, 10x faster compilation)
+- **Production Bundler**: Webpack (Battle-tested stability for deployment)
+- **Dev Command**: `npm run dev` (uses --turbo flag by default)
+- **Fallback**: `npm run dev:webpack` (if Turbopack issues occur)
+- **Configuration**: Enabled in next.config.js for development only
+- **Performance Impact**: 4.9s → <1s compilation times
+- **Module Handling**: 3,561 modules compiled in <1 second vs 4.9s with webpack
+
 ---
 
 ## 🏗️ ARCHITECTURE PRINCIPLES
@@ -32,7 +41,7 @@ Following Dan Abramov, Lee Robinson, Matt Pocock principles [[memory:3332666]]:
 
 1. **Pragmatic Excellence**: Functional delivery over technical perfection
 2. **Framework Conflict Awareness**: Perfect Storm prevention protocols [[memory:4396598]]
-3. **Performance First**: <7ms APIs, <25s builds (current: ~20s), championship metrics
+3. **Performance First**: <7ms APIs, <1s dev builds (Turbopack), <25s prod builds (webpack), championship metrics
 4. **Defensive Architecture**: [[memory:2605206]] Crisis prediction and rapid recovery
 
 ### **Trinity System Activation**
@@ -67,13 +76,15 @@ interface ComponentProps {
 }
 ```
 
-### **FORBIDDEN PATTERNS** ❌
-- Pages directory code (deprecated, use App Router)
+## NEVER Generate These Patterns ❌
+- App Router pages (use src/app structure)
 - Class components (use functional only)
 - CSS modules or styled-components (use Tailwind)
 - Redux/Context API (this is a static site)
 - API routes with databases (static site)
 - `any` types (use proper TypeScript)
+- Object syntax for withErrorBoundary second parameter
+- "Divine" or flowery language in technical contexts
 
 ### **PERFECT STORM PREVENTION** ⚡
 Critical framework conflict between Next.js 15.4.2, React 18.2.0, and Framer Motion:

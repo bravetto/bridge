@@ -22,7 +22,7 @@ export const OptimizedComponents = {
   }),
 
   UserTypeModal: dynamic(() => import("@/components/user-type-modal"), {
-    ssr: false,
+    ssr: true,
     loading: () => null,
   }),
 
@@ -37,7 +37,7 @@ export const OptimizedComponents = {
   DivineImpactDashboard: dynamic(
     () => import("@/components/divine-impact-dashboard"),
     {
-      ssr: false,
+      ssr: true,
       loading: () => (
         <div className="w-full h-96 bg-soft-cloud/30 rounded-lg animate-pulse flex items-center justify-center">
           <div className="text-gentle-charcoal">
@@ -49,7 +49,7 @@ export const OptimizedComponents = {
   ),
 
   DivineLetterForm: dynamic(() => import("@/components/divine-letter-form"), {
-    ssr: false,
+    ssr: true,
     loading: () => (
       <div className="max-w-5xl mx-auto">
         <div className="p-12 text-center">
@@ -64,7 +64,7 @@ export const OptimizedComponents = {
 
   // Medium priority components (below the fold)
   DecisionCountdown: dynamic(() => import("@/components/decision-countdown"), {
-    ssr: false,
+    ssr: true,
     loading: () => (
       <div className="w-full h-32 bg-soft-cloud/30 rounded-lg animate-pulse"></div>
     ),
@@ -74,7 +74,7 @@ export const OptimizedComponents = {
   SocialAmplification: dynamic(
     () => import("@/components/social-amplification"),
     {
-      ssr: false,
+      ssr: true,
       loading: () => (
         <div className="min-h-[100px] animate-pulse bg-gray-100/10 rounded-md"></div>
       ),
@@ -83,7 +83,7 @@ export const OptimizedComponents = {
 
   // Idle priority components (load when browser is idle)
   AnalyticsDashboard: dynamic(() => import("@/app/analytics-dashboard/page"), {
-    ssr: false,
+    ssr: true,
     loading: () => (
       <div className="min-h-[300px] animate-pulse bg-gray-100/10 rounded-md"></div>
     ),

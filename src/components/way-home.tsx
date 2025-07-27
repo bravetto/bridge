@@ -20,53 +20,46 @@ const pathways = [
     title: "From Incarceration",
     destination: "To Transformation",
     description: "Your past is not your destiny. Your greatness awaits.",
-    color: "from-courage-blue to-hope-gold",
+    color: "from-courage-blue to-hope-gold"
   },
   {
     title: "From Judgment",
     destination: "To Assessment",
     description:
       "You are not your worst moment. You are your infinite potential.",
-    color: "from-growth-green to-hope-gold",
+    color: "from-growth-green to-hope-gold"
   },
   {
     title: "From Punishment",
     destination: "To Purpose",
     description: "Every trial prepared you for your divine calling.",
-    color: "from-love-red to-hope-gold",
+    color: "from-love-red to-hope-gold"
   },
   {
     title: "From Isolation",
     destination: "To Divine Alignment",
     description: "You were never alone. Your tribe awaits.",
-    color: "from-wisdom-purple to-hope-gold",
+    color: "from-wisdom-purple to-hope-gold"
   },
   {
     title: "From Hopelessness",
     destination: "To Greatness Zone",
     description: "Your gifts are needed. Your time is now.",
-    color: "from-faith-indigo to-hope-gold",
-  },
+    color: "from-faith-indigo to-hope-gold"
+  }
 ];
 
 const pathVariants = {
   hidden: { opacity: 0, x: -50 },
   visible: (i: number) => ({
     opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.3,
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    x: 0
+    
   }),
   hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.3,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+    scale: 1.05
+    
+  }
 };
 
 const containerVariants = {
@@ -75,12 +68,12 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
+      delayChildren: 0.3
+    }
+  }
 };
 
-function WayHome({ role = "default", className }: WayHomeProps) {
+function WayHome({ role = "lightworker", className }: WayHomeProps) {
   return (
     <div
       className={cn(

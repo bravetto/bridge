@@ -43,26 +43,34 @@ const lightVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 1.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
   },
 };
 
 const rayVariants = {
-  hidden: { opacity: 0, scale: 0 },
+  hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 2,
-      ease: [0.16, 1, 0.3, 1],
-    },
   },
 };
 
-function DivineLight({ role = "default", className }: DivineLightProps) {
+const contentVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
+const verseVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+  },
+};
+
+function DivineLight({ role = "lightworker", className }: DivineLightProps) {
   const [activeVerse, setActiveVerse] = React.useState(0);
 
   React.useEffect(() => {

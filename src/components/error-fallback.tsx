@@ -10,51 +10,56 @@ import type { DivineRole } from "@/lib/design-system";
 /**
  * Role configuration mapping for styling error fallbacks
  */
-const roleStyleConfig: Record<
-  DivineRole,
-  {
-    bgClass: string;
-    borderClass: string;
-    textClass: string;
-    iconClass: string;
-    buttonClass: string;
-  }
-> = {
+const roleStyles: Record<DivineRole, {
+  bgClass: string;
+  borderClass: string;
+  textClass: string;
+  iconClass: string;
+  buttonClass: string;
+}> = {
   lightworker: {
     bgClass: "bg-amber-50 dark:bg-amber-950/30",
     borderClass: "border-amber-200 dark:border-amber-800/50",
     textClass: "text-amber-800 dark:text-amber-300",
     iconClass: "text-amber-500",
-    buttonClass: "bg-amber-100 hover:bg-amber-200 text-amber-800",
+    buttonClass: "bg-amber-100 hover:bg-amber-200 text-amber-800"
   },
   messenger: {
     bgClass: "bg-blue-50 dark:bg-blue-950/30",
     borderClass: "border-blue-200 dark:border-blue-800/50",
     textClass: "text-blue-800 dark:text-blue-300",
     iconClass: "text-blue-500",
-    buttonClass: "bg-blue-100 hover:bg-blue-200 text-blue-800",
+    buttonClass: "bg-blue-100 hover:bg-blue-200 text-blue-800"
   },
   witness: {
     bgClass: "bg-emerald-50 dark:bg-emerald-950/30",
     borderClass: "border-emerald-200 dark:border-emerald-800/50",
     textClass: "text-emerald-800 dark:text-emerald-300",
     iconClass: "text-emerald-500",
-    buttonClass: "bg-emerald-100 hover:bg-emerald-200 text-emerald-800",
+    buttonClass: "bg-emerald-100 hover:bg-emerald-200 text-emerald-800"
   },
   guardian: {
     bgClass: "bg-purple-50 dark:bg-purple-950/30",
     borderClass: "border-purple-200 dark:border-purple-800/50",
     textClass: "text-purple-800 dark:text-purple-300",
     iconClass: "text-purple-500",
-    buttonClass: "bg-purple-100 hover:bg-purple-200 text-purple-800",
+    buttonClass: "bg-purple-100 hover:bg-purple-200 text-purple-800"
   },
-  default: {
-    bgClass: "bg-red-50 dark:bg-red-950/30",
-    borderClass: "border-red-200 dark:border-red-800/50",
-    textClass: "text-red-800 dark:text-red-300",
-    iconClass: "text-red-500",
-    buttonClass: "bg-red-100 hover:bg-red-200 text-red-800",
-  },
+  transformer: {
+    bgClass: "bg-indigo-50 dark:bg-indigo-950/30",
+    borderClass: "border-indigo-200 dark:border-indigo-800/50",
+    textClass: "text-indigo-800 dark:text-indigo-300",
+    iconClass: "text-indigo-500",
+    buttonClass: "bg-indigo-100 hover:bg-indigo-200 text-indigo-800"
+  }
+};
+
+const defaultStyles = {
+  bgClass: "bg-red-50 dark:bg-red-950/30",
+  borderClass: "border-red-200 dark:border-red-800/50",
+  textClass: "text-red-800 dark:text-red-300",
+  iconClass: "text-red-500",
+  buttonClass: "bg-red-100 hover:bg-red-200 text-red-800"
 };
 
 interface ErrorFallbackProps {
@@ -73,11 +78,11 @@ function ErrorFallbackExported({
   error,
   resetErrorBoundary,
   componentName = "component",
-  role = "default",
-  className,
+  role = "lightworker",
+  className
 }: ErrorFallbackProps) {
   // Get role-specific styling
-  const styles = roleStyleConfig[role];
+  const styles = roleStyles[role] || defaultStyles;
 
   return (
     <div

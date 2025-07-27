@@ -17,22 +17,14 @@ interface SacredContainerProps {
 }
 
 const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.1,
-    },
   },
   exit: {
     opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.7,
-    },
+    y: -50,
   },
 };
 
@@ -41,15 +33,11 @@ const childVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1],
-    },
   },
 };
 
 function SacredContainer({
-  role = "default",
+  role = "lightworker",
   children,
   className,
   title,
@@ -61,6 +49,7 @@ function SacredContainer({
       initial="hidden"
       animate="visible"
       exit="exit"
+      transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.1 }}
       className={cn(
         "relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800",
         className,
@@ -70,12 +59,14 @@ function SacredContainer({
       {(title || subtitle) && (
         <motion.div
           variants={childVariants}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="content-center relative z-10 py-12 text-center"
         >
           {title && (
             <motion.h1
               variants={childVariants}
-              className="hero-heading text-responsive-hero font-cinzel bg-gradient-to-r from-white via-hope-gold to-white bg-clip-text text-transparent drop-shadow-lg"
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+              className="mb-4 text-4xl font-bold text-white md:text-6xl"
             >
               {title}
             </motion.h1>
@@ -83,7 +74,8 @@ function SacredContainer({
           {subtitle && (
             <motion.p
               variants={childVariants}
-              className="hero-subheading text-responsive-sub text-white/90 mt-4"
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              className="text-xl text-gray-300 md:text-2xl"
             >
               {subtitle}
             </motion.p>
@@ -94,7 +86,8 @@ function SacredContainer({
       {/* Sacred content */}
       <motion.div
         variants={childVariants}
-        className="relative z-10 container mx-auto px-4 py-8"
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        className="relative z-10"
       >
         {children}
       </motion.div>

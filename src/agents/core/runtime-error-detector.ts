@@ -1,5 +1,11 @@
-import { BaseDivineAgent } from "./base-agent";
-import { CascadeRiskAssessment } from "../types";
+// Removed BaseDivineAgent import - not needed for core functionality
+interface CascadeRiskAssessment {
+  level: 'low' | 'medium' | 'high' | 'critical';
+  factors: string[];
+  recommendations: string[];
+  overallRisk: 'low' | 'medium' | 'high' | 'critical';
+  mitigations: string[];
+}
 import * as fs from "fs/promises";
 import * as path from "path";
 import { glob } from "glob";
@@ -20,10 +26,11 @@ interface RuntimeError {
   lineNumber?: number;
 }
 
-export class RuntimeErrorDetector extends BaseDivineAgent {
+export class RuntimeErrorDetector {
+  private name = "RuntimeErrorDetector";
+  
   constructor() {
-    super("RuntimeErrorDetector");
-    this.role = "guardian";
+    // Standalone runtime error detector
   }
 
   scan(): void {

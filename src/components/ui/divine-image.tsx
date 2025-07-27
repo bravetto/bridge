@@ -123,9 +123,10 @@ function DivineImageComponent({
         messenger: "#3B82F6",
         witness: "#10B981",
         guardian: "#8B5CF6",
-        default: "#F59E0B",
+        transformer: "#6366F1",
       };
-      const primaryColor = roleColors[role] || roleColors.default;
+      const defaultColor = "#F59E0B";
+      const primaryColor = roleColors[role] || defaultColor;
       return `data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='100%25' height='100%25' fill='${primaryColor.replace("#", "%23")}'/%3E%3C/svg%3E`;
     }
 
@@ -133,7 +134,7 @@ function DivineImageComponent({
   };
 
   return (
-    <div className={cn("relative overflow-hidden", containerClassName)}>
+    <div className={cn("relative overflow-hidden", containerClassName)} style={{ position: 'relative' }}>
       {/* Loading overlay */}
       {isLoading && showLoadingState && (
         <div

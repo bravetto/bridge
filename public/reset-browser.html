@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Reset - JAHmere Webb Freedom Portal</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .success { background: #d1fae5; color: #065f46; }
+        .error { background: #fee2e2; color: #991b1b; }
+        .info { background: #dbeafe; color: #1e40af; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Browser Reset Tool</h1>
+        <p>This tool will completely reset your browser cache and service workers for the JAHmere Webb Freedom Portal.</p>
+        
+        <div id="status" class="status info">
+            Ready to reset browser cache and service workers.
+        </div>
+
+        <button onclick="resetEverything()">🚀 Reset Everything</button>
+        <button onclick="checkStatus()">📊 Check Status</button>
+        
+        <h3>Manual Steps (if needed):</h3>
+        <ol>
+            <li>Open DevTools (F12)</li>
+            <li>Go to Application → Service Workers</li>
+            <li>Click "Unregister" for any existing workers</li>
+            <li>Go to Application → Storage</li>
+            <li>Click "Clear site data"</li>
+            <li>Hard refresh: Ctrl+Shift+R (PC) or Cmd+Shift+R (Mac)</li>
+        </ol>
+
+        <div id="details" style="margin-top: 20px; font-family: monospace; font-size: 12px; background: #f1f5f9; padding: 15px; border-radius: 4px;"></div>
+    </div>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const detailsDiv = document.getElementById('details');
+
+        function updateStatus(message, type = 'info') {
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+        }
+
+        function addDetail(message) {
+            detailsDiv.innerHTML += message + '<br>';
+        }
+
+        async function resetEverything() {
+            updateStatus('🧹 Resetting browser cache and service workers...', 'info');
+            detailsDiv.innerHTML = '';
+            
+            try {
+                // 1. Unregister all service workers
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    addDetail(`Found ${registrations.length} service worker registrations`);
+                    
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                        addDetail(`✅ Unregistered service worker: ${registration.scope}`);
+                    }
+                }
+
+                // 2. Clear all caches
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    addDetail(`Found ${cacheNames.length} caches to delete`);
+                    
+                    for (let cacheName of cacheNames) {
+                        await caches.delete(cacheName);
+                        addDetail(`✅ Deleted cache: ${cacheName}`);
+                    }
+                }
+
+                // 3. Clear storage
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.clear();
+                    addDetail('✅ localStorage cleared');
+                }
+
+                if (typeof sessionStorage !== 'undefined') {
+                    sessionStorage.clear();
+                    addDetail('✅ sessionStorage cleared');
+                }
+
+                updateStatus('✅ Reset complete! Please reload the main site now.', 'success');
+                addDetail('<br><strong>Next steps:</strong>');
+                addDetail('1. Go back to http://localhost:1111');
+                addDetail('2. Hard refresh: Ctrl+Shift+R (PC) or Cmd+Shift+R (Mac)');
+                addDetail('3. The site should now load properly without old service worker conflicts');
+
+            } catch (error) {
+                updateStatus(`❌ Error during reset: ${error.message}`, 'error');
+                addDetail(`Error: ${error.message}`);
+            }
+        }
+
+        async function checkStatus() {
+            detailsDiv.innerHTML = '';
+            
+            try {
+                // Check service workers
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    addDetail(`Service Workers: ${registrations.length} registered`);
+                    registrations.forEach(reg => {
+                        addDetail(`  - ${reg.scope} (${reg.active ? 'active' : 'inactive'})`);
+                    });
+                }
+
+                // Check caches
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    addDetail(`Caches: ${cacheNames.length} found`);
+                    cacheNames.forEach(name => {
+                        addDetail(`  - ${name}`);
+                    });
+                }
+
+                updateStatus('📊 Status check complete', 'info');
+
+            } catch (error) {
+                updateStatus(`❌ Error checking status: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-check status on load
+        window.addEventListener('load', checkStatus);
+    </script>
+</body>
+</html> 

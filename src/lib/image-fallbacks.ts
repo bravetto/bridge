@@ -21,14 +21,35 @@ export function generateProfileFallback(config: ImageFallbackConfig): string {
   // Role-based color schemes
   const roleColors = {
     lightworker: {
-      primary: "#f59e0b",
-      secondary: "#fef3c7",
-      accent: "#92400e",
+      primary: '#7DF9FF',
+      secondary: '#00BFFF', 
+      accent: '#87CEEB'
     },
-    messenger: { primary: "#3b82f6", secondary: "#dbeafe", accent: "#1e40af" },
-    witness: { primary: "#10b981", secondary: "#d1fae5", accent: "#047857" },
-    guardian: { primary: "#8b5cf6", secondary: "#ede9fe", accent: "#5b21b6" },
-    default: { primary: "#6b7280", secondary: "#f3f4f6", accent: "#374151" },
+    messenger: {
+      primary: '#4169E1',
+      secondary: '#6495ED',
+      accent: '#ADD8E6'
+    },
+    witness: {
+      primary: '#0066CC',
+      secondary: '#4682B4',
+      accent: '#B0E0E6'
+    },
+    guardian: {
+      primary: '#191970',
+      secondary: '#000080',
+      accent: '#4682B4'
+    },
+    transformer: {
+      primary: '#6366F1',
+      secondary: '#4F46E5',
+      accent: '#818CF8'
+    },
+    default: {
+      primary: '#0066CC',
+      secondary: '#4682B4',
+      accent: '#87CEEB'
+    }
   };
 
   const colors = roleColors[role] || roleColors.default;
@@ -181,7 +202,7 @@ export function getPersonFallback(personId: string): string {
       name: personId
         .replace(/-/g, " ")
         .replace(/\b\w/g, (l) => l.toUpperCase()),
-      role: "default",
+      role: "lightworker",
     });
   }
 
@@ -227,7 +248,7 @@ export function getImageSource(
     const config: ImageFallbackConfig = {
       personId: personId || "unknown",
       name: fallbackConfig.name,
-      role: fallbackConfig.role || "default",
+      role: fallbackConfig.role || "lightworker",
       title: fallbackConfig.title,
     };
 

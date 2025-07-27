@@ -30,15 +30,15 @@ function PersonHero({
   imageAlt,
   personId,
   localImage = false,
-  role = "default",
+  role = "lightworker",
   cta,
-  variant = "primary",
+  variant = "primary"
 }: PersonHeroProps) {
   // Determine background styles based on variant
   const bgStyles = {
     primary: "bg-courage-blue text-white",
     secondary: "bg-hope-gold text-gentle-charcoal",
-    tertiary: "bg-growth-green text-white",
+    tertiary: "bg-growth-green text-white"
   };
 
   const currentBg = bgStyles[variant];

@@ -1,22 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { withSafeUI } from "./with-safe-ui";
-import { useHydrationSafeDate } from "@/hooks/useHydrationSafe";
 
 interface MiniCountdownProps {
   targetDate: Date;
   className?: string;
-  linkHref?: string;
+  onClick?: () => void;
 }
 
 function MiniCountdown({
   targetDate,
   className,
-  linkHref = "/the-case",
+  onClick,
 }: MiniCountdownProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -25,76 +23,78 @@ function MiniCountdown({
     seconds: 0,
   });
   
-  // Use hydration-safe date to prevent server-client mismatches
-  const currentDate = useHydrationSafeDate();
+  const [isClient, setIsClient] = useState(false);
 
+  // Hydration safety
   useEffect(() => {
-    if (!currentDate) return; // Don't calculate until after hydration
+    setIsClient(true);
+  }, []);
 
-    const calculateTimeLeft = () => {
-      const difference = +targetDate - +currentDate;
+  // Stable calculation function - NO dependencies on isClient
+  const calculateTimeLeft = useCallback(() => {
+    const now = new Date();
+    const difference = +targetDate - +now;
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
+    if (difference > 0) {
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    } else {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+  }, [targetDate]);
 
-    calculateTimeLeft();
+  // Timer effect with proper cleanup and hydration safety
+  useEffect(() => {
+    if (!isClient) return;
+
+    // Initial calculation
+    const initialTime = calculateTimeLeft();
+    setTimeLeft(initialTime);
+
+    // Set up interval
     const timer = setInterval(() => {
-      // Use fresh Date.now() for interval calculations
-      const now = new Date();
-      const difference = +targetDate - +now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
+      const newTime = calculateTimeLeft();
+      setTimeLeft(newTime);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, currentDate]);
+  }, [isClient, calculateTimeLeft]);
 
-  // Show loading state until hydration is complete
-  if (!currentDate) {
+  // Don't render until hydrated
+  if (!isClient) {
     return (
-      <div className={cn("flex items-center gap-1 text-xs", className)}>
-        <Clock className="h-3 w-3" />
+      <div className={cn("inline-flex items-center gap-2 text-sm", className)}>
+        <Clock className="h-4 w-4" />
         <span>Loading...</span>
       </div>
     );
   }
 
-  const countdownContent = (
-    <div className={cn("flex items-center gap-1 text-xs", className)}>
-      <Clock className="h-3 w-3" />
-      <span>
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+  const formatTime = (value: number) => value.toString().padStart(2, "0");
+
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center gap-2 text-sm font-medium cursor-pointer",
+        "text-blue-600 hover:text-blue-700 transition-colors",
+        "bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full",
+        className
+      )}
+      onClick={onClick}
+    >
+      <Clock className="h-4 w-4" />
+      <span className="tabular-nums">
+        {timeLeft.days > 0 && `${timeLeft.days}d `}
+        {formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:
+        {formatTime(timeLeft.seconds)}
       </span>
+      <span className="text-xs opacity-75">until July 28</span>
     </div>
   );
-
-  if (linkHref) {
-    return (
-      <Link href={linkHref} className="hover:opacity-80 transition-opacity">
-        {countdownContent}
-      </Link>
-    );
-  }
-
-  return countdownContent;
 }
 
 export default withSafeUI(MiniCountdown, {

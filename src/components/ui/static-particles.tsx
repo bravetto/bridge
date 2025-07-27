@@ -19,16 +19,47 @@ export default function StaticParticles({
     high: 35,
   }[density];
 
-  // Create array of particles with random positions and animation delays
-  const particles = Array.from({ length: particleCount }, (_, index) => ({
-    id: index,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 20,
-    duration: 15 + Math.random() * 25,
-    size: 2 + Math.random() * 6,
-    opacity: 0.1 + Math.random() * 0.4,
-  }));
+  // Create array of particles with deterministic positions to prevent hydration mismatches
+  const particles = Array.from({ length: particleCount }, (_, index) => {
+    // Use predetermined static positions based on density
+    const positions = density === "low" 
+      ? [
+          { x: 20, y: 25 }, { x: 80, y: 30 }, { x: 40, y: 70 }, { x: 60, y: 15 }, 
+          { x: 15, y: 85 }, { x: 75, y: 60 }, { x: 30, y: 45 }, { x: 90, y: 75 },
+          { x: 50, y: 90 }, { x: 10, y: 50 }, { x: 70, y: 20 }, { x: 35, y: 80 }
+        ]
+      : density === "medium"
+      ? [
+          { x: 25, y: 15 }, { x: 75, y: 20 }, { x: 45, y: 35 }, { x: 85, y: 45 }, 
+          { x: 15, y: 55 }, { x: 65, y: 65 }, { x: 35, y: 75 }, { x: 55, y: 25 },
+          { x: 95, y: 30 }, { x: 5, y: 40 }, { x: 80, y: 60 }, { x: 40, y: 10 },
+          { x: 20, y: 80 }, { x: 70, y: 50 }, { x: 90, y: 70 }, { x: 10, y: 25 },
+          { x: 60, y: 85 }, { x: 30, y: 45 }, { x: 85, y: 15 }, { x: 50, y: 90 }
+        ]
+      : [
+          { x: 12, y: 18 }, { x: 88, y: 22 }, { x: 34, y: 41 }, { x: 76, y: 33 },
+          { x: 23, y: 67 }, { x: 91, y: 55 }, { x: 45, y: 12 }, { x: 67, y: 88 },
+          { x: 8, y: 76 }, { x: 82, y: 44 }, { x: 56, y: 29 }, { x: 29, y: 91 },
+          { x: 73, y: 17 }, { x: 41, y: 83 }, { x: 95, y: 38 }, { x: 17, y: 52 },
+          { x: 63, y: 71 }, { x: 39, y: 26 }, { x: 85, y: 94 }, { x: 51, y: 8 },
+          { x: 24, y: 62 }, { x: 78, y: 47 }, { x: 46, y: 85 }, { x: 92, y: 31 },
+          { x: 18, y: 74 }, { x: 64, y: 19 }, { x: 37, y: 56 }, { x: 81, y: 89 },
+          { x: 53, y: 43 }, { x: 26, y: 77 }, { x: 89, y: 14 }, { x: 42, y: 68 },
+          { x: 75, y: 92 }, { x: 31, y: 35 }, { x: 87, y: 59 }
+        ];
+    
+    const position = positions[index % positions.length];
+    
+    return {
+      id: index,
+      x: position.x,
+      y: position.y,
+      size: 1 + (index % 3), // Deterministic size variation
+      opacity: 0.3 + (index % 4) * 0.15, // Deterministic opacity 0.3-0.75
+      duration: 3 + (index % 5), // Deterministic duration 3-7 seconds
+      delay: (index * 0.4) % 6, // Deterministic delay 0-6 seconds
+    };
+  });
 
   // Variant-specific configurations
   const variantConfig = {
@@ -172,8 +203,8 @@ export default function StaticParticles({
             )}
             style={
               {
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
                 width: `${particle.size}px`,
                 height: `${particle.size}px`,
                 opacity: particle.opacity,
@@ -218,18 +249,33 @@ export default function StaticParticles({
         {/* Subtle sparkle effects */}
         {variant === "divine" && (
           <div className="absolute inset-0">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={`sparkle-${i}`}
-                className="absolute w-1 h-1 bg-yellow-300 rounded-full animate-ping"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 10}s`,
-                  animationDuration: "2s",
-                }}
-              />
-            ))}
+            {[...Array(8)].map((_, i) => {
+              // Use predetermined static positions for sparkles
+              const sparklePositions = [
+                { left: 20, top: 30, delay: 0 },
+                { left: 80, top: 15, delay: 1.2 },
+                { left: 45, top: 70, delay: 2.4 },
+                { left: 90, top: 55, delay: 3.6 },
+                { left: 10, top: 85, delay: 4.8 },
+                { left: 65, top: 25, delay: 6.0 },
+                { left: 35, top: 60, delay: 7.2 },
+                { left: 75, top: 40, delay: 8.4 },
+              ];
+              const sparkle = sparklePositions[i];
+              
+              return (
+                <div
+                  key={`sparkle-${i}`}
+                  className="absolute w-1 h-1 bg-yellow-300 rounded-full animate-ping"
+                  style={{
+                    left: `${sparkle.left}%`,
+                    top: `${sparkle.top}%`,
+                    animationDelay: `${sparkle.delay}s`,
+                    animationDuration: "2s",
+                  }}
+                />
+              );
+            })}
           </div>
         )}
       </div>

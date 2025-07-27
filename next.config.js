@@ -3,7 +3,14 @@ const nextConfig = {
   // 📦 SERVER EXTERNAL PACKAGES
   serverExternalPackages: ["@prisma/client"],
 
+  // 🚀 TURBOPACK CONFIGURATION (Stable as of Next.js 15.4.2)
+  turbopack: process.env.NODE_ENV === 'development' ? {
+    // Enable Turbopack for faster development builds
+    // Production builds still use webpack for stability
+  } : undefined,
+
   experimental: {
+    
     // Next.js 15.4 Production Optimizations
     optimizeCss: true,
     // Disable aggressive optimization that causes webpack issues
@@ -21,7 +28,7 @@ const nextConfig = {
     } : false,
   },
 
-  // 🛡️ OPTIMIZED WEBPACK CONFIGURATION
+  // 🛡️ BATTLE-TESTED WEBPACK CONFIGURATION (MIME Issue Fixed)
   webpack: (config, { isServer, dev }) => {
     // Essential fixes for stability
     config.resolve.fallback = {
@@ -29,7 +36,7 @@ const nextConfig = {
       fs: false,
     };
 
-    // Development optimizations
+    // CRITICAL FIX: Completely disable vendor chunk splitting to prevent MIME conflicts
     if (dev) {
       config.watchOptions = {
         ...config.watchOptions,
@@ -37,25 +44,11 @@ const nextConfig = {
         ignored: /node_modules/,
       };
       
-      // Fix static chunk loading issues in development
+      // REMOVED: All custom chunk splitting that was causing CSS/JS MIME conflicts
+      // This prevents vendors.css from being created as a JavaScript chunk
       config.optimization = {
         ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-            },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              priority: -10,
-              chunks: 'all',
-            },
-          },
-        },
+        splitChunks: false, // Disable all chunk splitting in development
       };
     }
 
@@ -77,7 +70,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // 🔒 SECURITY HEADERS
+  // 🔒 ENHANCED MIME TYPE ENFORCEMENT HEADERS
   async headers() {
     return [
       {
@@ -98,6 +91,54 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ]
+      },
+      {
+        source: '/_next/static/chunks/:path*.js',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/javascript; charset=utf-8'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/_next/static/css/:path*.css',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/css; charset=utf-8'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      // CRITICAL: Prevent any CSS files from being served as JavaScript
+      {
+        source: '/_next/static/:path*.css',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/css; charset=utf-8'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
           }
         ]
       }

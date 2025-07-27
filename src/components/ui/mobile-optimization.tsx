@@ -236,19 +236,11 @@ export function MobileModal({
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        type: "spring",
-        damping: 25,
-        stiffness: 300,
-      },
     },
     exit: {
       opacity: 0,
       y: isMobile ? "100%" : "50%",
       scale: isMobile ? 1 : 0.8,
-      transition: {
-        duration: 0.2,
-      },
     },
   };
 

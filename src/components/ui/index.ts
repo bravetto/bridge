@@ -24,7 +24,7 @@ export * from "./error-boundary";
 export * from "./divine-image";
 export { default as FeatureCard } from "./feature-card";
 export * from "./file-upload";
-export * from "./floating-cta";
+// Quarantined: floating-cta (whileHover/whileTap props)
 export * from "./form";
 export * from "./input";
 export * from "./label";

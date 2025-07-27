@@ -33,10 +33,10 @@ function EnhancedPersonHero({
   imageAlt,
   personId,
   localImage = false,
-  role = "default",
+  role = "lightworker",
   cta,
   variant = "primary",
-  className,
+  className
 }: EnhancedPersonHeroProps) {
   const [scrollY, setScrollY] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
@@ -60,7 +60,7 @@ function EnhancedPersonHero({
   const bgStyles = {
     primary: "from-courage-blue to-courage-blue/80 text-white",
     secondary: "from-hope-gold to-hope-gold/80 text-gentle-charcoal",
-    tertiary: "from-growth-green to-growth-green/80 text-white",
+    tertiary: "from-growth-green to-growth-green/80 text-white"
   };
 
   const currentBg = bgStyles[variant];
@@ -77,31 +77,27 @@ function EnhancedPersonHero({
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
+        delayChildren: 0.1
+      }
+    }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
-    },
+      y: 0
+      
+    }
   };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-        delay: 0.1,
-      },
-    },
+      scale: 1
+      
+    }
   };
 
   // Generate name initials for background effect
@@ -128,7 +124,7 @@ function EnhancedPersonHero({
             style={{
               top: "10%",
               left: "5%",
-              transform: `translate(${scrollY * 0.02}px, ${scrollY * -0.01}px)`,
+              transform: `translate(${scrollY * 0.02}px, ${scrollY * -0.01}px)`
             }}
           />
           <div
@@ -136,7 +132,7 @@ function EnhancedPersonHero({
             style={{
               bottom: "15%",
               right: "10%",
-              transform: `translate(${scrollY * -0.02}px, ${scrollY * 0.01}px)`,
+              transform: `translate(${scrollY * -0.02}px, ${scrollY * 0.01}px)`
             }}
           />
         </>
@@ -219,25 +215,25 @@ function EnhancedPersonHero({
               className="absolute w-20 h-20 rounded-full bg-white/10 backdrop-blur-md -bottom-6 -left-6 z-20"
               animate={{
                 y: [0, -10, 0],
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.5, 0.8, 0.5]
               }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: "easeInOut"
               }}
             />
             <motion.div
               className="absolute w-12 h-12 rounded-full bg-white/10 backdrop-blur-md top-10 -right-4 z-20"
               animate={{
                 y: [0, 10, 0],
-                opacity: [0.3, 0.6, 0.3],
+                opacity: [0.3, 0.6, 0.3]
               }}
               transition={{
                 duration: 3.5,
                 delay: 0.5,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: "easeInOut"
               }}
             />
           </motion.div>

@@ -21,14 +21,9 @@ function GridView({ people, className }: GridViewProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
+      opacity: 1
+      
+    }
   };
 
   // Memoize the grid items to prevent unnecessary re-renders
@@ -39,12 +34,9 @@ function GridView({ people, className }: GridViewProps) {
       show: {
         opacity: 1,
         y: 0,
-        scale: 1,
-        transition: {
-          duration: 0.7,
-          ease: [0.16, 1, 0.3, 1],
-        },
-      },
+        scale: 1
+        
+      }
     };
 
     return people.map((person, index) => {
@@ -68,8 +60,8 @@ function GridView({ people, className }: GridViewProps) {
             rotate: Math.random() > 0.5 ? 0.5 : -0.5,
             boxShadow:
               "0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.3)",
-            filter: "brightness(1.05)",
-            transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+            filter: "brightness(1.05)"
+            
           }}
         >
           <PersonCard

@@ -12,55 +12,45 @@ const navItems = [
   {
     title: "The Revelation",
     href: "/divine-revelation",
-    description: "Experience God's infinite love",
+    description: "Experience God's infinite love"
   },
   {
     title: "The Way Home",
     href: "/way-home",
-    description: "Find your path to greatness",
+    description: "Find your path to greatness"
   },
   {
     title: "Sacred Experience",
     href: "/sacred-experience",
-    description: "Witness divine transformation",
+    description: "Witness divine transformation"
   },
   {
     title: "Divine Alignment",
     href: "/divine-alignment",
-    description: "Discover your calling",
-  },
+    description: "Discover your calling"
+  }
 ];
 
 const navVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+    y: 0
+    
+  }
 };
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
   visible: (i: number) => ({
     opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    x: 0
+    
   }),
   hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.3,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+    scale: 1.05
+    
+  }
 };
 
 function SacredNavigation() {

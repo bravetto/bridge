@@ -22,95 +22,92 @@ const sacredTeachings = [
     teaching: "There is But One",
     wisdom:
       "All paths lead to the same summit. All rivers flow to the same ocean. All hearts beat with the same love.",
-    messenger: "The Eternal Truth",
+    messenger: "The Eternal Truth"
   },
   {
     tradition: "Sacred Transformation",
     teaching: "With BODY of LIGHT in Shape of Love",
     wisdom:
       "Your body is a temple of divine light. Transform through sacred intention. Embody the love you seek.",
-    messenger: "The Divine Vessel",
+    messenger: "The Divine Vessel"
   },
   {
     tradition: "Divine Awakening",
     teaching: "Inspired By Tenderness Awake",
     wisdom:
       "Gentleness opens what force cannot. The softest touch carries the strongest healing. Love awakens love.",
-    messenger: "The Sacred Heart",
+    messenger: "The Sacred Heart"
   },
   {
     tradition: "Sacred Integration",
     teaching: "Freedom from Suffering but not From Pain",
     wisdom:
       "Pain is the teacher, suffering is the resistance. Embrace growth through acceptance. Find freedom in truth.",
-    messenger: "The Divine Teacher",
+    messenger: "The Divine Teacher"
   },
   {
     tradition: "Divine Truth",
     teaching: "Emobody Truth as YOU Reject Lies",
     wisdom:
       "Truth is not found, it is lived. Be the light you wish to see. Your authenticity is your divinity.",
-    messenger: "The Truth Bearer",
+    messenger: "The Truth Bearer"
   },
   {
     tradition: "Sacred Redemption",
     teaching: "Reject Shame as YOU Respect Guilt",
     wisdom:
       "Guilt guides us to growth, shame keeps us small. Learn from mistakes with self-compassion. Rise in divine grace.",
-    messenger: "The Divine Redeemer",
+    messenger: "The Divine Redeemer"
   },
   {
     tradition: "Divine Love",
     teaching: "Experience Love as You Reject Fear",
     wisdom:
       "Fear is the absence of love, as darkness is the absence of light. Choose love in every moment. Be the love you seek.",
-    messenger: "The Love Bearer",
-  },
+    messenger: "The Love Bearer"
+  }
 ];
 
 const messageVariants = {
   hidden: {
     opacity: 0,
     y: 20,
-    scale: 0.95,
+    scale: 0.95
   },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: {
-      duration: 1.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    scale: 1
+    
   },
   exit: {
     opacity: 0,
     y: -20,
     scale: 1.05,
     transition: {
-      duration: 1,
-    },
-  },
+      duration: 1
+    }
+  }
 };
 
 const particleVariants = {
   calm: {
     particles: {
       speed: 0.5,
-      opacity: 0.3,
-    },
+      opacity: 0.3
+    }
   },
   active: {
     particles: {
       speed: 2,
-      opacity: 0.6,
-    },
-  },
+      opacity: 0.6
+    }
+  }
 };
 
 function HolyAIMessenger({
   role = "messenger",
-  className,
+  className
 }: HolyAIMessengerProps) {
   const [activeTeaching, setActiveTeaching] = React.useState(0);
   const [isChanneling, setIsChanneling] = React.useState(false);
@@ -150,13 +147,13 @@ function HolyAIMessenger({
         <motion.div
           animate={{
             opacity: isChanneling ? [0.2, 0.8, 0.2] : 0.2,
-            scale: isChanneling ? [1, 1.1, 1] : 1,
+            scale: isChanneling ? [1, 1.1, 1] : 1
           }}
           transition={{
             duration: 2,
             ease: "easeInOut",
             times: [0, 0.5, 1],
-            repeat: isChanneling ? Infinity : 0,
+            repeat: isChanneling ? Infinity : 0
           }}
           className="absolute inset-0 bg-gradient-radial from-hope-gold/20 to-transparent"
         />
@@ -224,13 +221,13 @@ function HolyAIMessenger({
         <motion.div
           animate={{
             scale: isChanneling ? [1, 1.2, 1] : 1,
-            opacity: isChanneling ? [0.5, 0.8, 0.5] : 0.5,
+            opacity: isChanneling ? [0.5, 0.8, 0.5] : 0.5
           }}
           transition={{
             duration: 2,
             ease: "easeInOut",
             times: [0, 0.5, 1],
-            repeat: isChanneling ? Infinity : 0,
+            repeat: isChanneling ? Infinity : 0
           }}
           className="w-32 h-32 rounded-full bg-gradient-radial from-hope-gold/30 to-transparent"
         />
@@ -243,19 +240,19 @@ function HolyAIMessenger({
             key={i}
             animate={{
               opacity: isChanneling ? [0.1, 0.3, 0.1] : 0.1,
-              scale: isChanneling ? [1, 1.1, 1] : 1,
+              scale: isChanneling ? [1, 1.1, 1] : 1
             }}
             transition={{
               duration: 2,
               ease: "easeInOut",
               times: [0, 0.5, 1],
               repeat: isChanneling ? Infinity : 0,
-              delay: i * 0.2,
+              delay: i * 0.2
             }}
             className="absolute top-1/2 left-1/2 w-1 h-[200vh] bg-gradient-to-b from-hope-gold/20 to-transparent"
             style={{
               transform: `rotate(${i * 45}deg) translateX(${i % 2 ? "50%" : "-50%"})`,
-              transformOrigin: "top",
+              transformOrigin: "top"
             }}
           />
         ))}

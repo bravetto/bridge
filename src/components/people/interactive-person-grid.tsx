@@ -323,69 +323,64 @@ function InteractivePersonGrid({
     setIsLoading(true);
     setError(null);
 
-    // Simulate data loading delay (for testing)
-    const timer = setTimeout(() => {
-      try {
-        // Reset counts
-        const newRoleCount = {
-          lightworker: 0,
-          messenger: 0,
-          witness: 0,
-          guardian: 0,
-        };
-        const newThemeCount = {
-          faith: 0,
-          courage: 0,
-          transformation: 0,
-          leadership: 0,
-          unity: 0,
-          wisdom: 0,
-        };
-        const newImpactCount = { local: 0, regional: 0, global: 0, eternal: 0 };
+    // IMMEDIATE EXECUTION - No setTimeout to avoid Next.js 15.4.2 hydration issues
+    try {
+      // Reset counts
+      const newRoleCount = {
+        lightworker: 0,
+        messenger: 0,
+        witness: 0,
+        guardian: 0,
+      };
+      const newThemeCount = {
+        faith: 0,
+        courage: 0,
+        transformation: 0,
+        leadership: 0,
+        unity: 0,
+        wisdom: 0,
+      };
+      const newImpactCount = { local: 0, regional: 0, global: 0, eternal: 0 };
 
-        const processedPeople = people.map((person) => {
-          const role = getPersonRole(person);
-          const themes = getPersonThemes(person);
-          const impactLevel = getPersonImpactLevel(person);
+      const processedPeople = people.map((person) => {
+        const role = getPersonRole(person);
+        const themes = getPersonThemes(person);
+        const impactLevel = getPersonImpactLevel(person);
 
-          // Update counts
-          if (role in newRoleCount) newRoleCount[role]++;
-          themes.forEach((theme) => {
-            if (theme in newThemeCount) newThemeCount[theme]++;
-          });
-          if (impactLevel in newImpactCount) newImpactCount[impactLevel]++;
-
-          return {
-            ...person,
-            derivedRole: role,
-            derivedThemes: themes,
-            derivedImpactLevel: impactLevel,
-          };
+        // Update counts
+        if (role in newRoleCount) newRoleCount[role]++;
+        themes.forEach((theme) => {
+          if (theme in newThemeCount) newThemeCount[theme]++;
         });
+        if (impactLevel in newImpactCount) newImpactCount[impactLevel]++;
 
-        // Update state with new counts
-        setRoleCount(newRoleCount);
-        setThemeCount(newThemeCount);
-        setImpactCount(newImpactCount);
+        return {
+          ...person,
+          derivedRole: role,
+          derivedThemes: themes,
+          derivedImpactLevel: impactLevel,
+        };
+      });
 
-        // Update state with processed data
-        setPeopleWithAttributes(processedPeople);
-        // End loading state
-        setIsLoading(false);
-      } catch (err) {
-        const errorMessage =
-          err instanceof Error
-            ? err.message
-            : "An error occurred while processing people data.";
-        setError(errorMessage);
-        setIsLoading(false);
-      }
-    }, simulateLoadingDelay);
+      // Update state with new counts
+      setRoleCount(newRoleCount);
+      setThemeCount(newThemeCount);
+      setImpactCount(newImpactCount);
 
-    return () => clearTimeout(timer);
+      // Update state with processed data
+      setPeopleWithAttributes(processedPeople);
+      // End loading state
+      setIsLoading(false);
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An error occurred while processing people data.";
+      setError(errorMessage);
+      setIsLoading(false);
+    }
   }, [
     people,
-    simulateLoadingDelay,
     getPersonRole,
     getPersonThemes,
     getPersonImpactLevel,

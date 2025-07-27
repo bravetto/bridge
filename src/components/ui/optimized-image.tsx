@@ -162,7 +162,7 @@ export function OptimizedImage({
   const blurDataURL = getBlurDataURL();
 
   return (
-    <div className={cn("relative overflow-hidden", className)} style={style}>
+    <div className={cn("relative overflow-hidden", className)} style={{ position: 'relative', ...style }}>
       {/* Background blur placeholder for progressive loading */}
       {enableBlurPlaceholder && blurDataURL && !imageLoaded && (
         <div

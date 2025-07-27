@@ -75,6 +75,14 @@ export function getRoleColorClasses(role: DivineRole) {
       ring: "ring-purple-400",
       gradient: "from-purple-500 via-pink-500 to-rose-500",
     },
+    transformer: {
+      primary: "text-indigo-500",
+      bg: "bg-indigo-500",
+      border: "border-indigo-500",
+      hover: "hover:bg-indigo-600",
+      ring: "ring-indigo-400",
+      gradient: "from-indigo-500 via-blue-500 to-cyan-500",
+    },
     default: {
       primary: "text-blue-500",
       bg: "bg-blue-500",

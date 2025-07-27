@@ -1,55 +1,56 @@
-"use client";
+'use client' // Error boundaries must be Client Components
 
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Heading, Text } from "@/components/ui/typography";
+import { useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
+import Link from 'next/link'
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string };
-  reset: () => void;
+  error: Error & { digest?: string }
+  reset: () => void
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error("Application error:", error);
-  }, [error]);
+    console.error('Application Error:', error)
+  }, [error])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] p-4">
-      <div className="bg-red-50 border-2 border-red-100 rounded-lg p-8 max-w-xl w-full">
-        <Heading as="h2" size="h3" className="text-red-600 mb-4">
-          Something went wrong
-        </Heading>
-
-        <Text className="mb-6 text-soft-shadow">
-          We apologize for the inconvenience. The Bridge is experiencing a
-          temporary disruption.
-        </Text>
-
-        <div className="bg-white p-4 rounded mb-6 overflow-auto max-h-32">
-          <Text size="sm" className="font-mono text-red-500">
-            {error.message || "An unexpected error occurred"}
-            {error.digest && (
-              <span className="block mt-1 text-gray-500">({error.digest})</span>
-            )}
-          </Text>
+    <Container className="min-h-screen flex items-center justify-center">
+      <div className="text-center space-y-6 max-w-md mx-auto">
+        <div className="space-y-2">
+          <h1 className="text-6xl font-bold text-blue-600">⚠️</h1>
+          <h2 className="text-2xl font-bold text-gray-900">
+            Something went wrong!
+          </h2>
+          <p className="text-gray-600">
+            We encountered an unexpected error. This has been logged and we're working to fix it.
+          </p>
         </div>
-
-        <div className="flex flex-wrap gap-4">
-          <Button variant="primary" onClick={reset}>
+        
+        <div className="space-y-3">
+          <Button
+            onClick={() => reset()}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          >
             Try again
           </Button>
-
-          <Button
-            variant="outline"
-            onClick={() => (window.location.href = "/")}
-          >
-            Return to homepage
-          </Button>
+          
+          <Link href="/">
+            <Button variant="outline" className="w-full">
+              Return to homepage
+            </Button>
+          </Link>
         </div>
+        
+        {process.env.NODE_ENV === 'development' && error.digest && (
+          <div className="mt-4 p-3 bg-gray-100 rounded text-xs font-mono text-gray-600">
+            Error ID: {error.digest}
+          </div>
+        )}
       </div>
-    </div>
-  );
+    </Container>
+  )
 }

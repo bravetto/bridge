@@ -19,54 +19,48 @@ const revelations = [
   {
     title: "The Sacred Truth",
     message: "No corrupt institution is safe from God's LOVE.",
-    description: "The walls will shake with forbidden transformation.",
+    description: "The walls will shake with forbidden transformation."
   },
   {
     title: "The Divine Command",
     message: "Sweet Children, attack each other over love no more.",
-    description: "For it is not yours to own, nor yours to hide.",
+    description: "For it is not yours to own, nor yours to hide."
   },
   {
     title: "The Holy Declaration",
     message: "IT IS MY LOVE, SWEET DIVINITY",
-    description: "And you may hoard it no more!",
-  },
+    description: "And you may hoard it no more!"
+  }
 ];
 
 const revelationVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1.2,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    y: 0
+    
   },
   exit: {
     opacity: 0,
     y: -50,
     transition: {
-      duration: 0.8,
-    },
-  },
+      duration: 0.8
+    }
+  }
 };
 
 const particleVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
     scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 2,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
+    opacity: 1
+    
+  }
 };
 
 function DivineRevelation({
-  role = "default",
-  className,
+  role = "lightworker",
+  className
 }: DivineRevelationProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
 

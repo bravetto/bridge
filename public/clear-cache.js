@@ -1,63 +1,54 @@
-/**
- * JULY 28TH CACHE CLEARING UTILITY
- * Run this in your browser console if you're still seeing old July 9th content
- */
+// Clear Cache Script - Emergency Service Worker Reset
+// Run this in browser console to completely reset service workers
 
-async function clearAllCachesForJuly28() {
-  console.log("🔥 CLEARING ALL CACHES FOR JULY 28TH UPDATE...");
-
+(async function clearAllCaches() {
+  console.log('🧹 Starting complete cache and service worker cleanup...');
+  
   try {
-    // 1. Clear localStorage
-    localStorage.clear();
-    console.log("✅ localStorage cleared");
-
-    // 2. Clear sessionStorage
-    sessionStorage.clear();
-    console.log("✅ sessionStorage cleared");
-
-    // 3. Clear all browser caches
-    if ("caches" in window) {
-      const cacheNames = await caches.keys();
-      await Promise.all(
-        cacheNames.map(async (cacheName) => {
-          await caches.delete(cacheName);
-          console.log(`✅ Cache deleted: ${cacheName}`);
-        }),
-      );
-    }
-
-    // 4. Unregister all service workers
-    if ("serviceWorker" in navigator) {
+    // 1. Unregister all service workers
+    if ('serviceWorker' in navigator) {
       const registrations = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(
-        registrations.map(async (registration) => {
-          await registration.unregister();
-          console.log("✅ Service worker unregistered");
-        }),
-      );
+      console.log(`Found ${registrations.length} service worker registrations`);
+      
+      for (let registration of registrations) {
+        console.log('Unregistering service worker:', registration.scope);
+        await registration.unregister();
+      }
     }
-
-    console.log("🎉 ALL CACHES CLEARED! Reloading page...");
-
-    // 5. Force reload
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 1000);
+    
+    // 2. Clear all caches
+    if ('caches' in window) {
+      const cacheNames = await caches.keys();
+      console.log(`Found ${cacheNames.length} caches to delete`);
+      
+      for (let cacheName of cacheNames) {
+        console.log('Deleting cache:', cacheName);
+        await caches.delete(cacheName);
+      }
+    }
+    
+    // 3. Clear localStorage and sessionStorage
+    if (typeof localStorage !== 'undefined') {
+      localStorage.clear();
+      console.log('localStorage cleared');
+    }
+    
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.clear();
+      console.log('sessionStorage cleared');
+    }
+    
+    console.log('✅ All caches and service workers cleared successfully!');
+    console.log('🔄 Please reload the page for a fresh start');
+    
   } catch (error) {
-    console.error("❌ Error clearing caches:", error);
-    console.log("🔄 Force reloading anyway...");
-    window.location.reload(true);
+    console.error('❌ Error during cleanup:', error);
   }
-}
+})();
 
-// Auto-run if this script is loaded directly
-if (typeof window !== "undefined") {
-  console.log("📢 JULY 28TH CACHE CLEANER LOADED");
-  console.log("Run clearAllCachesForJuly28() to clear all caches");
-  console.log("Or just refresh with Ctrl+Shift+R (or Cmd+Shift+R on Mac)");
-}
-
-// Make function available globally
-if (typeof window !== "undefined") {
-  window.clearAllCachesForJuly28 = clearAllCachesForJuly28;
-}
+// Instructions for manual execution:
+// 1. Open browser DevTools (F12)
+// 2. Go to Console tab
+// 3. Copy and paste this entire script
+// 4. Press Enter to execute
+// 5. Reload the page

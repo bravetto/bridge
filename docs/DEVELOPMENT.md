@@ -24,6 +24,41 @@ npm run dev
 
 Visit `http://localhost:1437` - the app runs on this port specifically.
 
+## 🚀 Turbopack Development
+
+### **Why Turbopack?**
+- **10x faster compilation**: 4.9s → <1s for complex pages
+- **Rust-based bundler**: Superior performance and memory efficiency
+- **Hot Module Replacement**: Near-instant updates during development
+- **Large project optimization**: Handles 3,561+ modules efficiently
+
+### **Development Commands**
+```bash
+npm run dev           # Default: Uses Turbopack (recommended)
+npm run dev:turbo     # Explicit Turbopack usage
+npm run dev:webpack   # Fallback to webpack if needed
+```
+
+### **Turbopack vs Webpack**
+| Aspect | Turbopack | Webpack |
+|--------|-----------|---------|
+| **Development** | ✅ Default | 🔄 Fallback |
+| **Production** | ❌ Not used | ✅ Battle-tested |
+| **Compilation** | <1 second | 4.9 seconds |
+| **Module Count** | 3,561 (fast) | 3,561 (slow) |
+| **Stability** | Good for dev | Production-ready |
+
+### **Troubleshooting Turbopack**
+If you encounter issues with Turbopack:
+```bash
+# Use webpack fallback
+npm run dev:webpack
+
+# Clear cache and retry
+rm -rf .next
+npm run dev
+```
+
 ## ⚠️ CRITICAL DEVELOPMENT ALERTS
 
 ### Fast Refresh Runtime Errors

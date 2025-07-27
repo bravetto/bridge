@@ -6,7 +6,8 @@
  * Architecture: Pragmatic excellence with defensive monitoring protocols
  */
 
-import { RuntimeErrorDetector } from "./runtime-error-detector";
+// import { RuntimeErrorDetector } from "./runtime-error-detector"; // Temporarily disabled
+import { PatternBlindnessDetector, ConversationAnalysis, InterventionAction } from "./pattern-blindness-detector";
 
 // Temporary logger implementation
 const logger = {
@@ -72,10 +73,19 @@ export class AgentOrchestrator {
   private systemMetrics: Record<string, number> = {};
   private isRunning: boolean = false;
   private orchestrationInterval?: NodeJS.Timeout;
+  
+  // Pattern Blindness Detection
+  private patternBlindnessDetector: PatternBlindnessDetector;
+  private conversationHistory: string[] = [];
+  private lastPatternAnalysis?: ConversationAnalysis;
 
   constructor() {
     this.initializeAgents();
     this.setupDefaultConfigs();
+    
+    // Initialize pattern blindness detection
+    this.patternBlindnessDetector = new PatternBlindnessDetector();
+    logger.info('Agent Orchestrator initialized with pattern blindness detection');
   }
 
   /**
@@ -84,8 +94,8 @@ export class AgentOrchestrator {
   private initializeAgents(): void {
     try {
       // Runtime Error Detection Agent
-      const runtimeDetector = new RuntimeErrorDetector();
-      this.agents.set("runtime-error-detector", runtimeDetector);
+      // const runtimeDetector = new RuntimeErrorDetector(); // Temporarily disabled
+      // this.agents.set("runtime-error-detector", runtimeDetector); // Disabled until RuntimeErrorDetector is implemented
 
       // Performance Monitor Agent (client-side integration)
       this.agents.set("performance-monitor", {
@@ -118,43 +128,34 @@ export class AgentOrchestrator {
   }
 
   /**
-   * Setup default configurations for all agents
+   * Setup default agent configurations
    */
   private setupDefaultConfigs(): void {
-    const defaultConfigs: Record<string, AgentConfig> = {
-      "runtime-error-detector": {
-        enabled: true,
-        priority: 1, // Highest priority - critical for stability
-        autoFix: true,
-        alertThreshold: "warning",
-        checkInterval: 30000, // 30 seconds
-      },
-      "performance-monitor": {
-        enabled: true,
-        priority: 2, // High priority - championship performance required
-        autoFix: false, // Manual intervention for performance issues
-        alertThreshold: "warning",
-        checkInterval: 60000, // 1 minute
-      },
-      "hooks-safety-checker": {
-        enabled: true,
-        priority: 3, // Medium priority - preventive validation
-        autoFix: true,
-        alertThreshold: "info",
-        checkInterval: 120000, // 2 minutes
-      },
-      "build-health-monitor": {
-        enabled: true,
-        priority: 4, // Lower priority - infrastructure monitoring
-        autoFix: false,
-        alertThreshold: "warning", 
-        checkInterval: 300000, // 5 minutes
-      },
-    };
+    // Runtime Error Detector - High priority, frequent checks
+    this.agentConfigs.set("runtime-error-detector", {
+      enabled: true,
+      priority: 1,
+      autoFix: true,
+      alertThreshold: "warning",
+      checkInterval: 15000, // 15 seconds for critical monitoring
+    });
 
-    Object.entries(defaultConfigs).forEach(([agentId, config]) => {
-      this.agentConfigs.set(agentId, config);
-      this.agentReports.set(agentId, []);
+    // Performance Monitor - Medium priority
+    this.agentConfigs.set("performance-monitor", {
+      enabled: true,
+      priority: 2,
+      autoFix: false,
+      alertThreshold: "critical",
+      checkInterval: 30000, // 30 seconds for performance metrics
+    });
+
+    // Hooks Safety Checker - Lower priority
+    this.agentConfigs.set("hooks-safety-checker", {
+      enabled: true,
+      priority: 3,
+      autoFix: true,
+      alertThreshold: "warning",
+      checkInterval: 60000, // 60 seconds for code analysis
     });
   }
 
@@ -229,6 +230,69 @@ export class AgentOrchestrator {
     } catch (error) {
       logger.error("Agent Orchestrator: Error in orchestration loop", error);
     }
+  }
+
+
+
+  /**
+   * Add conversation message for pattern analysis
+   */
+  addConversationMessage(message: string): void {
+    this.conversationHistory.push(message);
+    
+    // Keep conversation history manageable
+    if (this.conversationHistory.length > 50) {
+      this.conversationHistory = this.conversationHistory.slice(-30);
+    }
+  }
+
+  /**
+   * Analyze conversation for pattern blindness risks
+   */
+  analyzePatternRisk(currentSolution?: string): ConversationAnalysis {
+    this.lastPatternAnalysis = this.patternBlindnessDetector.analyzeConversation(currentSolution);
+    
+    return this.lastPatternAnalysis;
+  }
+
+  /**
+   * Check if pattern intervention is required
+   */
+  checkPatternIntervention(): InterventionAction[] {
+    return this.patternBlindnessDetector.getInterventions();
+  }
+
+  /**
+   * Record solution attempt for pattern tracking
+   */
+  recordSolutionAttempt(approach: string, successful: boolean = false): void {
+    // Add message to conversation history for pattern tracking
+    this.patternBlindnessDetector.addMessage(`Solution attempt: ${approach} (${successful ? 'successful' : 'failed'})`);
+  }
+
+  /**
+   * Update solution status after verification
+   */
+  updateSolutionStatus(solutionId: string, successful: boolean): void {
+    // Add verification result to conversation history
+    this.patternBlindnessDetector.addMessage(`Solution ${solutionId} verified: ${successful ? 'successful' : 'failed'}`);
+  }
+
+  /**
+   * Trigger pattern interruption (context reset)
+   */
+  triggerPatternInterruption(): void {
+    logger.warn('Pattern interruption triggered - resetting conversation state');
+    this.patternBlindnessDetector.resetContext();
+    this.conversationHistory = [];
+    this.lastPatternAnalysis = undefined;
+  }
+
+  /**
+   * Get pattern detection statistics
+   */
+  getPatternStatistics() {
+    return this.patternBlindnessDetector.getStats();
   }
 
   /**
@@ -494,6 +558,28 @@ export class AgentOrchestrator {
     logger.info("✅ Full system check completed", overview);
     
     return overview;
+  }
+
+  /**
+   * Check if orchestrator is currently running
+   */
+  getRunningStatus(): boolean {
+    return this.isRunning;
+  }
+
+  /**
+   * Get system health summary for monitoring
+   */
+  getSystemHealth() {
+    return {
+      activeAgents: this.agents.size,
+      systemMetrics: this.systemMetrics,
+      lastOrchestrationTime: Date.now(),
+      agentStatuses: Array.from(this.agents.keys()).map(agentId => ({
+        id: agentId,
+        status: this.agentConfigs.get(agentId)?.enabled ? 'active' : 'inactive'
+      }))
+    };
   }
 
   // Helper methods for agent-specific health checks

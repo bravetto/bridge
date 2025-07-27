@@ -34,15 +34,26 @@ const EtherealParticlesComponent = ({ className }: { className?: string }) => {
 
   if (prefersReducedMotion) return null;
 
-  // Create an array of particle configs
-  const particles = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    size: 1 + Math.random() * 3,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: 3 + Math.random() * 7,
-    delay: Math.random() * 5,
-  }));
+  // Create deterministic particle configs to prevent hydration mismatches
+  const particles = Array.from({ length: 15 }, (_, i) => {
+    // Use predetermined static values instead of Math calculations
+    const staticPositions = [
+      { x: 50, y: 30 }, { x: 70, y: 45 }, { x: 30, y: 60 }, { x: 85, y: 25 }, { x: 15, y: 75 },
+      { x: 60, y: 80 }, { x: 40, y: 20 }, { x: 90, y: 55 }, { x: 10, y: 40 }, { x: 75, y: 70 },
+      { x: 25, y: 35 }, { x: 65, y: 15 }, { x: 45, y: 85 }, { x: 80, y: 50 }, { x: 35, y: 65 }
+    ];
+    
+    const position = staticPositions[i] || { x: 50, y: 50 };
+    
+    return {
+      id: i,
+      size: 1 + (i % 3), // Deterministic size 1-3
+      x: position.x,
+      y: position.y,
+      duration: 4 + (i % 3), // Deterministic duration
+      delay: i * 0.3, // Deterministic delay
+    };
+  });
 
   return (
     <div
@@ -156,11 +167,13 @@ export function PersonCardSkeleton({
       >
         <g fill="white">
           <circle cx="100" cy="100" r="20" />
-          {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-            const x = 100 + Math.cos((angle * Math.PI) / 180) * 40;
-            const y = 100 + Math.sin((angle * Math.PI) / 180) * 40;
-            return <circle key={`ring1-${i}`} cx={x} cy={y} r="20" />;
-          })}
+          {/* Use predetermined coordinates to prevent hydration precision errors */}
+          <circle cx="140" cy="100" r="20" />
+          <circle cx="120" cy="134.64" r="20" />
+          <circle cx="80" cy="134.64" r="20" />
+          <circle cx="60" cy="100" r="20" />
+          <circle cx="80" cy="65.36" r="20" />
+          <circle cx="120" cy="65.36" r="20" />
         </g>
       </svg>
 

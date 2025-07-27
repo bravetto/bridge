@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BiasGuard Chat Button</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #fff; }
+        .btn { 
+            background: #007acc; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px;
+        }
+        .btn:hover { background: #005a9e; }
+        textarea { width: 100%; height: 200px; margin: 10px 0; padding: 10px; }
+        #result { 
+            background: #2d2d2d; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border-left: 4px solid #007acc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ BiasGuard Chat Injector</h1>
+    
+    <textarea id="textInput" placeholder="Paste text to analyze here..."></textarea>
+    
+    <button class="btn" onclick="analyzeAndPost()">🛡️ Analyze & Post to Chat</button>
+    <button class="btn" onclick="analyzeLastResponse()">📝 Check Last AI Response</button>
+    <button class="btn" onclick="openDashboard()">📊 Open Dashboard</button>
+    
+    <div id="result"></div>
+
+    <script>
+        // BiasGuard analysis function
+        function quickBiasCheck(text) {
+            let score = 0;
+            const problems = [];
+            
+            // Detect bias patterns
+            if (/phase \d+|roadmap|timeline|sprint|milestone/i.test(text)) {
+                score += 30;
+                problems.push('Planning Fallacy: Remove timeline language');
+            }
+            if (/comprehensive|framework|system|enterprise|robust/i.test(text)) {
+                score += 25;
+                problems.push('Feature Creep: Simplify approach');
+            }
+            if (/standards|enforcement|approval|mandatory|required/i.test(text)) {
+                score += 20;
+                problems.push('Authority Bias: Use normal language');
+            }
+            if (/obviously|clearly|simply|just|easily/i.test(text)) {
+                score += 15;
+                problems.push('Assumption Bias: Avoid absolutes');
+            }
+            
+            // Context penalties
+            const words = text.split(' ').length;
+            if (words > 200) {
+                score += 20;
+                problems.push('Context Waste: Shorten response');
+            }
+            
+            // Generate output
+            const level = score < 30 ? '🟢 GOOD' : score < 60 ? '🟡 BIAS' : '🔴 FIX';
+            const contextWarning = words > 200 ? ' 📊 CONTEXT-HEAVY' : words > 100 ? ' 📈 CONTEXT-WATCH' : '';
+            
+            return `[BiasGuard] ${level} (${Math.min(score, 100)}%)${contextWarning}${problems.length ? '\n' + problems.join(' | ') : ''}`;
+        }
+
+        // Post to chat function
+        function postToChat(message) {
+            // Try to copy to clipboard first
+            navigator.clipboard.writeText(message).then(() => {
+                alert('BiasGuard analysis copied to clipboard!\nPaste into your chat.');
+            }).catch(() => {
+                // Fallback - show in result div
+                document.getElementById('result').innerHTML = `
+                    <strong>BiasGuard Analysis (Copy this to chat):</strong><br>
+                    <pre>${message}</pre>
+                `;
+            });
+        }
+
+        // Main analysis function
+        function analyzeAndPost() {
+            const text = document.getElementById('textInput').value;
+            if (!text.trim()) {
+                alert('Please enter text to analyze');
+                return;
+            }
+            
+            const analysis = quickBiasCheck(text);
+            document.getElementById('result').innerHTML = `
+                <strong>Analysis Result:</strong><br>
+                <pre>${analysis}</pre>
+            `;
+            
+            postToChat(analysis);
+        }
+
+        // Analyze last response (for Cursor integration)
+        function analyzeLastResponse() {
+            // This would work in Cursor's console
+            const cursorCode = `
+// Paste this in Cursor's console (F12)
+function getLastAIResponse() {
+    const selectors = ['.message-content', '.chat-message', '.response-text', '[data-testid="message"]', '.prose'];
+    for (const selector of selectors) {
+        const messages = document.querySelectorAll(selector);
+        if (messages.length > 0) {
+            const lastMessage = messages[messages.length - 1];
+            const text = lastMessage.textContent || lastMessage.innerText;
+            if (text && text.length > 50 && !text.includes('[BiasGuard]')) {
+                return text;
+            }
+        }
+    }
+    return null;
+}
+
+const lastResponse = getLastAIResponse();
+if (lastResponse) {
+    const analysis = ${quickBiasCheck.toString()}(lastResponse);
+    console.log(analysis);
+    navigator.clipboard.writeText(analysis);
+    alert('BiasGuard analysis copied to clipboard!');
+} else {
+    alert('No AI response found to analyze.');
+}
+            `;
+            
+            document.getElementById('result').innerHTML = `
+                <strong>Copy this code to Cursor's console (F12):</strong><br>
+                <pre style="font-size: 12px; overflow-x: auto;">${cursorCode}</pre>
+            `;
+        }
+
+        // Open dashboard
+        function openDashboard() {
+            window.open('http://localhost:1437/bias-dashboard', '_blank');
+        }
+
+        // Auto-focus text area
+        document.getElementById('textInput').focus();
+    </script>
+</body>
+</html> 

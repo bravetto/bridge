@@ -27,7 +27,7 @@ function AutoAnimateContainer({
       layout
       transition={{
         duration: duration / 1000,
-        ease: easing,
+        ease: "easeInOut",
         type: "spring",
         stiffness: 300,
         damping: 30,
