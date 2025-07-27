@@ -5,6 +5,7 @@ import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { withSafeUI } from "./with-safe-ui";
+import { useHydrationSafeDate } from "@/hooks/useHydrationSafe";
 
 interface MiniCountdownProps {
   targetDate: Date;
@@ -23,13 +24,15 @@ function MiniCountdown({
     minutes: 0,
     seconds: 0,
   });
-  const [isMounted, setIsMounted] = useState(false);
+  
+  // Use hydration-safe date to prevent server-client mismatches
+  const currentDate = useHydrationSafeDate();
 
   useEffect(() => {
-    setIsMounted(true);
+    if (!currentDate) return; // Don't calculate until after hydration
 
     const calculateTimeLeft = () => {
-      const difference = +targetDate - +new Date();
+      const difference = +targetDate - +currentDate;
 
       if (difference > 0) {
         setTimeLeft({
@@ -44,37 +47,55 @@ function MiniCountdown({
     };
 
     calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
+    const timer = setInterval(() => {
+      // Use fresh Date.now() for interval calculations
+      const now = new Date();
+      const difference = +targetDate - +now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [targetDate, currentDate]);
 
-  if (!isMounted) return null;
+  // Show loading state until hydration is complete
+  if (!currentDate) {
+    return (
+      <div className={cn("flex items-center gap-1 text-xs", className)}>
+        <Clock className="h-3 w-3" />
+        <span>Loading...</span>
+      </div>
+    );
+  }
 
-  // Choose what to display based on time remaining
-  const displayValue =
-    timeLeft.days > 0
-      ? `${timeLeft.days}d ${timeLeft.hours}h`
-      : timeLeft.hours > 0
-        ? `${timeLeft.hours}h ${timeLeft.minutes}m`
-        : `${timeLeft.minutes}m ${timeLeft.seconds}s`;
-
-  return (
-    <Link
-      href={linkHref}
-      className={cn(
-        "inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition-colors",
-        className,
-      )}
-    >
+  const countdownContent = (
+    <div className={cn("flex items-center gap-1 text-xs", className)}>
       <Clock className="h-3 w-3" />
-      <span>Decision in {displayValue}</span>
-    </Link>
+      <span>
+        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+      </span>
+    </div>
   );
-}
 
-// Export both named and default for compatibility
-export { MiniCountdown };
+  if (linkHref) {
+    return (
+      <Link href={linkHref} className="hover:opacity-80 transition-opacity">
+        {countdownContent}
+      </Link>
+    );
+  }
+
+  return countdownContent;
+}
 
 export default withSafeUI(MiniCountdown, {
   componentName: "MiniCountdown",

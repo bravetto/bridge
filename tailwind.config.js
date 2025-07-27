@@ -29,15 +29,21 @@ module.exports = {
         banner: "var(--banner-height)",
         "total-header": "var(--total-header)",
       },
-      // Unified Z-Index System
+      // Research-backed Z-Index System
       zIndex: {
         base: "var(--z-base)",
+        content: "var(--z-content)",
         dropdown: "var(--z-dropdown)",
         sticky: "var(--z-sticky)",
+        floating: "var(--z-floating)",
+        overlay: "var(--z-overlay)",
         banner: "var(--z-banner)",
         navigation: "var(--z-navigation)",
+        "navigation-dropdown": "var(--z-navigation-dropdown)",
+        "mobile-menu": "var(--z-mobile-menu)",
         modal: "var(--z-modal)",
         tooltip: "var(--z-tooltip)",
+        toast: "var(--z-toast)",
         fixed: "1000",
       },
       colors: {

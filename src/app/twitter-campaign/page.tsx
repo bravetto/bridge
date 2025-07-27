@@ -118,35 +118,35 @@ const hashtags = [
     description: "Primary campaign hashtag",
     usage: "Use in every tweet",
     impact: "Maximum visibility",
-    color: "elite-divine-amber",
+    color: "orange-600",
   },
   {
     tag: "#SecondChances",
     description: "Redemption focus",
     usage: "Use for personal stories",
     impact: "Emotional connection",
-    color: "elite-justice-indigo",
+    color: "purple-600",
   },
   {
     tag: "#SmartJustice",
     description: "Data and cost focus",
     usage: "Use with statistics",
     impact: "Logical appeal",
-    color: "elite-transformation-emerald",
+    color: "green-600",
   },
   {
     tag: "#CommunitySupport",
     description: "Show coalition strength",
     usage: "Use for supporter content",
     impact: "Social proof",
-    color: "elite-sacred-violet",
+    color: "blue-600",
   },
   {
     tag: "#TransformationIsPossible",
     description: "Hope and change",
     usage: "Use for inspirational content",
     impact: "Inspirational power",
-    color: "elite-divine-amber",
+    color: "orange-600",
   },
 ];
 
@@ -213,25 +213,21 @@ function TwitterCampaign() {
   const getImpactColor = (impact: string) => {
     switch (impact) {
       case "MAXIMUM":
-        return "text-elite-crimson-urgency";
+        return "text-red-600";
       case "CRITICAL":
-        return "text-elite-divine-amber";
+        return "text-orange-600";
       case "HIGH":
-        return "text-elite-justice-indigo";
+        return "text-purple-600";
       default:
-        return "text-elite-transformation-emerald";
+        return "text-green-600";
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-elite-platinum-truth to-elite-platinum-truth/90">
-      {/* Elite Hero Section - Coach Dungy Championship Focus */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-elite-obsidian-depth via-elite-justice-indigo to-elite-sacred-violet py-20">
-        {/* Divine particles background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-elite-divine-amber/20 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-elite-sacred-violet/20 via-transparent to-transparent" />
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-purple-800 to-purple-600 py-20">
+        <div className="absolute inset-0 bg-black/20" />
 
         <Container className="relative z-10">
           <div className="text-center mb-12">
@@ -242,12 +238,12 @@ function TwitterCampaign() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="mb-8"
             >
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-elite-divine-amber/20 border border-elite-divine-amber/30 rounded-full backdrop-blur-sm">
-                <Trophy className="w-6 h-6 text-elite-divine-amber" />
-                <span className="text-elite-platinum-truth font-bold text-lg tracking-wide">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/20 border border-white/30 rounded-full backdrop-blur-sm">
+                <Trophy className="w-6 h-6 text-orange-400" />
+                <span className="text-white font-bold text-lg tracking-wide">
                   CHAMPIONSHIP LEGACY CAMPAIGN
                 </span>
-                <Star className="w-5 h-5 text-elite-divine-amber animate-pulse" />
+                <Star className="w-5 h-5 text-orange-400 animate-pulse" />
               </div>
             </motion.div>
 
@@ -259,16 +255,16 @@ function TwitterCampaign() {
               className="mb-8"
             >
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-elite-divine-amber via-elite-platinum-truth to-elite-divine-amber">
+                <span className="text-orange-400">
                   Coach Dungy's
                 </span>
                 <br />
-                <span className="text-elite-platinum-truth">Legacy Moment</span>
+                <span className="text-white">Legacy Moment</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-elite-platinum-truth font-medium max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/90 font-medium max-w-3xl mx-auto leading-relaxed">
                 Your voice reaches{" "}
-                <span className="text-elite-divine-amber font-bold">
+                <span className="text-orange-400 font-bold">
                   700,000+ followers
                 </span>
                 . One tweet could change JAHmere's life forever.
@@ -282,35 +278,35 @@ function TwitterCampaign() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8"
             >
-              <div className="glass-card-v10 p-4 text-center">
-                <div className="text-2xl font-bold text-elite-crimson-urgency mb-1">
+              <div className="people-page-card p-4 text-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-red-400 mb-1">
                   {campaignMetrics.timeRemaining}
                 </div>
-                <div className="text-sm text-elite-platinum-truth font-medium">
+                <div className="text-sm text-white/80 font-medium">
                   Until Decision
                 </div>
               </div>
-              <div className="glass-card-v10 p-4 text-center">
-                <div className="text-2xl font-bold text-elite-divine-amber mb-1">
+              <div className="people-page-card p-4 text-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-orange-400 mb-1">
                   {campaignMetrics.currentReach}
                 </div>
-                <div className="text-sm text-elite-platinum-truth font-medium">
+                <div className="text-sm text-white/80 font-medium">
                   Current Reach
                 </div>
               </div>
-              <div className="glass-card-v10 p-4 text-center">
-                <div className="text-2xl font-bold text-elite-transformation-emerald mb-1">
+              <div className="people-page-card p-4 text-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-green-400 mb-1">
                   {campaignMetrics.engagementRate}
                 </div>
-                <div className="text-sm text-elite-platinum-truth font-medium">
+                <div className="text-sm text-white/80 font-medium">
                   Engagement Rate
                 </div>
               </div>
-              <div className="glass-card-v10 p-4 text-center">
-                <div className="text-2xl font-bold text-elite-justice-indigo mb-1">
+              <div className="people-page-card p-4 text-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-purple-400 mb-1">
                   {campaignMetrics.currentSupporters}
                 </div>
-                <div className="text-sm text-elite-platinum-truth font-medium">
+                <div className="text-sm text-white/80 font-medium">
                   Supporters
                 </div>
               </div>
@@ -326,7 +322,7 @@ function TwitterCampaign() {
               <Link href="/people/jordan-dungy">
                 <Button
                   size="lg"
-                  className="btn-elite-primary px-8 py-4 text-lg font-bold min-w-[280px]"
+                  className="people-cta-btn bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-bold min-w-[280px]"
                 >
                   <Heart className="mr-2 h-5 w-5" />
                   Read Jordan's Letter First
@@ -336,7 +332,7 @@ function TwitterCampaign() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-elite-platinum-truth/30 text-elite-platinum-truth hover:bg-elite-platinum-truth/10 px-8 py-4 text-lg min-w-[280px]"
+                  className="people-cta-btn border-2 border-white text-white hover:bg-white hover:text-purple-800 px-8 py-4 text-lg min-w-[280px]"
                 >
                   <Shield className="mr-2 h-5 w-5" />
                   Write to Judge Ferrero
@@ -348,7 +344,7 @@ function TwitterCampaign() {
       </section>
 
       <Container className="py-16">
-        {/* Championship Timeline - Elite V10 */}
+        {/* Championship Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -356,10 +352,10 @@ function TwitterCampaign() {
           className="mb-16"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-elite-obsidian-depth mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4">
               3-Week Championship Campaign
             </h2>
-            <p className="text-lg text-elite-obsidian-depth font-medium max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
               Strategic phases designed for maximum impact, just like winning
               championships
             </p>
@@ -373,8 +369,7 @@ function TwitterCampaign() {
                 description:
                   "Share your personal commitment and family support",
                 icon: Heart,
-                color: "elite-divine-amber",
-                gradient: "from-elite-divine-amber to-elite-divine-amber/80",
+                color: "orange",
               },
               {
                 week: 2,
@@ -382,16 +377,14 @@ function TwitterCampaign() {
                 description:
                   "Highlight growing coalition and supporter strength",
                 icon: Users,
-                color: "elite-justice-indigo",
-                gradient: "from-elite-justice-indigo to-elite-sacred-violet",
+                color: "purple",
               },
               {
                 week: 3,
                 title: "Championship Push",
                 description: "Direct appeals with championship urgency",
                 icon: Trophy,
-                color: "elite-crimson-urgency",
-                gradient: "from-elite-crimson-urgency to-elite-divine-amber",
+                color: "red",
               },
             ].map((phase, index) => (
               <motion.div
@@ -400,21 +393,18 @@ function TwitterCampaign() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.8 }}
-                className="glass-card-v10 p-8 text-center group hover:scale-105 hover:shadow-2xl hover:bg-white/10 transition-all duration-300"
-                style={{
-                  background: `linear-gradient(135deg, var(--${phase.color})/10, var(--${phase.color})/5)`,
-                  border: `1px solid var(--${phase.color})/20`,
-                }}
+                className="path-card p-8 text-center bg-white shadow-lg rounded-lg border-2 border-gray-200"
+                style={{ '--index': index } as React.CSSProperties}
               >
                 <div
-                  className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r ${phase.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-16 h-16 mx-auto mb-6 rounded-full bg-${phase.color}-600 flex items-center justify-center`}
                 >
                   <phase.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-elite-obsidian-depth mb-3">
+                <h3 className="text-xl font-bold text-purple-800 mb-3">
                   Week {phase.week}: {phase.title}
                 </h3>
-                <p className="text-elite-obsidian-depth font-medium leading-relaxed">
+                <p className="text-gray-600 font-medium leading-relaxed">
                   {phase.description}
                 </p>
               </motion.div>
@@ -422,7 +412,7 @@ function TwitterCampaign() {
           </div>
         </motion.div>
 
-        {/* Pre-written Tweets - Enhanced with Impact Metrics */}
+        {/* Pre-written Tweets */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -430,10 +420,10 @@ function TwitterCampaign() {
           className="mb-16"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-elite-obsidian-depth mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4">
               Championship Tweet Playbook
             </h2>
-            <p className="text-lg text-elite-obsidian-depth font-medium max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
               Each tweet crafted for maximum impact, just like championship
               plays
             </p>
@@ -447,17 +437,17 @@ function TwitterCampaign() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05, duration: 0.6 }}
-                className="glass-card-v10 p-6 hover:shadow-2xl hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
+                className="letter-form-card p-6 bg-white shadow-lg rounded-lg border border-gray-200"
               >
                 <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                   {/* Tweet Content */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-4 mb-4">
-                      <span className="inline-flex items-center gap-2 px-3 py-1 bg-elite-justice-indigo/10 border border-elite-justice-indigo/20 rounded-full text-sm font-medium text-elite-justice-indigo">
+                      <span className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 border border-purple-200 rounded-full text-sm font-medium text-purple-700">
                         <Calendar className="w-4 h-4" />
                         Week {tweet.week} - {tweet.day}
                       </span>
-                      <span className="px-3 py-1 bg-elite-obsidian-depth/10 rounded-full text-sm text-elite-obsidian-depth font-medium">
+                      <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700 font-medium">
                         {tweet.category}
                       </span>
                       <span
@@ -465,12 +455,12 @@ function TwitterCampaign() {
                       >
                         {tweet.impact} IMPACT
                       </span>
-                      <span className="px-3 py-1 bg-elite-transformation-emerald/10 text-elite-transformation-emerald rounded-full text-sm font-medium">
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
                         {tweet.reach} reach
                       </span>
                     </div>
 
-                    <p className="text-elite-obsidian-depth text-lg leading-relaxed mb-4">
+                    <p className="text-gray-800 text-lg leading-relaxed mb-4">
                       {tweet.content}
                     </p>
                   </div>
@@ -481,7 +471,7 @@ function TwitterCampaign() {
                       size="sm"
                       variant="outline"
                       onClick={() => copyToClipboard(tweet.content, index)}
-                      className="flex items-center gap-2 justify-center"
+                      className="letter-form-submit-btn flex items-center gap-2 justify-center border-purple-600 text-purple-600 hover:bg-purple-50"
                     >
                       {copiedIndex === index ? (
                         <>
@@ -497,7 +487,7 @@ function TwitterCampaign() {
                     </Button>
                     <Button
                       size="sm"
-                      className="btn-elite-primary flex items-center gap-2 justify-center"
+                      className="letter-form-submit-btn bg-orange-600 hover:bg-orange-700 text-white flex items-center gap-2 justify-center"
                       onClick={() =>
                         window.open(generateTweetLink(tweet.content), "_blank")
                       }
@@ -520,11 +510,11 @@ function TwitterCampaign() {
           className="mb-16"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-elite-obsidian-depth mb-4 flex items-center justify-center gap-3">
-              <Hash className="w-8 h-8 text-elite-divine-amber" />
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4 flex items-center justify-center gap-3">
+              <Hash className="w-8 h-8 text-orange-600" />
               Hashtag Strategy
             </h2>
-            <p className="text-lg text-elite-obsidian-depth font-medium max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
               Strategic hashtags designed for maximum reach and emotional impact
             </p>
           </div>
@@ -537,20 +527,16 @@ function TwitterCampaign() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="glass-card-v10 p-6 text-center group hover:scale-105 hover:shadow-2xl hover:bg-white/10 transition-all duration-300"
-                style={{
-                  background: `linear-gradient(135deg, var(--${hashtag.color})/10, var(--${hashtag.color})/5)`,
-                  border: `1px solid var(--${hashtag.color})/20`,
-                }}
+                className="letter-form-tip p-6 text-center bg-white shadow-lg rounded-lg border-l-4 border-orange-500"
               >
                 <h3 className={`font-bold text-xl mb-2 text-${hashtag.color}`}>
                   {hashtag.tag}
                 </h3>
-                <p className="text-elite-obsidian-depth font-medium mb-3 text-sm">
+                <p className="text-gray-600 font-medium mb-3 text-sm">
                   {hashtag.description}
                 </p>
                 <div className="space-y-2 text-xs">
-                  <div className="px-3 py-1 bg-elite-obsidian-depth/10 rounded-full text-elite-obsidian-depth font-medium">
+                  <div className="px-3 py-1 bg-gray-100 rounded-full text-gray-700 font-medium">
                     {hashtag.usage}
                   </div>
                   <div
@@ -572,10 +558,10 @@ function TwitterCampaign() {
           className="mb-16"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-elite-obsidian-depth mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4">
               Championship Visual Assets
             </h2>
-            <p className="text-lg text-elite-obsidian-depth font-medium max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
               Professional graphics that command attention and build authority
             </p>
           </div>
@@ -588,17 +574,17 @@ function TwitterCampaign() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="glass-card-v10 p-6 group hover:scale-105 hover:shadow-2xl hover:bg-white/10 transition-all duration-300"
+                className="people-page-card p-6 bg-white shadow-lg rounded-lg border border-gray-200"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-bold text-lg text-elite-obsidian-depth group-hover:text-elite-divine-amber transition-colors duration-300">
+                  <h3 className="font-bold text-lg text-purple-800">
                     {asset.type}
                   </h3>
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-bold ${
                       asset.priority === "CRITICAL"
-                        ? "text-elite-crimson-urgency bg-elite-crimson-urgency/10"
-                        : "text-elite-justice-indigo bg-elite-justice-indigo/10"
+                        ? "text-red-600 bg-red-100"
+                        : "text-purple-600 bg-purple-100"
                     }`}
                   >
                     {asset.priority}
@@ -607,22 +593,22 @@ function TwitterCampaign() {
 
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-elite-obsidian-depth font-medium">
+                    <span className="text-gray-600 font-medium">
                       Size:
                     </span>
-                    <span className="font-bold text-elite-obsidian-depth">
+                    <span className="font-bold text-gray-800">
                       {asset.size}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-elite-obsidian-depth font-medium">
+                    <span className="text-gray-600 font-medium">
                       Impact:
                     </span>
-                    <span className="font-bold text-elite-transformation-emerald">
+                    <span className="font-bold text-green-600">
                       {asset.impact}
                     </span>
                   </div>
-                  <p className="text-elite-obsidian-depth font-medium leading-relaxed">
+                  <p className="text-gray-600 font-medium leading-relaxed">
                     {asset.description}
                   </p>
                 </div>
@@ -638,19 +624,19 @@ function TwitterCampaign() {
           transition={{ delay: 0.5 }}
           className="mb-16"
         >
-          <div className="glass-card-v10 p-8 bg-gradient-to-r from-elite-transformation-emerald/10 to-elite-justice-indigo/10 border border-elite-transformation-emerald/20">
+          <div className="letter-form-card p-8 bg-gradient-to-r from-green-50 to-purple-50 border-2 border-green-200 rounded-lg">
             <div className="flex items-center gap-4 mb-8 justify-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-elite-transformation-emerald to-elite-justice-indigo rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-purple-600 rounded-full flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-elite-obsidian-depth">
+              <h2 className="text-2xl md:text-3xl font-bold text-purple-800">
                 Championship Engagement Strategy
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-elite-obsidian-depth mb-4">
+                <h3 className="text-xl font-bold text-purple-800 mb-4">
                   Timing & Frequency
                 </h3>
                 {[
@@ -660,8 +646,8 @@ function TwitterCampaign() {
                   "Use Twitter Spaces for live engagement",
                 ].map((tip, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-elite-transformation-emerald mt-0.5 flex-shrink-0" />
-                    <span className="text-elite-obsidian-depth font-medium">
+                    <Clock className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700 font-medium">
                       {tip}
                     </span>
                   </div>
@@ -669,7 +655,7 @@ function TwitterCampaign() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-elite-obsidian-depth mb-4">
+                <h3 className="text-xl font-bold text-purple-800 mb-4">
                   Amplification Tactics
                 </h3>
                 {[
@@ -679,8 +665,8 @@ function TwitterCampaign() {
                   "Reply to comments within 30 minutes for algorithm boost",
                 ].map((tip, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-elite-justice-indigo mt-0.5 flex-shrink-0" />
-                    <span className="text-elite-obsidian-depth font-medium">
+                    <Zap className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700 font-medium">
                       {tip}
                     </span>
                   </div>
@@ -688,14 +674,14 @@ function TwitterCampaign() {
               </div>
             </div>
 
-            <div className="mt-8 p-6 bg-elite-divine-amber/10 border border-elite-divine-amber/20 rounded-lg">
+            <div className="mt-8 p-6 bg-orange-50 border-2 border-orange-200 rounded-lg">
               <div className="flex items-center gap-3 mb-3">
-                <Trophy className="w-6 h-6 text-elite-divine-amber" />
-                <h4 className="text-lg font-bold text-elite-obsidian-depth">
+                <Trophy className="w-6 h-6 text-orange-600" />
+                <h4 className="text-lg font-bold text-orange-800">
                   Championship Secret Weapon
                 </h4>
               </div>
-              <p className="text-elite-obsidian-depth font-medium leading-relaxed">
+              <p className="text-gray-700 font-medium leading-relaxed">
                 <strong>Personal Story + Data + Call to Action</strong> - This
                 combination mirrors your championship coaching approach:
                 emotional connection, proven results, and clear next steps.
@@ -712,12 +698,12 @@ function TwitterCampaign() {
           transition={{ delay: 0.6 }}
           className="text-center"
         >
-          <div className="glass-card-v10 p-12 bg-gradient-to-r from-elite-obsidian-depth/5 to-elite-justice-indigo/5 border border-elite-divine-amber/20">
-            <Trophy className="w-16 h-16 mx-auto mb-6 text-elite-divine-amber" />
-            <h2 className="text-3xl md:text-4xl font-bold text-elite-obsidian-depth mb-6">
+          <div className="letter-form-card p-12 bg-gradient-to-r from-purple-50 to-orange-50 border-2 border-purple-200 rounded-lg">
+            <Trophy className="w-16 h-16 mx-auto mb-6 text-orange-600" />
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-6">
               Your Championship Moment Awaits
             </h2>
-            <p className="text-xl text-elite-obsidian-depth font-medium mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 font-medium mb-8 max-w-2xl mx-auto leading-relaxed">
               Coach, you've won championships by believing in potential when
               others saw problems. JAHmere is your next championship moment.
             </p>
@@ -726,7 +712,7 @@ function TwitterCampaign() {
               <Link href="/people/jordan-dungy">
                 <Button
                   size="lg"
-                  className="btn-elite-primary px-8 py-4 text-lg font-bold min-w-[300px]"
+                  className="people-cta-btn bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-bold min-w-[300px]"
                 >
                   <Heart className="mr-2 h-5 w-5" />
                   Start with Jordan's Letter
@@ -735,12 +721,12 @@ function TwitterCampaign() {
               </Link>
             </div>
 
-            <div className="mt-6 text-sm text-elite-obsidian-depth font-medium">
+            <div className="mt-6 text-sm text-gray-600 font-medium">
               <p>
                 Ready to tweet? Use the playbook above.
                 <Link
                   href="/contact"
-                  className="text-elite-divine-amber hover:underline ml-1 font-bold"
+                  className="text-orange-600 hover:underline ml-1 font-bold"
                 >
                   Write to Judge Ferrero first →
                 </Link>

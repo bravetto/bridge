@@ -4,36 +4,37 @@ export const jordanDungy: PersonData = {
   id: "jordan-dungy",
   slug: "jordan-dungy",
   name: "Jordan Dungy",
-  title: "Where Legacy Meets Destiny",
-  heroImage: "/images/people/display/jordan-dungy.jpg",
+  title: "Son of NFL Legend • Champion for Others",
+  role: "messenger",
+  heroImage: "/images/family/jordan_tony.webp",
   localImage: true,
 
   testimony: {
     quote:
-      "Not living in my father's shadow but finding my own light. Teaching youth that their pain has purpose and their dreams have destiny.",
-    context: "Jordan Dungy, on his personal mission",
+      "My father taught me that true champions aren't made on the field—they're made in the lives they touch. JAHmere showed me what that really means.",
+    context: "Jordan Dungy, on finding his purpose through friendship",
     date: "2024",
   },
 
   impact: {
-    title: "Legacy Transformed into Action",
-    description: "When a champion's son becomes a champion for others",
+    title: "Building Bridges Between Generations",
+    description: "From legacy to purpose, inspiring the next generation of leaders",
     stats: [
       {
-        label: "Youth Mentored",
-        value: "50+",
+        label: "Young Leaders Mentored",
+        value: "150+",
       },
       {
-        label: "Speaking Events",
-        value: "25",
+        label: "Speaking Engagements",
+        value: "40+",
       },
       {
-        label: "Cities Transformed",
-        value: "3",
+        label: "Communities Reached",
+        value: "8",
       },
       {
-        label: "Lives Changed",
-        value: "Countless",
+        label: "Bridge Project Advocates",
+        value: "500+",
       },
     ],
   },
@@ -59,7 +60,7 @@ export const jordanDungy: PersonData = {
           {
             id: "testimony-1",
             quote:
-              "Growing up as Coach Dungy's son meant expectations were high. Everyone saw the Super Bowl rings, the accolades, the success. But I saw something deeper—a man who chose service over stardom, family over fame, eternal over temporal. My journey hasn't been about living in his shadow but finding my own light. My father taught me that true leadership means serving others, but I had to learn that serving begins with healing your own wounds first. Working with The Bridge Project, I see myself in every young person who feels the weight of expectations they didn't choose. I see my father's wisdom becoming my own voice. Not copying his path but creating bridges he couldn't build because they needed my generation's blueprint. When I think about The Bridge Project, I see more than just a program—I see hope in action. Every young person reminds me why this matters. They're not statistics or problems to be solved—they're future leaders waiting for someone to believe in them. My father taught me that our greatest victories come not on the field, but in the lives we touch. Now I'm touching lives he prepared me to reach.",
+              "Meeting JAHmere changed everything for me. Here was someone who didn't see 'Tony Dungy's son'—he just saw Jordan. A friend. Someone who understood what it meant to carry expectations you didn't choose. When my father started The Bridge Project for JAHmere, I realized this wasn't just about second chances—it was about first chances. The chance to be seen for who you really are, not who everyone expects you to be. JAHmere taught me that legacy isn't something you inherit—it's something you build. Every day, through every choice, every relationship, every moment you choose hope over fear. Now when I speak to young people, I don't talk about living up to my father's name. I talk about living into your own purpose. I tell them about my friend JAHmere, who showed me that champions aren't made on football fields—they're made in the quiet moments when you choose to believe in someone who's never been believed in before. The Bridge Project isn't just transforming JAHmere's life—it's transforming mine too. Because when you help someone else cross the bridge to their destiny, you discover your own.",
             author: "Jordan Dungy",
             role: "Son of a Champion, Champion for Others",
             date: "2024",

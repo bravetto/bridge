@@ -1,11 +1,24 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPerson, getAllPeople } from "@/data/people";
+import { PersonData } from "@/types/person";
+import { PersonPageClient } from "./client";
 
 interface PersonPageParams {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export default async function PersonPage({ params }: PersonPageParams) {
+  const { slug } = await params;
+  const personData = getPerson(slug);
+
+  if (!personData) {
+    notFound();
+  }
+
+  return <PersonPageClient personData={personData} />;
 }
 
 export async function generateMetadata({
@@ -22,7 +35,12 @@ export async function generateMetadata({
 
   return {
     title: `${personData.name} | The Bridge Project`,
-    description: personData.bio || `Learn about ${personData.name}`,
+    description: personData.testimony?.quote || personData.title || `Learn about ${personData.name}`,
+    openGraph: {
+      title: `${personData.name} | The Bridge Project`,
+      description: personData.testimony?.quote || personData.title || `Learn about ${personData.name}`,
+      images: personData.heroImage ? [personData.heroImage] : [],
+    },
   };
 }
 
@@ -31,36 +49,4 @@ export async function generateStaticParams() {
   return people.map((person) => ({
     slug: person.slug,
   }));
-}
-
-export default async function PersonPage({ params }: PersonPageParams) {
-  const { slug } = await params;
-  const personData = getPerson(slug);
-
-  if (!personData) {
-    notFound();
-  }
-
-  return (
-    <div className="min-h-screen py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {personData.name}
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">{personData.bio}</p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-semibold mb-4">
-            About {personData.name}
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            This page is temporarily simplified for deployment. Full content
-            will be restored soon.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
 }

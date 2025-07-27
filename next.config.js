@@ -36,6 +36,27 @@ const nextConfig = {
         poll: false,
         ignored: /node_modules/,
       };
+      
+      // Fix static chunk loading issues in development
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              priority: -10,
+              chunks: 'all',
+            },
+          },
+        },
+      };
     }
 
     // CRITICAL: Must return config
@@ -81,6 +102,21 @@ const nextConfig = {
         ]
       }
     ];
+  },
+
+  // 🔧 Development server configuration
+  async rewrites() {
+    return {
+      beforeFiles: [],
+      afterFiles: [],
+      fallback: [
+        // Fallback for missing static resources
+        {
+          source: '/_next/static/:path*',
+          destination: '/api/fallback?resource=:path*',
+        },
+      ],
+    };
   },
 
   // Environment configuration
