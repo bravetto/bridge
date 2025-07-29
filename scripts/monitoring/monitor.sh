@@ -1,7 +1,7 @@
 #!/bin/bash
 # Monitor the live deployment
 
-DOMAIN=${1:-"july28freedom.vercel.app"}
+DOMAIN=${1:-"jahmere-freedom.vercel.app"}
 
 echo "🔍 Monitoring Freedom Portal at: $DOMAIN"
 echo "========================================"

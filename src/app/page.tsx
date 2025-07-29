@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { PageLayout } from '@/components/layout/site-navigation'
 
 export const metadata: Metadata = {
   title: 'JAHmere Webb Freedom Portal',
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <PageLayout showBreadcrumb={false}>
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -57,6 +58,6 @@ export default function HomePage() {
           </a>
         </div>
       </div>
-    </div>
+    </PageLayout>
   )
 }

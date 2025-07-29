@@ -3,7 +3,7 @@
  * 🤖 AUTONOMOUS AGENT NETWORK (AAN) ORCHESTRATOR
  * Central coordination system for all monitoring and validation agents
  *
- * Mission: Ensure championship-level system performance for July 28th deadline
+ * Mission: Ensure championship-level system performance for JAHmere's freedom
  * Architecture: Pragmatic excellence with defensive monitoring protocols
  */
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -320,7 +320,7 @@ class AgentOrchestrator {
             recommendations: report.recommendations,
             metrics: report.metrics,
         });
-        // Emergency protocols for July 28th mission
+        // Emergency protocols for mission-critical issues
         if (report.alertLevel === "emergency") {
             logger.error("🚨 EMERGENCY: Initiating defensive architecture protocols");
             // Could trigger emergency procedures:
@@ -383,7 +383,7 @@ class AgentOrchestrator {
     async checkEmergencyConditions() {
         const criticalIssues = this.systemMetrics.criticalIssues || 0;
         const performanceScore = this.systemMetrics.performanceScore || 0;
-        // Emergency thresholds for July 28th mission
+        // Emergency thresholds for mission-critical performance
         if (criticalIssues >= 3) {
             logger.error("🚨 EMERGENCY: Multiple critical issues detected");
             // Could trigger emergency procedures

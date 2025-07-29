@@ -1,0 +1,56 @@
+
+> july-28-freedom-portal@1.0.0 dev
+> next dev --port 1437 --turbopack
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /Users/michaelmataluni/package-lock.json.
+   Consider removing the lockfiles at:
+   * /Users/michaelmataluni/transformation-mvp-static/package-lock.json
+
+   ▲ Next.js 15.4.2 (Turbopack)
+   - Local:        http://localhost:1437
+   - Network:      http://192.168.6.252:1437
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Compiled middleware in 142ms
+ ✓ Ready in 1176ms
+ ○ Compiling /write-letter ...
+ ✓ Compiled /write-letter in 1891ms
+ GET /write-letter 200 in 2198ms
+ GET /write-letter 200 in 93ms
+ ✓ Compiled / in 225ms
+ GET / 200 in 275ms
+ GET / 200 in 47ms
+ ✓ Compiled /the-case in 195ms
+ GET /the-case 200 in 287ms
+ ✓ Compiled /witnesses in 203ms
+ GET /witnesses 200 in 262ms
+ GET /write-letter 200 in 75ms
+ GET /the-case 200 in 118ms
+ GET /witnesses 200 in 114ms
+ GET /witnesses 200 in 101ms
+ GET /write-letter 200 in 96ms
+ ✓ Compiled in 68ms
+ ✓ Compiled in 64ms
+ ✓ Compiled in 66ms
+ ✓ Compiled in 205ms
+ ✓ Compiled in 48ms
+ ✓ Compiled in 89ms
+ ✓ Compiled in 46ms
+ ✓ Compiled in 81ms
+ ✓ Compiled in 64ms
+ ✓ Compiled middleware in 2ms
+ GET /write-letter 200 in 229ms
+ GET /witnesses 200 in 230ms
+ GET /the-case 200 in 244ms
+ GET /witnesses 200 in 128ms
+ GET /write-letter 200 in 83ms
+ GET /the-case 200 in 189ms
+ GET /witnesses 200 in 251ms
+ GET /witnesses 200 in 114ms
+ ✓ Compiled in 71ms
+ ✓ Compiled /design-system in 214ms
+ GET /design-system 200 in 341ms
+ GET /write-letter 200 in 160ms

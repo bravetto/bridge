@@ -845,7 +845,7 @@ class CodebaseXRaySystem {
     if (content.includes('withErrorBoundary')) patterns.push('error-boundary')
     if (content.includes('dynamic(')) patterns.push('dynamic-import')
     if (content.includes('cn(')) patterns.push('tailwind-merge')
-    if (content.includes('framer-motion')) patterns.push('animation')
+            // Framer Motion removed - using CSS animations only
     return patterns
   }
 

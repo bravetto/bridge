@@ -9,7 +9,7 @@ const siteConfig = {
   url: process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : process.env.NODE_ENV === "production"
-      ? "https://july28freedom.vercel.app"
+      ? "https://jahmere-freedom.vercel.app"
       : "http://localhost:1437",
   ogImage: "/images/og/bridge-project-social.jpg",
   creator: "The Bridge Project Team",
