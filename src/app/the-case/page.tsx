@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
+import { Heading, Text } from '@/components/ui/typography'
+import { Container } from '@/components/ui/container'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'The Case - JAHmere Webb Freedom Portal',
@@ -12,17 +15,17 @@ export default function TheCasePage() {
     <PageLayout>
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <Container size="lg">
+          <Heading as="h1" size="hero" className="text-white mb-6">
             The Facts: Why JAHmere Deserves Treatment, Not More Prison
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100">
+          </Heading>
+          <Text size="xl" variant="inverse" className="text-blue-100">
             11 years served. $294,000 taxpayer savings possible. 176% less crime with treatment.
-          </p>
-        </div>
+          </Text>
+        </Container>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <Container size="lg" className="py-12">
         {/* Case Overview */}
         <section className="mb-16">
           <div className="bg-gray-50 p-8 rounded-lg mb-8">
@@ -250,7 +253,7 @@ export default function TheCasePage() {
             </div>
           </div>
         </section>
-      </div>
+      </Container>
     </PageLayout>
   )
 } 

@@ -4,6 +4,10 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
 import { PageLayout } from '@/components/layout/site-navigation'
+import { Heading, Text } from '@/components/ui/typography'
+import { Card } from '@/components/ui/card'
+import { Container } from '@/components/ui/container'
+import { Button } from '@/components/ui/button'
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -41,14 +45,14 @@ function ContactPage() {
   return (
     <PageLayout>
       <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <Container size="lg">
+          <Heading as="h1" size="hero" className="text-white mb-6">
             Get Involved in JAHmere's Case
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100">
+          </Heading>
+          <Text size="xl" variant="inverse" className="text-blue-100">
             Your voice, support, and advocacy can make a difference. Join the movement for justice and transformation.
-          </p>
-        </div>
+          </Text>
+        </Container>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">

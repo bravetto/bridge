@@ -2,6 +2,10 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
+import { Heading, Text } from '@/components/ui/typography'
+import { Card } from '@/components/ui/card'
+import { Container } from '@/components/ui/container'
+import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'The Bridge Project - JAHmere Webb Freedom Portal',
@@ -13,14 +17,14 @@ function BridgeProjectPage() {
     <PageLayout>
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <Container size="lg">
+          <Heading as="h1" size="hero" className="text-white mb-6">
             The Bridge Project: From Prison to Purpose
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-purple-100">
+          </Heading>
+          <Text size="xl" variant="inverse" className="text-purple-100">
             JAHmere's innovative treatment solution - transforming lives through technology, mentorship, and community support.
-          </p>
-        </div>
+          </Text>
+        </Container>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">

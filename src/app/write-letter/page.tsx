@@ -4,6 +4,10 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
 import { PageLayout } from '@/components/layout/site-navigation'
+import { Heading, Text } from '@/components/ui/typography'
+import { Card } from '@/components/ui/card'
+import { Container } from '@/components/ui/container'
+import { Button } from '@/components/ui/button'
 
 const templates = [
   {
@@ -118,14 +122,14 @@ ${new Date().toLocaleDateString()}`
     <PageLayout>
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <Container size="lg">
+          <Heading as="h1" size="hero" className="text-white mb-6">
             Support Treatment Over Incarceration
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-green-100">
+          </Heading>
+          <Text size="xl" variant="inverse" className="text-green-100">
             Judge Ferrero can consider treatment alternatives. Your letter may help inform her decision.
-          </p>
-        </div>
+          </Text>
+        </Container>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
