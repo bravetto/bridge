@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "next-js", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🔥 CLAUDE PROJECT BRIEFING: JAHmere Webb Freedom Portal Transformation
 **URGENT: 48 HOURS TO JULY 28TH COURT DATE - CONVERSION OPTIMIZATION FOR FREEDOM**
 

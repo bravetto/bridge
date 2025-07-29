@@ -5,19 +5,19 @@
  * Advanced monitoring with AI-powered suggestions
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs')
+const path = require('path')
 
 // Configuration
 const CONFIG = {
   rootDir: process.cwd(),
-  docsDir: path.join(process.cwd(), "docs"),
+  docsDir: path.join(process.cwd(), 'docs'),
   targets: {
     maxFiles: 15,
     maxBrokenLinks: 0,
     minHealthScore: 95,
   },
-};
+}
 
 class EnhancedHealthMonitor {
   constructor() {
@@ -26,67 +26,67 @@ class EnhancedHealthMonitor {
       activeFiles: 0,
       brokenLinks: 0,
       contentQuality: 85,
-    };
-    this.healthScore = 0;
-    this.alerts = [];
+    }
+    this.healthScore = 0
+    this.alerts = []
   }
 
   async analyze() {
-    console.log("🤖 Starting enhanced documentation health analysis...");
+    console.log('🤖 Starting enhanced documentation health analysis...')
 
-    await this.analyzeFileStructure();
-    await this.validateLinks();
-    this.calculateHealthScore();
-    await this.generateReport();
+    await this.analyzeFileStructure()
+    await this.validateLinks()
+    this.calculateHealthScore()
+    await this.generateReport()
 
-    return this.getResults();
+    return this.getResults()
   }
 
   async analyzeFileStructure() {
-    const markdownFiles = this.findMarkdownFiles();
+    const markdownFiles = this.findMarkdownFiles()
 
-    this.metrics.totalFiles = markdownFiles.length;
+    this.metrics.totalFiles = markdownFiles.length
     this.metrics.activeFiles = markdownFiles.filter(
-      (f) => !f.includes("archive/") && !f.includes("node_modules"),
-    ).length;
+      (f) => !f.includes('archive/') && !f.includes('node_modules'),
+    ).length
 
     if (this.metrics.activeFiles > CONFIG.targets.maxFiles) {
       this.alerts.push({
-        type: "WARNING",
+        type: 'WARNING',
         message: `Active file count (${this.metrics.activeFiles}) exceeds target (${CONFIG.targets.maxFiles})`,
-      });
+      })
     }
   }
 
   async validateLinks() {
     // Simplified link validation for now
-    this.metrics.brokenLinks = Math.max(0, this.metrics.activeFiles - 15) * 2;
+    this.metrics.brokenLinks = Math.max(0, this.metrics.activeFiles - 15) * 2
 
     if (this.metrics.brokenLinks > CONFIG.targets.maxBrokenLinks) {
       this.alerts.push({
-        type: "CRITICAL",
+        type: 'CRITICAL',
         message: `${this.metrics.brokenLinks} broken links detected`,
-      });
+      })
     }
   }
 
   calculateHealthScore() {
-    let score = 100;
+    let score = 100
 
     // File count penalty
     if (this.metrics.activeFiles > CONFIG.targets.maxFiles) {
-      score -= (this.metrics.activeFiles - CONFIG.targets.maxFiles) * 3;
+      score -= (this.metrics.activeFiles - CONFIG.targets.maxFiles) * 3
     }
 
     // Broken links penalty
-    score -= Math.min(this.metrics.brokenLinks * 2, 50);
+    score -= Math.min(this.metrics.brokenLinks * 2, 50)
 
-    this.healthScore = Math.max(0, Math.round(score));
+    this.healthScore = Math.max(0, Math.round(score))
   }
 
   async generateReport() {
-    const timestamp = new Date().toLocaleString();
-    const healthStatus = this.getHealthStatus();
+    const timestamp = new Date().toLocaleString()
+    const healthStatus = this.getHealthStatus()
 
     const report = `# 📊 Enhanced Documentation Health Report
 **Generated**: ${timestamp}  
@@ -102,9 +102,9 @@ class EnhancedHealthMonitor {
 - **Content Quality**: ${this.metrics.contentQuality}/100
 
 ### **🏆 Performance vs Targets**
-- **File Count**: ${this.metrics.activeFiles <= CONFIG.targets.maxFiles ? "✅" : "❌"} ${this.getFileCountStatus()}
-- **Link Integrity**: ${this.metrics.brokenLinks === 0 ? "✅" : "❌"} ${this.getLinkStatus()}
-- **Health Score**: ${this.healthScore >= CONFIG.targets.minHealthScore ? "✅" : "❌"} ${this.healthScore}/100
+- **File Count**: ${this.metrics.activeFiles <= CONFIG.targets.maxFiles ? '✅' : '❌'} ${this.getFileCountStatus()}
+- **Link Integrity**: ${this.metrics.brokenLinks === 0 ? '✅' : '❌'} ${this.getLinkStatus()}
+- **Health Score**: ${this.healthScore >= CONFIG.targets.minHealthScore ? '✅' : '❌'} ${this.healthScore}/100
 
 ${this.generateAlertsSection()}
 
@@ -139,119 +139,113 @@ ${this.generateActionItems()}
 
 ---
 *Enhanced monitoring by The Bridge Project AI Documentation System*
-`;
+`
 
-    const reportPath = path.join(CONFIG.docsDir, "ENHANCED_HEALTH_REPORT.md");
-    fs.writeFileSync(reportPath, report);
+    const reportPath = path.join(CONFIG.docsDir, 'ENHANCED_HEALTH_REPORT.md')
+    fs.writeFileSync(reportPath, report)
 
-    console.log(`📄 Enhanced health report saved to: ${reportPath}`);
+    console.log(`📄 Enhanced health report saved to: ${reportPath}`)
   }
 
   findMarkdownFiles() {
-    const files = [];
+    const files = []
     const walkDir = (dir) => {
-      if (!fs.existsSync(dir)) return;
+      if (!fs.existsSync(dir)) return
 
       try {
-        const items = fs.readdirSync(dir);
+        const items = fs.readdirSync(dir)
         for (const item of items) {
-          const fullPath = path.join(dir, item);
-          const stat = fs.statSync(fullPath);
+          const fullPath = path.join(dir, item)
+          const stat = fs.statSync(fullPath)
 
-          if (
-            stat.isDirectory() &&
-            !item.startsWith(".") &&
-            item !== "node_modules"
-          ) {
-            walkDir(fullPath);
-          } else if (item.endsWith(".md")) {
-            files.push(fullPath);
+          if (stat.isDirectory() && !item.startsWith('.') && item !== 'node_modules') {
+            walkDir(fullPath)
+          } else if (item.endsWith('.md')) {
+            files.push(fullPath)
           }
         }
       } catch (error) {
         // Skip directories we can't read
       }
-    };
+    }
 
-    walkDir(CONFIG.rootDir);
-    return files;
+    walkDir(CONFIG.rootDir)
+    return files
   }
 
   getHealthStatus() {
-    if (this.healthScore >= 95) return "EXCELLENT";
-    if (this.healthScore >= 80) return "GOOD";
-    if (this.healthScore >= 60) return "FAIR";
-    if (this.healthScore >= 40) return "POOR";
-    return "CRITICAL";
+    if (this.healthScore >= 95) return 'EXCELLENT'
+    if (this.healthScore >= 80) return 'GOOD'
+    if (this.healthScore >= 60) return 'FAIR'
+    if (this.healthScore >= 40) return 'POOR'
+    return 'CRITICAL'
   }
 
   getHealthEmoji() {
-    if (this.healthScore >= 95) return "🟢";
-    if (this.healthScore >= 80) return "🟡";
-    return "🔴";
+    if (this.healthScore >= 95) return '🟢'
+    if (this.healthScore >= 80) return '🟡'
+    return '🔴'
   }
 
   getFileCountStatus() {
     return this.metrics.activeFiles <= CONFIG.targets.maxFiles
-      ? "Within target"
-      : `${this.metrics.activeFiles - CONFIG.targets.maxFiles} files over target`;
+      ? 'Within target'
+      : `${this.metrics.activeFiles - CONFIG.targets.maxFiles} files over target`
   }
 
   getLinkStatus() {
     return this.metrics.brokenLinks === 0
-      ? "Perfect integrity"
-      : `${this.metrics.brokenLinks} broken links`;
+      ? 'Perfect integrity'
+      : `${this.metrics.brokenLinks} broken links`
   }
 
   generateAlertsSection() {
     if (this.alerts.length === 0) {
-      return "## 🟢 **ALL SYSTEMS OPTIMAL**\n\nNo alerts detected. Documentation health is excellent!\n";
+      return '## 🟢 **ALL SYSTEMS OPTIMAL**\n\nNo alerts detected. Documentation health is excellent!\n'
     }
 
-    let section = `## 🚨 **ACTIVE ALERTS** (${this.alerts.length})\n\n`;
+    let section = `## 🚨 **ACTIVE ALERTS** (${this.alerts.length})\n\n`
 
     for (const alert of this.alerts) {
-      const emoji = alert.type === "CRITICAL" ? "🔴" : "🟡";
-      section += `### ${emoji} ${alert.type}: ${alert.message}\n\n`;
+      const emoji = alert.type === 'CRITICAL' ? '🔴' : '🟡'
+      section += `### ${emoji} ${alert.type}: ${alert.message}\n\n`
     }
 
-    return section;
+    return section
   }
 
   generateActionItems() {
-    const actions = [];
+    const actions = []
 
     if (this.metrics.brokenLinks > 0) {
-      actions.push("🔧 Run automated link repair: `npm run docs:fix-links`");
+      actions.push('🔧 Run automated link repair: `npm run docs:fix-links`')
     }
 
     if (this.metrics.activeFiles > CONFIG.targets.maxFiles) {
-      actions.push("📁 Consolidate or archive excess files");
+      actions.push('📁 Consolidate or archive excess files')
     }
 
     if (this.healthScore < CONFIG.targets.minHealthScore) {
-      actions.push("🎯 Address critical alerts to improve health score");
+      actions.push('🎯 Address critical alerts to improve health score')
     }
 
     if (actions.length === 0) {
-      actions.push("✅ Continue maintaining excellent documentation standards");
+      actions.push('✅ Continue maintaining excellent documentation standards')
     }
 
-    return actions.map((action) => `1. ${action}`).join("\n");
+    return actions.map((action) => `1. ${action}`).join('\n')
   }
 
   getHealthTrend() {
-    return "Improving (previous optimization successful)";
+    return 'Improving (previous optimization successful)'
   }
 
   getFileCountTrend() {
-    return this.metrics.activeFiles <= CONFIG.targets.maxFiles
-      ? "Stable"
-      : "Needs optimization";
+    return this.metrics.activeFiles <= CONFIG.targets.maxFiles ? 'Stable' : 'Needs optimization'
   }
 
   getLinkTrend() {
-    return this.metrics.brokenLinks === 0 ? "Perfect" : "Needs repair";
+    return this.metrics.brokenLinks === 0 ? 'Perfect' : 'Needs repair'
   }
 
   getResults() {
@@ -260,38 +254,36 @@ ${this.generateActionItems()}
       status: this.getHealthStatus(),
       metrics: this.metrics,
       alerts: this.alerts,
-    };
+    }
   }
 }
 
 async function main() {
   try {
-    const monitor = new EnhancedHealthMonitor();
-    const results = await monitor.analyze();
+    const monitor = new EnhancedHealthMonitor()
+    const results = await monitor.analyze()
 
-    console.log(
-      `📊 Health Score: ${results.healthScore}/100 (${results.status})`,
-    );
+    console.log(`📊 Health Score: ${results.healthScore}/100 (${results.status})`)
 
     if (results.alerts.length > 0) {
-      console.log(`🚨 ${results.alerts.length} alerts detected:`);
+      console.log(`🚨 ${results.alerts.length} alerts detected:`)
       for (const alert of results.alerts) {
-        const emoji = alert.type === "CRITICAL" ? "🔴" : "🟡";
-        console.log(`   ${emoji} ${alert.type}: ${alert.message}`);
+        const emoji = alert.type === 'CRITICAL' ? '🔴' : '🟡'
+        console.log(`   ${emoji} ${alert.type}: ${alert.message}`)
       }
     } else {
-      console.log("🟢 All systems optimal!");
+      console.log('🟢 All systems optimal!')
     }
 
-    console.log("✅ Enhanced health monitoring complete!");
+    console.log('✅ Enhanced health monitoring complete!')
   } catch (error) {
-    console.error("❌ Enhanced health monitoring failed:", error.message);
-    process.exit(1);
+    console.error('❌ Enhanced health monitoring failed:', error.message)
+    process.exit(1)
   }
 }
 
 if (require.main === module) {
-  main();
+  main()
 }
 
-module.exports = { EnhancedHealthMonitor, CONFIG };
+module.exports = { EnhancedHealthMonitor, CONFIG }

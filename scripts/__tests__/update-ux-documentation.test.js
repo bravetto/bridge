@@ -1,24 +1,24 @@
-const { jest } = require("@jest/globals");
-const path = require("path");
-const fs = require("fs").promises;
-const UXDocumentationUpdater = require("../update-ux-documentation");
+const { jest } = require('@jest/globals')
+const path = require('path')
+const fs = require('fs').promises
+const UXDocumentationUpdater = require('../update-ux-documentation')
 
-describe("UXDocumentationUpdater", () => {
-  let updater;
-  let mockFs;
+describe('UXDocumentationUpdater', () => {
+  let updater
+  let mockFs
 
   beforeEach(() => {
-    updater = new UXDocumentationUpdater();
+    updater = new UXDocumentationUpdater()
     mockFs = {
       readFile: jest.fn(),
       writeFile: jest.fn(),
       access: jest.fn(),
-    };
-    updater.fs = mockFs;
-  });
+    }
+    updater.fs = mockFs
+  })
 
-  describe("Page Analysis", () => {
-    test("correctly identifies page components", async () => {
+  describe('Page Analysis', () => {
+    test('correctly identifies page components', async () => {
       const mockContent = `
         export default function HomePage() {
           return (
@@ -28,15 +28,15 @@ describe("UXDocumentationUpdater", () => {
             </div>
           )
         }
-      `;
-      mockFs.readFile.mockResolvedValue(mockContent);
+      `
+      mockFs.readFile.mockResolvedValue(mockContent)
 
-      const result = await updater.analyzePage("src/app/page.tsx");
-      expect(result.components).toContain("Button");
-      expect(result.links).toContain("/contact");
-    });
+      const result = await updater.analyzePage('src/app/page.tsx')
+      expect(result.components).toContain('Button')
+      expect(result.links).toContain('/contact')
+    })
 
-    test("detects user interaction points", async () => {
+    test('detects user interaction points', async () => {
       const mockContent = `
         export default function ContactPage() {
           const handleSubmit = () => {};
@@ -47,55 +47,53 @@ describe("UXDocumentationUpdater", () => {
             </form>
           )
         }
-      `;
-      mockFs.readFile.mockResolvedValue(mockContent);
+      `
+      mockFs.readFile.mockResolvedValue(mockContent)
 
-      const result = await updater.analyzePage("src/app/contact/page.tsx");
-      expect(result.interactionPoints).toContain("form-submit");
-      expect(result.interactionPoints).toContain("input-change");
-      expect(result.interactionPoints).toContain("button-click");
-    });
-  });
+      const result = await updater.analyzePage('src/app/contact/page.tsx')
+      expect(result.interactionPoints).toContain('form-submit')
+      expect(result.interactionPoints).toContain('input-change')
+      expect(result.interactionPoints).toContain('button-click')
+    })
+  })
 
-  describe("Link Analysis", () => {
-    test("validates internal links", async () => {
+  describe('Link Analysis', () => {
+    test('validates internal links', async () => {
       const mockPages = new Map([
-        ["/contact", true],
-        ["/about", true],
-      ]);
-      updater.pageRegistry = mockPages;
+        ['/contact', true],
+        ['/about', true],
+      ])
+      updater.pageRegistry = mockPages
 
-      const result = await updater.validateLink("/contact");
-      expect(result.valid).toBe(true);
-    });
+      const result = await updater.validateLink('/contact')
+      expect(result.valid).toBe(true)
+    })
 
-    test("detects broken internal links", async () => {
+    test('detects broken internal links', async () => {
       const mockPages = new Map([
-        ["/contact", true],
-        ["/about", true],
-      ]);
-      updater.pageRegistry = mockPages;
+        ['/contact', true],
+        ['/about', true],
+      ])
+      updater.pageRegistry = mockPages
 
-      const result = await updater.validateLink("/nonexistent");
-      expect(result.valid).toBe(false);
-      expect(result.error).toBe("Page not found");
-    });
-  });
+      const result = await updater.validateLink('/nonexistent')
+      expect(result.valid).toBe(false)
+      expect(result.error).toBe('Page not found')
+    })
+  })
 
-  describe("Documentation Generation", () => {
-    test("generates valid markdown", async () => {
+  describe('Documentation Generation', () => {
+    test('generates valid markdown', async () => {
       const mockState = {
-        pages: new Map([
-          ["/", { title: "Home", components: ["Button"], links: ["/contact"] }],
-        ]),
-        components: new Map([["Button", { usage: 1, locations: ["/"] }]]),
-      };
-      updater.state = mockState;
+        pages: new Map([['/', { title: 'Home', components: ['Button'], links: ['/contact'] }]]),
+        components: new Map([['Button', { usage: 1, locations: ['/'] }]]),
+      }
+      updater.state = mockState
 
-      const doc = await updater.generateDocumentation();
-      expect(doc).toContain("# Website UX/UI State");
-      expect(doc).toContain("## Pages");
-      expect(doc).toContain("Home");
-    });
-  });
-});
+      const doc = await updater.generateDocumentation()
+      expect(doc).toContain('# Website UX/UI State')
+      expect(doc).toContain('## Pages')
+      expect(doc).toContain('Home')
+    })
+  })
+})

@@ -1,0 +1,393 @@
+{
+  "timestamp": "2025-07-28T02:56:36.399Z",
+  "superhighwayMap": {
+    "mainRoutes": {
+      "Data → Logic → UI → Pages": "src/data/ → src/lib/ → src/components/ → src/app/",
+      "Universal Utilities": "src/lib/utils.ts → Everything",
+      "Error Handling": "src/components/ui/error-boundary.tsx → All Components",
+      "Design System": "src/lib/design-system.ts → Component Styling"
+    },
+    "criticalPaths": {
+      "Home Page Flow": "src/app/page.tsx → src/app/home-page.tsx → Components",
+      "Component Pattern": "Component → withErrorBoundary → cn() → Render",
+      "Data Flow": "src/data/ → Component Props → UI Render",
+      "Error Recovery": "Error → Error Boundary → Fallback UI"
+    },
+    "bottlenecks": {
+      "cn() function": "Used in 90%+ of components - critical dependency",
+      "Error boundaries": "Required for component stability",
+      "Dynamic imports": "Necessary for hydration stability",
+      "Utils imports": "Universal dependency across codebase"
+    },
+    "entryPoints": {
+      "Application": "src/app/page.tsx → src/app/home-page.tsx",
+      "Components": "src/components/ui/ (reusable building blocks)",
+      "Utilities": "src/lib/utils.ts (universal functions)",
+      "Data": "src/data/ (static content)"
+    },
+    "exitPoints": {
+      "User Interface": "Rendered components in browser",
+      "Analytics": "Tracking events to external services",
+      "Logs": "Error and debug information",
+      "Downloads": "Generated documents and PDFs"
+    },
+    "interconnects": {
+      "Component Network": "Components import and compose other components",
+      "Utility Network": "Shared utilities create cross-cutting dependencies",
+      "Data Network": "Data flows from sources to consumers",
+      "Error Network": "Error boundaries create safety interconnections"
+    }
+  },
+  "dependencyFlows": {
+    "Universal Dependencies": {
+      "cn() function": "Used in 90%+ of components for Tailwind class merging",
+      "withErrorBoundary": "Error handling wrapper for most components",
+      "logger": "Universal logging utility",
+      "trackEvent": "Analytics tracking throughout app"
+    },
+    "Component Dependencies": "React → UI Components → Feature Components",
+    "Data Dependencies": "Static Data → Props → Component State",
+    "Style Dependencies": "Tailwind → cn() → Component Classes"
+  },
+  "componentNetworks": {
+    "Page Components": "Orchestrate multiple feature components",
+    "Feature Components": "Business logic and user interactions",
+    "UI Components": "Reusable building blocks",
+    "Layout Components": "Structure and navigation"
+  },
+  "hiddenPatterns": {},
+  "aiGuidance": {
+    "quickStartGuide": {
+      "Understanding the JAHmere Webb Freedom Portal": {
+        "Mission": "Advocacy platform for JAHmere Webb's legal case with July 28th deadline",
+        "Architecture": "Next.js 15 + App Router + TypeScript + Tailwind",
+        "Key Principle": "Pragmatic excellence over technical perfection"
+      },
+      "Essential Files Every AI Should Know": {
+        "src/lib/utils.ts": "Universal utilities - 90% of components import cn() from here",
+        "src/components/ui/error-boundary.tsx": "Error handling wrapper used everywhere",
+        "src/app/layout.tsx": "Global layout and providers",
+        "src/app/home-page.tsx": "Main orchestration page",
+        "src/data/": "Static content and character witness data"
+      },
+      "Universal Import Patterns": {
+        "Step 1": "React/Next.js imports first",
+        "Step 2": "UI component imports from @/components/ui/",
+        "Step 3": "CRITICAL: import { cn } from '@/lib/utils' (99% need this)",
+        "Step 4": "Type imports from @/lib/ or @/types/",
+        "Step 5": "Business logic from @/lib/"
+      },
+      "Component Patterns": {
+        "Error Boundaries": "withErrorBoundary(Component, 'ComponentName') - string only",
+        "Dynamic Imports": "Used extensively to avoid hydration issues",
+        "Client Components": "'use client' only when needed for interactivity",
+        "Styling": "Tailwind CSS exclusively - no CSS modules"
+      }
+    },
+    "commonPatterns": {
+      "Import Pattern": "React → UI → Utils → Types → Business Logic",
+      "Component Pattern": "Props → State → Render → Error Boundary",
+      "Error Pattern": "Try → Catch → Log → Fallback UI",
+      "Style Pattern": "Tailwind Classes → cn() → Conditional Styles"
+    },
+    "navigationTips": {
+      "Start with pages": "src/app/ to understand user flows",
+      "Follow imports": "Trace dependencies from components",
+      "Check utilities": "src/lib/utils.ts for common functions",
+      "Understand data": "src/data/ for content structure"
+    },
+    "contextClues": {
+      "withErrorBoundary": "Component needs error protection",
+      "dynamic()": "Component has hydration concerns",
+      "'use client'": "Component needs browser APIs",
+      "cn()": "Component uses Tailwind styling"
+    },
+    "troubleshootingGuide": {
+      "Hydration Errors": "Check for dynamic imports and client components",
+      "Style Issues": "Verify cn() usage and Tailwind classes",
+      "Import Errors": "Check @/ path aliases and file extensions",
+      "Type Errors": "Verify TypeScript interfaces and prop types"
+    },
+    "bestPractices": {
+      "Error Boundaries": "Wrap components with withErrorBoundary",
+      "Dynamic Imports": "Use for client-heavy components",
+      "Styling": "Use Tailwind with cn() for class merging",
+      "Types": "Define interfaces for all component props"
+    }
+  },
+  "biasProtection": {
+    "codebasePatterns": [
+      {
+        "type": "component-feature-creep",
+        "severity": "medium",
+        "description": "Components showing signs of feature creep",
+        "evidence": [
+          "src/app/(archive)/campaigns/community-release-plan/page.tsx renders 14 child components",
+          "src/app/(archive)/campaigns/twitter-campaign/page.tsx renders 16 child components",
+          "src/app/(archive)/testing/test-restored-content/page.tsx renders 11 child components",
+          "src/app/admin/settings/page.tsx renders 14 child components",
+          "src/app/analytics-dashboard/page.tsx renders 18 child components",
+          "src/app/biasagent/page.tsx renders 12 child components",
+          "src/app/blue-ocean-navigator/page.tsx renders 13 child components",
+          "src/app/bridge-project-mvp/page.tsx renders 15 child components",
+          "src/app/campaign/page.tsx renders 11 child components",
+          "src/app/champion/page.tsx renders 14 child components",
+          "src/app/check-in/page.tsx renders 13 child components",
+          "src/app/dashboard/judge/page.tsx renders 14 child components",
+          "src/app/design-system-showcase/incredible/page.tsx renders 11 child components",
+          "src/app/design-system-showcase/incredible-page.tsx renders 11 child components",
+          "src/app/divine-design-metrics/page.tsx renders 34 child components",
+          "src/app/emergency-response/page.tsx renders 17 child components",
+          "src/app/evidence/page.tsx renders 12 child components",
+          "src/app/greatness-zone/page.tsx renders 17 child components",
+          "src/app/home-page.tsx renders 20 child components",
+          "src/app/impact/page.tsx renders 18 child components",
+          "src/app/judge-ferrero-private/page.tsx renders 16 child components",
+          "src/app/july-28-portal/page.tsx renders 12 child components",
+          "src/app/july-28-strategy/page.tsx renders 25 child components",
+          "src/app/justice-lab-proposal/page.tsx renders 14 child components",
+          "src/app/letter-form-test/page.tsx renders 12 child components",
+          "src/app/letter-portal/page.tsx renders 28 child components",
+          "src/app/mvp-page.tsx renders 22 child components",
+          "src/app/people/[slug]/client.tsx renders 11 child components",
+          "src/app/prayer-room/page.tsx renders 18 child components",
+          "src/app/revelation/page.tsx renders 19 child components",
+          "src/app/the-case/page.tsx renders 15 child components",
+          "src/app/youth/page.tsx renders 12 child components",
+          "src/components/analytics/user-journey-dashboard.tsx renders 17 child components",
+          "src/components/bias-detection/dashboard-integration.tsx renders 14 child components",
+          "src/components/blue-ocean-navigator.tsx renders 21 child components",
+          "src/components/coalition-alert.tsx renders 13 child components",
+          "src/components/debug/cascade-monitor.tsx renders 17 child components",
+          "src/components/debug/health-monitor.tsx renders 13 child components",
+          "src/components/divine-design-metrics-enhanced.tsx renders 15 child components",
+          "src/components/divine-letter/molecules/FormStep.tsx renders 14 child components",
+          "src/components/divine-letter-form/components/letter-preview.tsx renders 11 child components",
+          "src/components/divine-letter-form/index.tsx renders 13 child components",
+          "src/components/greatness-zone/assessment.tsx renders 16 child components",
+          "src/components/jahmere-gofundme-divine.tsx renders 19 child components",
+          "src/components/judge/enhanced-judge-dashboard.tsx renders 21 child components",
+          "src/components/letter-campaign-tracker.tsx renders 13 child components",
+          "src/components/letter-submission-form/index.tsx renders 12 child components",
+          "src/components/letter-submission-form.tsx renders 13 child components",
+          "src/components/live-testimony-collector.tsx renders 12 child components",
+          "src/components/people/interactive-person-grid.tsx renders 11 child components",
+          "src/components/phils-miracle-gofundme.tsx renders 13 child components",
+          "src/components/quantum-prayer-network.tsx renders 14 child components",
+          "src/components/sacred-animations.tsx uses 11 hooks",
+          "src/components/spiritual-energy-visualizer.tsx renders 11 child components",
+          "src/components/spiritual-energy-visualizer.tsx uses 9 hooks",
+          "src/components/story-amplifier/context.tsx uses 9 hooks",
+          "src/components/story-amplifier/index.tsx renders 14 child components",
+          "src/components/story-amplifier.tsx renders 21 child components",
+          "src/components/ui/character-witness-slider.tsx renders 16 child components",
+          "src/components/ui/data-table.tsx renders 13 child components",
+          "src/components/ui/download-system.tsx renders 20 child components",
+          "src/components/ui/footer-variations-2025.tsx renders 30 child components",
+          "src/components/ui/footer-variations-2025.tsx uses 9 hooks",
+          "src/components/ui/header-variations-2025.tsx renders 26 child components",
+          "src/components/ui/letter-templates.tsx renders 16 child components",
+          "src/components/ui/ultra-modern-2025-final.tsx renders 13 child components"
+        ],
+        "intervention": "Break down complex components, maintain single responsibility"
+      }
+    ],
+    "architecturalBias": {
+      "overallRisk": 0,
+      "indicators": [],
+      "mitigationStrategy": []
+    },
+    "decisionBias": {
+      "detectedBiases": [],
+      "riskScore": 0,
+      "preventiveMeasures": []
+    },
+    "contextualRisks": {
+      "risks": [
+        {
+          "type": "deadline-pressure-bias",
+          "risk": "high",
+          "description": "Deadline pressure may lead to rushed technical decisions",
+          "mitigation": "Implement decision checkpoints, maintain pragmatic focus",
+          "timeframe": "immediate"
+        }
+      ],
+      "overallRiskLevel": "medium",
+      "monitoringStrategy": {
+        "immediate": [
+          {
+            "type": "deadline-pressure-bias",
+            "risk": "high",
+            "description": "Deadline pressure may lead to rushed technical decisions",
+            "mitigation": "Implement decision checkpoints, maintain pragmatic focus",
+            "timeframe": "immediate"
+          }
+        ],
+        "ongoing": [],
+        "checkpoints": [
+          "Weekly bias assessment during development",
+          "Pre-deployment bias audit",
+          "Post-release bias impact analysis"
+        ]
+      }
+    },
+    "protectiveActions": {
+      "immediate": [
+        {
+          "action": "Implement bias checkpoint system",
+          "description": "Add bias detection to all major technical decisions",
+          "priority": "high",
+          "implementation": "Use BiasGuard analysis before code changes"
+        },
+        {
+          "action": "Establish mission alignment validation",
+          "description": "Validate all features against July 28th mission impact",
+          "priority": "critical",
+          "implementation": "Create mission impact scoring for new features"
+        },
+        {
+          "action": "Deploy pragmatic decision framework",
+          "description": "Use \"good enough\" criteria for technical decisions",
+          "priority": "high",
+          "implementation": "Define acceptance criteria focused on user value"
+        }
+      ],
+      "strategic": [
+        {
+          "action": "Build bias-resistant development culture",
+          "description": "Train team to recognize and counter cognitive biases",
+          "priority": "medium",
+          "implementation": "Regular bias awareness sessions and code reviews"
+        },
+        {
+          "action": "Implement automated bias detection",
+          "description": "Integrate BiasGuard into development workflow",
+          "priority": "medium",
+          "implementation": "Add BiasGuard hooks to git commits and PR reviews"
+        }
+      ],
+      "preventive": [
+        {
+          "action": "Regular architecture bias audits",
+          "description": "Periodic review of system architecture for bias patterns",
+          "priority": "low",
+          "implementation": "Monthly architecture review with bias focus"
+        },
+        {
+          "action": "Decision bias training",
+          "description": "Ongoing education about cognitive biases in tech decisions",
+          "priority": "low",
+          "implementation": "Quarterly bias awareness workshops"
+        }
+      ]
+    }
+  },
+  "pragmaticInsights": {
+    "codebaseHealth": {
+      "score": 85,
+      "factors": {
+        "Error Boundary Coverage": "90%+ components protected",
+        "Universal Utilities": "cn() function used consistently",
+        "Import Patterns": "Standardized across codebase",
+        "Component Architecture": "Clean separation of concerns"
+      },
+      "concerns": [
+        "Dynamic imports needed for hydration stability",
+        "Framework conflicts require workarounds"
+      ]
+    },
+    "missionAlignment": {
+      "score": 92,
+      "alignment": "Excellent",
+      "factors": {
+        "July 28th Focus": "All features serve advocacy mission",
+        "Pragmatic Excellence": "Function over perfection approach",
+        "User Experience": "Optimized for supporters and advocates",
+        "Performance": "Championship-level speed targets met"
+      },
+      "recommendations": [
+        "Continue pragmatic approach to technical decisions",
+        "Maintain focus on user impact over technical purity"
+      ]
+    },
+    "technicalDebt": {
+      "level": "Low-Medium",
+      "score": 78,
+      "manageable": true,
+      "factors": {
+        "Framework Conflicts": "Workarounds in place, stable",
+        "Component Duplication": "Minimal, within acceptable bounds",
+        "Type Safety": "Excellent TypeScript coverage",
+        "Testing Coverage": "Room for improvement"
+      },
+      "prioritizedActions": [
+        {
+          "priority": "Medium",
+          "action": "Increase test coverage for critical paths",
+          "impact": "Reduced regression risk",
+          "effort": "Medium"
+        },
+        {
+          "priority": "Low",
+          "action": "Consolidate similar components",
+          "impact": "Reduced maintenance burden",
+          "effort": "Low"
+        }
+      ]
+    },
+    "riskFactors": [
+      {
+        "risk": "Framework Conflicts",
+        "level": "Medium",
+        "mitigation": "Workarounds in place, monitoring for updates",
+        "impact": "Could affect development velocity"
+      },
+      {
+        "risk": "Single Points of Failure",
+        "level": "Low",
+        "mitigation": "cn() and error boundaries are well-tested",
+        "impact": "Universal dependencies create coupling"
+      },
+      {
+        "risk": "Deadline Pressure",
+        "level": "High",
+        "mitigation": "Pragmatic approach prioritizes function over form",
+        "impact": "July 28th deadline drives all decisions"
+      }
+    ],
+    "actionableRecommendations": {
+      "immediate": [
+        {
+          "priority": "High",
+          "action": "Continue current pragmatic approach",
+          "reason": "System is stable and mission-aligned",
+          "timeframe": "Ongoing",
+          "metrics": ["Build time", "Error rate", "User engagement"]
+        },
+        {
+          "priority": "Medium",
+          "action": "Monitor framework conflict workarounds",
+          "reason": "Ensure stability through July 28th",
+          "timeframe": "Weekly checks",
+          "metrics": ["Hydration errors", "Performance metrics"]
+        }
+      ],
+      "strategic": [
+        {
+          "priority": "Medium",
+          "action": "Plan post-July 28th technical debt cleanup",
+          "reason": "Sustainable long-term development",
+          "timeframe": "After court date",
+          "metrics": ["Code maintainability", "Developer velocity"]
+        },
+        {
+          "priority": "Low",
+          "action": "Evaluate framework upgrades",
+          "reason": "Stay current with ecosystem",
+          "timeframe": "Q3 2025",
+          "metrics": ["Compatibility", "Performance gains"]
+        }
+      ]
+    }
+  }
+}

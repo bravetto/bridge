@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "next-js", "commands", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🎯 Framer Motion Hybrid Approach - Proven Patterns for Next.js 15
 
 ## Executive Summary

@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "commands", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 📚 ARCHIVED DOCUMENTATION REMOVAL PLAN
 **AI Alignment Optimization - JAHmere Webb Freedom Portal**
 

@@ -5,51 +5,51 @@
  * Automated component generation with tests, types, and best practices
  */
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = require('fs')
+const path = require('path')
+const { execSync } = require('child_process')
 
 class DivineComponentScaffolder {
   constructor() {
     this.componentTypes = {
-      ui: "src/components/ui",
-      feature: "src/components",
-      page: "src/app",
-      api: "src/app/api",
-    };
+      ui: 'src/components/ui',
+      feature: 'src/components',
+      page: 'src/app',
+      api: 'src/app/api',
+    }
 
     this.templates = {
       component: this.getComponentTemplate(),
       test: this.getTestTemplate(),
       types: this.getTypesTemplate(),
       stories: this.getStoriesTemplate(),
-    };
+    }
   }
 
   /**
    * Generate a new component with all necessary files
    */
-  generateComponent(name, type = "ui", options = {}) {
+  generateComponent(name, type = 'ui', options = {}) {
     const {
       withTests = true,
       withStories = true,
       withTypes = true,
       withErrorBoundary = true,
-      variant = "functional",
-    } = options;
+      variant = 'functional',
+    } = options
 
-    console.log(`🔨 Generating ${type} component: ${name}`);
+    console.log(`🔨 Generating ${type} component: ${name}`)
 
     // Validate component name
     if (!this.isValidComponentName(name)) {
-      throw new Error(`Invalid component name: ${name}. Use PascalCase.`);
+      throw new Error(`Invalid component name: ${name}. Use PascalCase.`)
     }
 
     // Create component directory
-    const componentDir = this.createComponentDirectory(name, type);
+    const componentDir = this.createComponentDirectory(name, type)
 
     // Generate files
-    const files = [];
+    const files = []
 
     // Main component file
     files.push(
@@ -57,77 +57,77 @@ class DivineComponentScaffolder {
         withErrorBoundary,
         variant,
       }),
-    );
+    )
 
     // Types file
     if (withTypes) {
-      files.push(this.createTypesFile(componentDir, name));
+      files.push(this.createTypesFile(componentDir, name))
     }
 
     // Test file
     if (withTests) {
-      files.push(this.createTestFile(componentDir, name, type));
+      files.push(this.createTestFile(componentDir, name, type))
     }
 
     // Stories file
-    if (withStories && type === "ui") {
-      files.push(this.createStoriesFile(componentDir, name));
+    if (withStories && type === 'ui') {
+      files.push(this.createStoriesFile(componentDir, name))
     }
 
     // Index file for clean imports
-    files.push(this.createIndexFile(componentDir, name));
+    files.push(this.createIndexFile(componentDir, name))
 
     // Update exports if UI component
-    if (type === "ui") {
-      this.updateUIExports(name);
+    if (type === 'ui') {
+      this.updateUIExports(name)
     }
 
-    console.log("✅ Component generated successfully:");
-    files.forEach((file) => console.log(`   📄 ${file}`));
+    console.log('✅ Component generated successfully:')
+    files.forEach((file) => console.log(`   📄 ${file}`))
 
     // Run initial validation
-    this.validateGeneration(componentDir, name);
+    this.validateGeneration(componentDir, name)
 
     return {
       componentDir,
       files,
       name,
       type,
-    };
+    }
   }
 
   /**
    * Generate API route with validation and error handling
    */
-  generateAPIRoute(name, methods = ["GET"]) {
-    console.log(`🔨 Generating API route: ${name}`);
+  generateAPIRoute(name, methods = ['GET']) {
+    console.log(`🔨 Generating API route: ${name}`)
 
-    const routeDir = path.join(this.componentTypes.api, name);
+    const routeDir = path.join(this.componentTypes.api, name)
     if (!fs.existsSync(routeDir)) {
-      fs.mkdirSync(routeDir, { recursive: true });
+      fs.mkdirSync(routeDir, { recursive: true })
     }
 
-    const routeFile = path.join(routeDir, "route.ts");
-    const routeContent = this.generateAPIRouteContent(name, methods);
+    const routeFile = path.join(routeDir, 'route.ts')
+    const routeContent = this.generateAPIRouteContent(name, methods)
 
-    fs.writeFileSync(routeFile, routeContent);
+    fs.writeFileSync(routeFile, routeContent)
 
     // Generate API types
-    const typesFile = path.join(routeDir, "types.ts");
-    const typesContent = this.generateAPITypesContent(name);
-    fs.writeFileSync(typesFile, typesContent);
+    const typesFile = path.join(routeDir, 'types.ts')
+    const typesContent = this.generateAPITypesContent(name)
+    fs.writeFileSync(typesFile, typesContent)
 
     // Generate API tests
-    const testFile = path.join(routeDir, "route.test.ts");
-    const testContent = this.generateAPITestContent(name, methods);
-    fs.writeFileSync(testFile, testContent);
+    const testFile = path.join(routeDir, 'route.test.ts')
+    const testContent = this.generateAPITestContent(name, methods)
+    fs.writeFileSync(testFile, testContent)
 
-    console.log("✅ API route generated successfully:");
-    console.log(`   📄 ${routeFile}`);
-    console.log(`   📄 ${typesFile}`);
-    console.log(`   📄 ${testFile}`);
+    console.log('✅ API route generated successfully:')
+    console.log(`   📄 ${routeFile}`)
+    console.log(`   📄 ${typesFile}`)
+    console.log(`   📄 ${testFile}`)
 
-    return { routeDir, files: [routeFile, typesFile, testFile] };
+    return { routeDir, files: [routeFile, typesFile, testFile] }
   }
 
   /**
@@ -139,152 +139,152 @@ class DivineComponentScaffolder {
       withMetadata = true,
       withErrorBoundary = true,
       isProtected = false,
-    } = options;
+    } = options
 
-    console.log(`🔨 Generating page: ${name}`);
+    console.log(`🔨 Generating page: ${name}`)
 
-    const pageDir = path.join(this.componentTypes.page, name);
+    const pageDir = path.join(this.componentTypes.page, name)
     if (!fs.existsSync(pageDir)) {
-      fs.mkdirSync(pageDir, { recursive: true });
+      fs.mkdirSync(pageDir, { recursive: true })
     }
 
-    const files = [];
+    const files = []
 
     // Page component
-    const pageFile = path.join(pageDir, "page.tsx");
+    const pageFile = path.join(pageDir, 'page.tsx')
     const pageContent = this.generatePageContent(name, {
       withLayout,
       withMetadata,
       isProtected,
-    });
-    fs.writeFileSync(pageFile, pageContent);
-    files.push(pageFile);
+    })
+    fs.writeFileSync(pageFile, pageContent)
+    files.push(pageFile)
 
     // Layout (if requested)
     if (withLayout) {
-      const layoutFile = path.join(pageDir, "layout.tsx");
-      const layoutContent = this.generateLayoutContent(name, { withMetadata });
-      fs.writeFileSync(layoutFile, layoutContent);
-      files.push(layoutFile);
+      const layoutFile = path.join(pageDir, 'layout.tsx')
+      const layoutContent = this.generateLayoutContent(name, { withMetadata })
+      fs.writeFileSync(layoutFile, layoutContent)
+      files.push(layoutFile)
     }
 
     // Error boundary
     if (withErrorBoundary) {
-      const errorFile = path.join(pageDir, "error.tsx");
-      const errorContent = this.generateErrorPageContent(name);
-      fs.writeFileSync(errorFile, errorContent);
-      files.push(errorFile);
+      const errorFile = path.join(pageDir, 'error.tsx')
+      const errorContent = this.generateErrorPageContent(name)
+      fs.writeFileSync(errorFile, errorContent)
+      files.push(errorFile)
     }
 
-    console.log("✅ Page generated successfully:");
-    files.forEach((file) => console.log(`   📄 ${file}`));
+    console.log('✅ Page generated successfully:')
+    files.forEach((file) => console.log(`   📄 ${file}`))
 
-    return { pageDir, files };
+    return { pageDir, files }
   }
 
   /**
    * Create component directory structure
    */
   createComponentDirectory(name, type) {
-    const baseDir = this.componentTypes[type] || this.componentTypes.feature;
-    const componentDir = path.join(baseDir, this.kebabCase(name));
+    const baseDir = this.componentTypes[type] || this.componentTypes.feature
+    const componentDir = path.join(baseDir, this.kebabCase(name))
 
     if (!fs.existsSync(componentDir)) {
-      fs.mkdirSync(componentDir, { recursive: true });
+      fs.mkdirSync(componentDir, { recursive: true })
     }
 
-    return componentDir;
+    return componentDir
   }
 
   /**
    * Create main component file
    */
   createComponentFile(componentDir, name, type, options) {
-    const fileName = `${this.kebabCase(name)}.tsx`;
-    const filePath = path.join(componentDir, fileName);
+    const fileName = `${this.kebabCase(name)}.tsx`
+    const filePath = path.join(componentDir, fileName)
 
     const content = this.templates.component
       .replace(/{{COMPONENT_NAME}}/g, name)
       .replace(/{{COMPONENT_TYPE}}/g, type)
       .replace(/{{WITH_ERROR_BOUNDARY}}/g, options.withErrorBoundary)
       .replace(/{{VARIANT}}/g, options.variant)
-      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name));
+      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name))
 
-    fs.writeFileSync(filePath, content);
-    return filePath;
+    fs.writeFileSync(filePath, content)
+    return filePath
   }
 
   /**
    * Create types file
    */
   createTypesFile(componentDir, name) {
-    const fileName = "types.ts";
-    const filePath = path.join(componentDir, fileName);
+    const fileName = 'types.ts'
+    const filePath = path.join(componentDir, fileName)
 
-    const content = this.templates.types.replace(/{{COMPONENT_NAME}}/g, name);
+    const content = this.templates.types.replace(/{{COMPONENT_NAME}}/g, name)
 
-    fs.writeFileSync(filePath, content);
-    return filePath;
+    fs.writeFileSync(filePath, content)
+    return filePath
   }
 
   /**
    * Create test file
    */
   createTestFile(componentDir, name, type) {
-    const fileName = `${this.kebabCase(name)}.test.tsx`;
-    const filePath = path.join(componentDir, fileName);
+    const fileName = `${this.kebabCase(name)}.test.tsx`
+    const filePath = path.join(componentDir, fileName)
 
     const content = this.templates.test
       .replace(/{{COMPONENT_NAME}}/g, name)
       .replace(/{{COMPONENT_TYPE}}/g, type)
-      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name));
+      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name))
 
-    fs.writeFileSync(filePath, content);
-    return filePath;
+    fs.writeFileSync(filePath, content)
+    return filePath
   }
 
   /**
    * Create stories file for Storybook
    */
   createStoriesFile(componentDir, name) {
-    const fileName = `${this.kebabCase(name)}.stories.tsx`;
-    const filePath = path.join(componentDir, fileName);
+    const fileName = `${this.kebabCase(name)}.stories.tsx`
+    const filePath = path.join(componentDir, fileName)
 
     const content = this.templates.stories
       .replace(/{{COMPONENT_NAME}}/g, name)
-      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name));
+      .replace(/{{KEBAB_NAME}}/g, this.kebabCase(name))
 
-    fs.writeFileSync(filePath, content);
-    return filePath;
+    fs.writeFileSync(filePath, content)
+    return filePath
   }
 
   /**
    * Create index file for clean imports
    */
   createIndexFile(componentDir, name) {
-    const fileName = "index.ts";
-    const filePath = path.join(componentDir, fileName);
+    const fileName = 'index.ts'
+    const filePath = path.join(componentDir, fileName)
 
     const content = `export { ${name} } from './${this.kebabCase(name)}';
 export type { ${name}Props } from './types';
-`;
+`
 
-    fs.writeFileSync(filePath, content);
-    return filePath;
+    fs.writeFileSync(filePath, content)
+    return filePath
   }
 
   /**
    * Update UI component exports
    */
   updateUIExports(name) {
-    const indexPath = path.join(this.componentTypes.ui, "index.ts");
+    const indexPath = path.join(this.componentTypes.ui, 'index.ts')
 
     if (!fs.existsSync(indexPath)) {
-      fs.writeFileSync(indexPath, "// UI Component Exports\n");
+      fs.writeFileSync(indexPath, '// UI Component Exports\n')
     }
 
-    const exportLine = `export { ${name} } from './${this.kebabCase(name)}';\n`;
-    fs.appendFileSync(indexPath, exportLine);
+    const exportLine = `export { ${name} } from './${this.kebabCase(name)}';\n`
+    fs.appendFileSync(indexPath, exportLine)
   }
 
   /**
@@ -293,22 +293,19 @@ export type { ${name}Props } from './types';
   validateGeneration(componentDir, name) {
     try {
       // Check TypeScript compilation
-      console.log("🔍 Validating TypeScript...");
-      execSync("npm run type-check", { stdio: "pipe" });
+      console.log('🔍 Validating TypeScript...')
+      execSync('npm run type-check', { stdio: 'pipe' })
 
       // Run tests if they exist
-      const testFile = path.join(
-        componentDir,
-        `${this.kebabCase(name)}.test.tsx`,
-      );
+      const testFile = path.join(componentDir, `${this.kebabCase(name)}.test.tsx`)
       if (fs.existsSync(testFile)) {
-        console.log("🧪 Running tests...");
-        execSync(`npm test -- ${testFile}`, { stdio: "pipe" });
+        console.log('🧪 Running tests...')
+        execSync(`npm test -- ${testFile}`, { stdio: 'pipe' })
       }
 
-      console.log("✅ Validation successful");
+      console.log('✅ Validation successful')
     } catch (error) {
-      console.warn("⚠️ Validation warnings (check manually):", error.message);
+      console.warn('⚠️ Validation warnings (check manually):', error.message)
     }
   }
 
@@ -340,7 +337,7 @@ export async function ${method}(request: NextRequest) {
   }
 }`,
       )
-      .join("\n");
+      .join('\n')
 
     return `import { NextRequest, NextResponse } from 'next/server';
 import { ${name}Request, ${name}Response } from './types';
@@ -350,7 +347,7 @@ import { ${name}Request, ${name}Response } from './types';
  * Generated by Divine Component Scaffolder
  */
 ${methodHandlers}
-`;
+`
   }
 
   /**
@@ -379,7 +376,7 @@ export interface ${name}ErrorResponse {
   error: string;
   timestamp: string;
 }
-`;
+`
   }
 
   /**
@@ -407,10 +404,10 @@ export interface ${name}ErrorResponse {
     });
   });`,
       )
-      .join("\n");
+      .join('\n')
 
     return `import { NextRequest } from 'next/server';
-import { ${methods.join(", ")} } from './route';
+import { ${methods.join(', ')} } from './route';
 
 /**
  * ${name} API Tests
@@ -419,22 +416,22 @@ import { ${methods.join(", ")} } from './route';
 
 describe('/api/${this.kebabCase(name)}', () => {${testCases}
 });
-`;
+`
   }
 
   /**
    * Generate page content
    */
   generatePageContent(name, options) {
-    const imports = [];
-    const wrappers = [];
+    const imports = []
+    const wrappers = []
 
     if (options.withMetadata) {
-      imports.push("import type { Metadata } from 'next';");
+      imports.push("import type { Metadata } from 'next';")
     }
 
     if (options.isProtected) {
-      imports.push("import { redirect } from 'next/navigation';");
+      imports.push("import { redirect } from 'next/navigation';")
     }
 
     const metadataExport = options.withMetadata
@@ -444,9 +441,9 @@ export const metadata: Metadata = {
   description: '${name} page description',
 };
 `
-      : "";
+      : ''
 
-    return `${imports.join("\n")}
+    return `${imports.join('\n')}
 import { withDivineErrorBoundary } from '@/components/ui/divine-error-boundary';
 
 ${metadataExport}
@@ -469,7 +466,7 @@ export default withDivineErrorBoundary(${name}Page, {
   componentName: '${name}Page',
   role: 'guardian'
 });
-`;
+`
   }
 
   /**
@@ -497,7 +494,7 @@ export default function ${name}Layout({
     </div>
   );
 }
-`;
+`
   }
 
   /**
@@ -530,7 +527,7 @@ export default function ${name}Error({
     </div>
   );
 }
-`;
+`
   }
 
   /**
@@ -566,7 +563,7 @@ export function {{COMPONENT_NAME}}({
 }
 
 {{COMPONENT_NAME}}.displayName = '{{COMPONENT_NAME}}';
-`;
+`
   }
 
   /**
@@ -584,7 +581,7 @@ export interface {{COMPONENT_NAME}}Props {
   children?: ReactNode;
   // TODO: Add component-specific props
 }
-`;
+`
   }
 
   /**
@@ -617,7 +614,7 @@ describe('{{COMPONENT_NAME}}', () => {
 
   // TODO: Add component-specific tests
 });
-`;
+`
   }
 
   /**
@@ -655,29 +652,29 @@ export const WithCustomClass: Story = {
     className: 'border-2 border-blue-500 p-4',
   },
 };
-`;
+`
   }
 
   /**
    * Utility functions
    */
   isValidComponentName(name) {
-    return /^[A-Z][a-zA-Z0-9]*$/.test(name);
+    return /^[A-Z][a-zA-Z0-9]*$/.test(name)
   }
 
   kebabCase(str) {
-    return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+    return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
   }
 }
 
 // CLI Interface
 if (require.main === module) {
-  const scaffolder = new DivineComponentScaffolder();
+  const scaffolder = new DivineComponentScaffolder()
 
-  const args = process.argv.slice(2);
-  const command = args[0];
-  const name = args[1];
-  const type = args[2] || "ui";
+  const args = process.argv.slice(2)
+  const command = args[0]
+  const name = args[1]
+  const type = args[2] || 'ui'
 
   if (!command || !name) {
     console.log(`
@@ -692,30 +689,31 @@ Examples:
   node component-scaffolder.js component Button ui
   node component-scaffolder.js api users GET,POST
   node component-scaffolder.js page dashboard
-    `);
-    process.exit(1);
+    `)
+    process.exit(1)
   }
 
   try {
     switch (command) {
-      case "component":
-        scaffolder.generateComponent(name, type);
-        break;
-      case "api":
-        const methods = (args[2] || "GET").split(",");
-        scaffolder.generateAPIRoute(name, methods);
-        break;
-      case "page":
-        scaffolder.generatePage(name);
-        break;
+      case 'component':
+        scaffolder.generateComponent(name, type)
+        break
+      case 'api': {
+        const methods = (args[2] || 'GET').split(',')
+        scaffolder.generateAPIRoute(name, methods)
+        break
+      }
+      case 'page':
+        scaffolder.generatePage(name)
+        break
       default:
-        console.error(`Unknown command: ${command}`);
-        process.exit(1);
+        console.error(`Unknown command: ${command}`)
+        process.exit(1)
     }
   } catch (error) {
-    console.error("❌ Error:", error.message);
-    process.exit(1);
+    console.error('❌ Error:', error.message)
+    process.exit(1)
   }
 }
 
-module.exports = { DivineComponentScaffolder };
+module.exports = { DivineComponentScaffolder }

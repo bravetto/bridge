@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "commands"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🧩 COMPONENT STANDARDIZATION PLAN
 **JAHmere Webb Freedom Portal - Pragmatic Component Naming**
 

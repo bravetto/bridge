@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "next-js", "react", "commands", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🏆 ULTIMATE SYSTEM KNOWLEDGE BASE (USKB)
 **The JAHmere Webb Freedom Portal - Complete AI System Guidance**
 

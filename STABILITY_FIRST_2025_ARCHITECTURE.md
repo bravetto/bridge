@@ -1,3 +1,11 @@
+---
+ai_tags: ["architecture", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🎯 STABILITY-FIRST 2025 ARCHITECTURE STRATEGY
 **Pragmatic Excellence Over Technical Sophistication**
 *Based on JAHmere Webb Freedom Portal Learnings*

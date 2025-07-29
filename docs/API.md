@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # API Reference - JAHmere Webb Freedom Portal
 
 Complete API documentation for all endpoints.

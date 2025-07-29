@@ -7,8 +7,8 @@
 
 // -- Example custom command
 Cypress.Commands.add('clickButton', (text: string) => {
-  cy.contains('button', text).click();
-});
+  cy.contains('button', text).click()
+})
 
 // -- Example of overwriting an existing command
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
@@ -24,9 +24,9 @@ declare global {
        * Custom command to click a button with specific text
        * @example cy.clickButton('Submit')
        */
-      clickButton(text: string): Chainable<JQuery<HTMLElement>>;
+      clickButton(text: string): Chainable<JQuery<HTMLElement>>
     }
   }
 }
 
-export {}; 
+export {}

@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "commands"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🎚️ Design System Flexibility Guide
 
 **How to work with the Championship Design System at different constraint levels**

@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "next-js", "commands", "july-28-deadline"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 📊 PROJECT STATUS - LIVE DASHBOARD
 **The Bridge Project - Real-Time Mission Metrics**
 

@@ -104,3 +104,5 @@ index-*.txt
 
 # Local development
 .cursor/
+quarantine/
+temp-disabled-pages/

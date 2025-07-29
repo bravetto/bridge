@@ -1,16 +1,14 @@
 {
   "version": 2,
-  
+
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm ci",
-  
-  "framework": "nextjs",
-  
 
-  
+  "framework": "nextjs",
+
   "regions": ["iad1"],
-  
+
   "headers": [
     {
       "source": "/(.*)",
@@ -86,26 +84,26 @@
       ]
     }
   ],
-  
+
   "redirects": [],
-  
+
   "rewrites": [
     {
       "source": "/health",
       "destination": "/api/health"
     }
   ],
-  
+
   "env": {
     "NODE_ENV": "production",
     "NEXT_TELEMETRY_DISABLED": "1"
   },
-  
+
   "build": {
     "env": {
       "NODE_OPTIONS": "--max_old_space_size=4096"
     }
   },
-  
+
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
 }

@@ -1,3 +1,11 @@
+---
+ai_tags: ["next-js", "react"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🎯 MOTION REMEDIATION STRATEGY
 **Systematic Replacement of 382 Framer Motion Components**
 

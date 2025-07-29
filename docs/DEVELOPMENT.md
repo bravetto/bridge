@@ -1,3 +1,11 @@
+---
+ai_tags: ["typescript", "next-js", "react", "commands"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # Developer Guide - JAHmere Webb Freedom Portal
 
 Complete development setup, workflow, and architecture guide.

@@ -1,3 +1,11 @@
+---
+ai_tags: ["deployment", "typescript", "next-js", "commands"]
+ai_priority: "medium"
+ai_context_type: "reference"
+verification_status: "unverified"
+last_verified: "2025-07-28"
+---
+
 # 🚀 **DEPLOYMENT READY GUIDE - BRIDGE PROJECT**
 
 ## **DIVINE ENGINEER'S CERTIFIED DEPLOYMENT PROTOCOL**

@@ -1,0 +1,118 @@
+name: 🚀 Production Deployment
+# Simplified, BiasGuard-compliant CI/CD for JAHmere Webb Freedom Portal
+# Optimized for reliability, maintainability, and championship performance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  validate-and-deploy:
+    name: 🔍 Validate & Deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
+    
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install Dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: 🔍 Quality Gates
+        run: |
+          echo "Running quality validation..."
+          npm run type-check
+          npm run lint
+          npm run test -- --passWithNoTests
+          npm audit --audit-level high
+
+      - name: 🏗️ Build Verification
+        run: |
+          echo "Verifying build process..."
+          start_time=$(date +%s)
+          npm run build
+          end_time=$(date +%s)
+          build_time=$((end_time - start_time))
+          echo "Build completed in ${build_time} seconds"
+          
+          # Verify build artifacts exist
+          if [ ! -d ".next" ]; then
+            echo "Build artifacts not found"
+            exit 1
+          fi
+
+      - name: 🚀 Deploy to Vercel
+        if: github.ref == 'refs/heads/main'
+        uses: amondnet/vercel-action@v25
+        id: vercel-deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+
+      - name: 🏥 Deployment Verification
+        if: github.ref == 'refs/heads/main' && steps.vercel-deploy.outputs.preview-url
+        run: |
+          echo "Verifying deployment functionality..."
+          deployment_url="${{ steps.vercel-deploy.outputs.preview-url }}"
+          
+          # Wait for deployment to be ready
+          sleep 30
+          
+          # Verify core endpoints
+          echo "Checking health endpoint..."
+          if curl -f --max-time 30 "${deployment_url}/api/health-standalone"; then
+            echo "Health check: functional"
+          else
+            echo "Health check: failed"
+            exit 1
+          fi
+          
+          # Verify BiasGuard endpoint
+          echo "Checking BiasGuard endpoint..."
+          if curl -f --max-time 30 "${deployment_url}/biasagent"; then
+            echo "BiasGuard check: functional"
+          else
+            echo "BiasGuard check: degraded (non-critical)"
+          fi
+          
+          echo "Deployment verification completed"
+
+      - name: 🎯 Mission Status Update
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Calculate July 28th countdown
+          july28=$(date -d "2025-07-28" +%s)
+          now=$(date +%s)
+          days_left=$(( (july28 - now) / 86400 ))
+          echo "Days until July 28th: $days_left"
+          
+          if [ $days_left -le 30 ]; then
+            echo "Mission-critical timeline: $days_left days remaining"
+          fi
+
+# Workflow Configuration
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Security: Restrict permissions
+permissions:
+  contents: read
+  deployments: write
+  statuses: write 
