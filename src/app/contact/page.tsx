@@ -64,7 +64,11 @@ function ContactPage() {
               href="/write-letter"
               className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-6 rounded-lg hover:from-blue-700 hover:to-green-700 transition-colors"
             >
-              <div className="text-3xl mb-4">✍️</div>
+              <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-2">Write to Judge</h3>
               <p className="text-blue-100">Send a letter supporting treatment over incarceration</p>
             </Link>
@@ -73,7 +77,11 @@ function ContactPage() {
               href="/witnesses"
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors"
             >
-              <div className="text-3xl mb-4">👥</div>
+              <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-2">Read Testimonials</h3>
               <p className="text-purple-100">See what 14 character witnesses say about JAHmere</p>
             </Link>
@@ -82,7 +90,11 @@ function ContactPage() {
               href="/the-case"
               className="bg-gradient-to-r from-orange-600 to-red-600 text-white p-6 rounded-lg hover:from-orange-700 hover:to-red-700 transition-colors"
             >
-              <div className="text-3xl mb-4">⚖️</div>
+              <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-2">Learn the Facts</h3>
               <p className="text-orange-100">Understand the legal case and evidence</p>
             </Link>

@@ -186,23 +186,27 @@ export default function WitnessesPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Tony Dungy Featured Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-lg">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-lg shadow-2xl">
             <div className="flex items-center mb-8">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mr-6">
-                <span className="text-4xl">🏆</span>
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mr-6 shadow-lg">
+                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
               </div>
               <div>
-                <h2 className="text-3xl font-bold">Tony Dungy</h2>
-                <p className="text-xl text-blue-200">NFL Hall of Fame Coach • Super Bowl Champion</p>
-                <p className="text-blue-200">2.1 Million Twitter Followers</p>
+                <h2 className="text-3xl font-bold text-white drop-shadow-lg">Tony Dungy</h2>
+                <p className="text-xl text-white drop-shadow-md">NFL Hall of Fame Coach • Super Bowl Champion</p>
+                <p className="text-white drop-shadow-md">2.1 Million Twitter Followers</p>
               </div>
             </div>
-            <blockquote className="text-2xl italic mb-6 leading-relaxed">
+            <blockquote className="text-2xl italic mb-6 leading-relaxed text-white drop-shadow-lg bg-black bg-opacity-20 p-6 rounded-lg">
               "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation."
             </blockquote>
-            <div className="bg-blue-700 bg-opacity-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Why Tony Dungy's Voice Matters</h3>
-              <p className="text-blue-100">
+            <div className="bg-black bg-opacity-30 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-3 text-white">Why Tony Dungy's Voice Matters</h3>
+              <p className="text-white">
                 When a Super Bowl-winning coach who has adopted 8 children and fostered over 100 more stakes his reputation on someone's character, 
                 it carries unprecedented weight. Tony Dungy's endorsement represents the credibility of authentic transformation.
               </p>

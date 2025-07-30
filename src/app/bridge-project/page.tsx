@@ -33,7 +33,11 @@ function BridgeProjectPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Three Co-Founders, One Vision</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border-l-4 border-blue-500">
-              <div className="text-4xl mb-4">🎯</div>
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold text-blue-800 mb-3">JAHmere Webb</h3>
               <p className="text-blue-700 mb-4">Co-Founder & Lived Experience Expert</p>
               <p className="text-sm text-blue-600">
@@ -42,7 +46,11 @@ function BridgeProjectPage() {
             </div>
             
             <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border-l-4 border-green-500">
-              <div className="text-4xl mb-4">🤝</div>
+              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold text-green-800 mb-3">Jordan Dungy</h3>
               <p className="text-green-700 mb-4">Co-Founder & Community Bridge</p>
               <p className="text-sm text-green-600">
@@ -51,7 +59,11 @@ function BridgeProjectPage() {
             </div>
             
             <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-lg border-l-4 border-orange-500">
-              <div className="text-4xl mb-4">💼</div>
+              <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a2 2 0 104 0 2 2 0 00-4 0zm6 0a2 2 0 104 0 2 2 0 00-4 0z" clipRule="evenodd" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold text-orange-800 mb-3">Michael Mataluni</h3>
               <p className="text-orange-700 mb-4">Co-Founder & Technology CEO</p>
               <p className="text-sm text-orange-600">
