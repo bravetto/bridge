@@ -14,43 +14,51 @@
      · optimizePackageImports
 
  ✓ Starting...
- ✓ Compiled middleware in 142ms
- ✓ Ready in 1176ms
- ○ Compiling /write-letter ...
- ✓ Compiled /write-letter in 1891ms
- GET /write-letter 200 in 2198ms
- GET /write-letter 200 in 93ms
- ✓ Compiled / in 225ms
- GET / 200 in 275ms
- GET / 200 in 47ms
- ✓ Compiled /the-case in 195ms
- GET /the-case 200 in 287ms
- ✓ Compiled /witnesses in 203ms
- GET /witnesses 200 in 262ms
- GET /write-letter 200 in 75ms
- GET /the-case 200 in 118ms
- GET /witnesses 200 in 114ms
- GET /witnesses 200 in 101ms
- GET /write-letter 200 in 96ms
- ✓ Compiled in 68ms
- ✓ Compiled in 64ms
- ✓ Compiled in 66ms
- ✓ Compiled in 205ms
- ✓ Compiled in 48ms
- ✓ Compiled in 89ms
- ✓ Compiled in 46ms
- ✓ Compiled in 81ms
- ✓ Compiled in 64ms
- ✓ Compiled middleware in 2ms
- GET /write-letter 200 in 229ms
- GET /witnesses 200 in 230ms
- GET /the-case 200 in 244ms
- GET /witnesses 200 in 128ms
- GET /write-letter 200 in 83ms
- GET /the-case 200 in 189ms
- GET /witnesses 200 in 251ms
- GET /witnesses 200 in 114ms
- ✓ Compiled in 71ms
- ✓ Compiled /design-system in 214ms
- GET /design-system 200 in 341ms
- GET /write-letter 200 in 160ms
+ ✓ Compiled middleware in 105ms
+ ✓ Ready in 925ms
+ ○ Compiling /bridge-project ...
+ ✓ Compiled /bridge-project in 1822ms
+ ⨯ TypeError: Class extends value undefined is not a constructor or null
+
+This might be caused by a React Class Component being rendered in a Server Component, React Class Components only works in Client Components. Read more: https://nextjs.org/docs/messages/class-component-in-server-component
+    at [project]/src/components/ui/error-boundary.tsx [app-rsc] (ecmascript) (src/components/ui/error-boundary.tsx:14:34)
+    at [project]/src/app/bridge-project/page.tsx [app-rsc] (ecmascript) (src/app/bridge-project/page.tsx:4:0)
+    at [project]/src/app/bridge-project/page.tsx [app-rsc] (ecmascript, Next.js Server Component) (.next/server/chunks/ssr/[root-of-the-server]__52c9f78e._.js:1547:47)
+    at Object.<anonymous> (.next/server/app/bridge-project/page.js:13:9)
+  12 | }
+  13 |
+> 14 | class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+     |                                  ^
+  15 |   constructor(props: ErrorBoundaryProps) {
+  16 |     super(props)
+  17 |     this.state = { hasError: false } {
+  page: '/bridge-project'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 661ms
+ GET /bridge-project 500 in 2758ms
+ ✓ Compiled in 106ms
+ ✓ Compiled /bridge-project in 19ms
+ GET /bridge-project 200 in 251ms
+ ✓ Compiled / in 226ms
+ GET / 200 in 307ms
+ ✓ Compiled /the-case in 189ms
+ GET /the-case 200 in 271ms
+ ✓ Compiled /witnesses in 234ms
+ GET /witnesses 200 in 300ms
+ ✓ Compiled /contact in 215ms
+ GET /contact 200 in 279ms
+ GET /bridge-project 200 in 66ms
+ ✓ Compiled /write-letter in 196ms
+ GET /write-letter 200 in 251ms
+ GET /the-case 200 in 172ms
+ GET /write-letter 200 in 52ms
+ GET /the-case 200 in 33ms
+ GET /the-case 200 in 39ms
+ GET /witnesses 200 in 29ms
+ GET /write-letter 200 in 31ms
+ GET / 200 in 30ms
+ ✓ Compiled in 84ms
+   Reload env: .env.local
+ GET / 500 in 162ms
+ GET / 500 in 152ms

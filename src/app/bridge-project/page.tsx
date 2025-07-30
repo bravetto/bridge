@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
@@ -7,16 +8,11 @@ import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
 import { Button } from '@/components/ui/button'
 
-export const metadata: Metadata = {
-  title: 'The Bridge Project - JAHmere Webb Freedom Portal',
-  description: 'The innovative treatment solution co-founded by JAHmere Webb - transforming lives through technology, mentorship, and community support.',
-}
-
 function BridgeProjectPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             The Bridge Project: From Prison to Purpose
@@ -45,7 +41,7 @@ function BridgeProjectPage() {
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border-l-4 border-green-500">
+                            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-l-4 border-green-500">
               <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -261,7 +257,7 @@ function BridgeProjectPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-12 rounded-lg">
+          <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-12 rounded-lg">
             <h2 className="text-3xl font-bold mb-6">Support Innovation Over Incarceration</h2>
             <p className="text-xl mb-8 text-purple-100">
               The Bridge Project represents exactly the kind of evidence-based treatment alternative 

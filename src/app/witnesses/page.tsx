@@ -16,7 +16,7 @@ const witnesses = [
     title: "NFL Hall of Fame Coach",
     subtitle: "Super Bowl Champion • 2.1M Twitter Followers",
     quote: "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation.",
-    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison.",
+    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison."
     category: "featured",
     icon: "🏆"
   },
@@ -172,12 +172,12 @@ export default function WitnessesPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             Community Voices: Why JAHmere Deserves Freedom
           </Heading>
-          <Text size="xl" variant="inverse" className="text-purple-100">
+          <Text size="xl" variant="inverse" className="text-white">
             14 character witnesses from every sector of society - all unified in supporting treatment over punishment.
           </Text>
         </Container>
@@ -387,9 +387,9 @@ export default function WitnessesPage() {
 
         {/* Call to Action */}
         <section className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-12 rounded-lg">
+          <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-12 rounded-lg">
             <h2 className="text-3xl font-bold mb-6">Add Your Voice to This Chorus</h2>
-            <p className="text-xl mb-8 text-purple-100">
+            <p className="text-xl mb-8 text-white">
               Join Tony Dungy and 14 character witnesses in supporting JAHmere's transformation through treatment, not continued punishment.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
