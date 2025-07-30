@@ -1,22 +1,37 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
 import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { Heading, Text } from '@/components/ui/typography'
-import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
+import { withErrorBoundary } from '@/components/ui/error-boundary'
 
-const witnesses = [
+interface Witness {
+  id: number
+  name: string
+  title: string
+  subtitle: string
+  quote: string
+  background: string
+  category: 'featured' | 'expert' | 'community' | 'system' | 'family'
+  icon: string
+}
+
+interface Category {
+  id: string
+  name: string
+  count: number
+}
+
+const witnesses: Witness[] = [
   {
     id: 1,
     name: "Tony Dungy",
     title: "NFL Hall of Fame Coach",
     subtitle: "Super Bowl Champion • 2.1M Twitter Followers",
     quote: "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation.",
-    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison."
+    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison.",
     category: "featured",
     icon: "🏆"
   },
@@ -152,7 +167,7 @@ const witnesses = [
   }
 ]
 
-const categories = [
+const categories: Category[] = [
   { id: 'all', name: 'All Witnesses', count: 14 },
   { id: 'featured', name: 'Featured', count: 3 },
   { id: 'expert', name: 'Professional Experts', count: 3 },
@@ -161,9 +176,9 @@ const categories = [
   { id: 'family', name: 'Family', count: 1 }
 ]
 
-export default function WitnessesPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [selectedWitness, setSelectedWitness] = useState(witnesses[0])
+function WitnessesPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const [selectedWitness, setSelectedWitness] = useState<Witness>(witnesses[0])
 
   const filteredWitnesses = selectedCategory === 'all' 
     ? witnesses 
@@ -207,8 +222,7 @@ export default function WitnessesPage() {
             <div className="bg-black bg-opacity-30 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-3 text-white">Why Tony Dungy's Voice Matters</h3>
               <p className="text-white">
-                When a Super Bowl-winning coach who has adopted 8 children and fostered over 100 more stakes his reputation on someone's character, 
-                it carries unprecedented weight. Tony Dungy's endorsement represents the credibility of authentic transformation.
+                Tony Dungy has adopted 8 children and fostered over 100 more. His support for JAHmere's character carries significant weight in the community.
               </p>
             </div>
           </div>
@@ -258,8 +272,10 @@ export default function WitnessesPage() {
                       <p className="text-sm text-gray-600">{witness.title}</p>
                     </div>
                   </div>
-                                     <p className="text-xs text-gray-500 line-clamp-2">
-                     "{witness.quote.substring(0, 80)}..."
+                   <p className="text-xs text-gray-500 overflow-hidden">
+                     <span className="block truncate">
+                       "{witness.quote.substring(0, 80)}..."
+                     </span>
                    </p>
                  </button>
               ))}
@@ -315,15 +331,15 @@ export default function WitnessesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
               <h3 className="text-lg font-semibold text-blue-800 mb-3">Recognition of Disability</h3>
-              <p className="text-blue-700">Every witness acknowledges JAHmere's cognitive limitations and childlike nature, validating the 2013 psychological evaluation.</p>
+              <p className="text-blue-700">Multiple witnesses acknowledge JAHmere's cognitive limitations and childlike nature, supporting the 2013 psychological evaluation.</p>
             </div>
             <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
               <h3 className="text-lg font-semibold text-green-800 mb-3">Consistent Character</h3>
-              <p className="text-green-700">All describe JAHmere as gentle, kind, eager to help, and fundamentally different from typical criminals.</p>
+              <p className="text-green-700">Witnesses describe JAHmere as gentle, kind, eager to help, and different from typical criminal cases.</p>
             </div>
             <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
-              <h3 className="text-lg font-semibold text-purple-800 mb-3">System Failure</h3>
-              <p className="text-purple-700">Multiple system insiders admit the system failed JAHmere by choosing punishment over treatment.</p>
+              <h3 className="text-lg font-semibold text-purple-800 mb-3">System Concerns</h3>
+              <p className="text-purple-700">System professionals suggest JAHmere needed treatment rather than punishment from the beginning.</p>
             </div>
             <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
               <h3 className="text-lg font-semibold text-orange-800 mb-3">Concrete Support</h3>
@@ -335,7 +351,7 @@ export default function WitnessesPage() {
             </div>
             <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
               <h3 className="text-lg font-semibold text-red-800 mb-3">Public Safety Focus</h3>
-              <p className="text-red-700">Witnesses emphasize community safety is better served through treatment than continued incarceration.</p>
+              <p className="text-red-700">Witnesses suggest community safety may be better served through treatment than continued incarceration.</p>
             </div>
           </div>
         </section>
@@ -390,7 +406,7 @@ export default function WitnessesPage() {
           <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-12 rounded-lg">
             <h2 className="text-3xl font-bold mb-6">Add Your Voice to This Chorus</h2>
             <p className="text-xl mb-8 text-white">
-              Join Tony Dungy and 14 character witnesses in supporting JAHmere's transformation through treatment, not continued punishment.
+              Join Tony Dungy and 14 character witnesses in supporting JAHmere's transformation through treatment, not continued punishment. Court date: August 25th, 2025.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
               <Link 
@@ -417,4 +433,6 @@ export default function WitnessesPage() {
       </div>
     </PageLayout>
   )
-} 
+}
+
+export default withErrorBoundary(WitnessesPage, "WitnessesPage")
