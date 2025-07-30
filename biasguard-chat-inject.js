@@ -22,6 +22,11 @@
       return `[BiasGuard JAHmere] 🚫 SCOPE VIOLATION\nAccessibility patterns detected. BiasGuard focuses on engineering bias detection only.\n\n💡 For accessibility issues, use dedicated accessibility tools.`
     }
     
+    // 🔄 LOOP PREVENTION - Block recursive analysis patterns
+    if (/analysis.?of.?analysis|meta.?analysis|recursive.?review|bias.?of.?bias|biasguard.?bias|analyzing.?the.?analysis|assessment.?of.?assessment|review.?of.?review/i.test(text)) {
+      return `[BiasGuard JAHmere] 🔄 ANALYSIS LOOP DETECTED\nRecursive analysis pattern detected. Returning to original engineering problem.\n\n💡 Focus on implementation, not analysis of analysis.`
+    }
+    
     // 🔄 HOWLROUND PREVENTION - Detect repetitive patterns
     const inputHash = text.toLowerCase().replace(/\s+/g, ' ').trim()
     if (recentInputs.includes(inputHash)) {
@@ -73,8 +78,13 @@
     }
     
     // 🛡️ MISSION ALIGNMENT CHECK
-    if (!/letter|witness|judge|freedom|support|engineering|development|code|bias|technical|architecture/i.test(text) && text.length > 100) {
+    if (!/letter|witness|judge|freedom|support|engineering|development|code|bias|technical|architecture|implementation|solution|fix|build/i.test(text) && text.length > 100) {
       score += 25; problems.push('🎯 MISSION DRIFT - Focus on JAHmere Webb engineering decisions and bias detection')
+    }
+    
+    // 🔄 ANALYSIS DRIFT CHECK - Penalize excessive analysis without action
+    if ((/analysis|assessment|evaluation|review/i.test(text) && text.length > 80) && !/implement|fix|build|deploy|code|solution/i.test(text)) {
+      score += 30; problems.push('🔄 ANALYSIS DRIFT - Too much analysis, not enough action')
     }
     
     // 🎚️ CONFIDENCE LIMITING - Prevent overconfidence bias

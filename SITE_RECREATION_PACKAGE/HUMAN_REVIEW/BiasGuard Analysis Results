@@ -14,14 +14,6 @@ Planning Fallacy: Remove timeline language | Feature Creep: Simplify approach | 
 
 Analyzed Text:
 --------------------
-BiasGuard Analysis Results
-==================================================
-
-[BiasGuard] 🔴 FIX (85%) 📊 CONTEXT-HEAVY
-Planning Fallacy: Remove timeline language | Feature Creep: Simplify approach | Directive Bias: Use suggestion language | Context Waste: Shorten response
-
-Analyzed Text:
---------------------
 ---
 ai_tags: ["deployment", "next-js", "commands"]
 ai_priority: "medium"
