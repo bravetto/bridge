@@ -13,7 +13,7 @@ Complete API documentation for all endpoints.
 ## Base URL
 
 - **Development**: `http://localhost:1437/api`
-- **Production**: `https://july28freedom.vercel.app/api`
+- **Production**: `https://august25freedom.vercel.app/api`
 
 ## Authentication
 
@@ -322,10 +322,10 @@ await trackEvent({
 
 ```bash
 # Health check
-curl https://july28freedom.vercel.app/api/health
+curl https://august25freedom.vercel.app/api/health
 
 # Track event
-curl -X POST https://july28freedom.vercel.app/api/analytics/user-journey \
+curl -X POST https://august25freedom.vercel.app/api/analytics/user-journey \
   -H "Content-Type: application/json" \
   -d '{
     "eventType": "page_view",
@@ -335,7 +335,7 @@ curl -X POST https://july28freedom.vercel.app/api/analytics/user-journey \
   }'
 
 # Get analytics
-curl https://july28freedom.vercel.app/api/analytics/user-journey
+curl https://august25freedom.vercel.app/api/analytics/user-journey
 ```
 
 ## Performance

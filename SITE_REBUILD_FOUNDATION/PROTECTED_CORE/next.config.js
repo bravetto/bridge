@@ -3,7 +3,7 @@
 /**
  * 🏆 CHAMPIONSHIP NEXT.JS CONFIGURATION
  * Optimized for <10s builds, maximum performance, and zero-downtime deployments
- * JAHmere Webb Freedom Portal - July 28th Mission Critical
+ * JAHmere Webb Freedom Portal - August 25th, 2025 Mission Critical
  */
 
 const nextConfig = {
@@ -57,7 +57,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'july28freedom.vercel.app',
+        hostname: 'august25freedom.vercel.app',
       },
       {
         protocol: 'https',
@@ -263,7 +263,7 @@ const nextConfig = {
 // Championship Performance Logging
 if (process.env.NODE_ENV === 'production') {
   console.log('🏆 Championship build configuration loaded')
-  console.log(`📅 July 28th countdown: ${nextConfig.env.JULY_28_COUNTDOWN} days`)
+  console.log(`📅 August 25th, 2025 countdown: ${nextConfig.env.JULY_28_COUNTDOWN} days`)
   console.log(`🚀 Build ID: ${nextConfig.env.BUILD_ID}`)
 }
 

@@ -2,7 +2,7 @@
 
 /**
  * 🕊️ JAHmere Webb Freedom Portal CLI
- * Streamlined deployment tool for July 28th mission
+ * Streamlined deployment tool for August 25th, 2025 mission
  * 80/20 approach: Maximum impact, minimal complexity
  */
 
@@ -113,7 +113,7 @@ program
     
     const duration = ((Date.now() - startTime) / 1000).toFixed(1)
     log(`🎉 Deployment completed in ${duration}s`, 'success')
-    log('🕊️ Freedom portal is live! July 28th mission active.', 'mission')
+    log('🕊️ Freedom portal is live! August 25th, 2025 mission active.', 'mission')
   })
 
 // API command - Local API management
@@ -164,7 +164,7 @@ program
     const hasVercel = existsSync('.vercel')
     log(`Vercel: ${hasVercel ? '✅ Configured' : '❌ Not configured'}`, 'info')
     
-    log('🕊️ Fighting for justice until July 28th', 'mission')
+    log('🕊️ Fighting for justice until August 25th, 2025', 'mission')
   })
 
 // Quick commands
@@ -206,7 +206,7 @@ program
     🕊️ JAHmere Webb Freedom Portal 🕊️
     
     Mission: Support JAHmere Webb's freedom through technology
-    Deadline: July 28th, 2025
+    Deadline: August 25th, 2025, 2025
     Status: ACTIVE - Every commit counts
     
     "Technology in service of justice."

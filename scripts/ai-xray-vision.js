@@ -339,7 +339,7 @@ class CodebaseXRaySystem {
         type: 'technology-novelty-bias',
         risk: 'medium',
         description: 'Technology choices may be driven by novelty rather than need',
-        recommendation: 'Validate technology choices against July 28th mission',
+        recommendation: 'Validate technology choices against August 25th, 2025 mission',
       })
     }
 
@@ -404,7 +404,7 @@ class CodebaseXRaySystem {
   assessContextualRisks(scanResults) {
     const contextualRisks = []
 
-    // July 28th deadline pressure bias
+    // August 25th, 2025 deadline pressure bias
     const deadlineBias = this.assessDeadlinePressureBias()
     if (deadlineBias.risk > 40) {
       contextualRisks.push({
@@ -462,7 +462,7 @@ class CodebaseXRaySystem {
         },
         {
           action: 'Establish mission alignment validation',
-          description: 'Validate all features against July 28th mission impact',
+          description: 'Validate all features against August 25th, 2025 mission impact',
           priority: 'critical',
           implementation: 'Create mission impact scoring for new features',
         },
@@ -527,7 +527,7 @@ class CodebaseXRaySystem {
       score: 92,
       alignment: 'Excellent',
       factors: {
-        'July 28th Focus': 'All features serve advocacy mission',
+        'August 25th, 2025 Focus': 'All features serve advocacy mission',
         'Pragmatic Excellence': 'Function over perfection approach',
         'User Experience': 'Optimized for supporters and advocates',
         Performance: 'Championship-level speed targets met',
@@ -585,7 +585,7 @@ class CodebaseXRaySystem {
         risk: 'Deadline Pressure',
         level: 'High',
         mitigation: 'Pragmatic approach prioritizes function over form',
-        impact: 'July 28th deadline drives all decisions',
+        impact: 'August 25th, 2025 deadline drives all decisions',
       },
     ]
   }
@@ -603,7 +603,7 @@ class CodebaseXRaySystem {
         {
           priority: 'Medium',
           action: 'Monitor framework conflict workarounds',
-          reason: 'Ensure stability through July 28th',
+          reason: 'Ensure stability through August 25th, 2025',
           timeframe: 'Weekly checks',
           metrics: ['Hydration errors', 'Performance metrics'],
         },
@@ -611,7 +611,7 @@ class CodebaseXRaySystem {
       strategic: [
         {
           priority: 'Medium',
-          action: 'Plan post-July 28th technical debt cleanup',
+          action: 'Plan post-August 25th, 2025 technical debt cleanup',
           reason: 'Sustainable long-term development',
           timeframe: 'After court date',
           metrics: ['Code maintainability', 'Developer velocity'],
@@ -665,7 +665,7 @@ class CodebaseXRaySystem {
   generateQuickStartGuide() {
     return {
       'Understanding the JAHmere Webb Freedom Portal': {
-        Mission: "Advocacy platform for JAHmere Webb's legal case with July 28th deadline",
+        Mission: "Advocacy platform for JAHmere Webb's legal case with August 25th, 2025 deadline",
         Architecture: 'Next.js 15 + App Router + TypeScript + Tailwind',
         'Key Principle': 'Pragmatic excellence over technical perfection',
       },
@@ -1143,9 +1143,9 @@ Generated: ${scanResults.timestamp}
 - Don't ignore error boundaries (they're critical)
 
 ## 🚀 Mission Context
-This is the JAHmere Webb Freedom Portal - an advocacy platform with a July 28th court deadline. Every change should serve the mission of supporting JAHmere's case through technology excellence.
+This is the JAHmere Webb Freedom Portal - an advocacy platform with a August 25th, 2025 court deadline. Every change should serve the mission of supporting JAHmere's case through technology excellence.
 
-**System Motto**: "Pragmatic excellence trumps technical perfection in service of the July 28th mission."
+**System Motto**: "Pragmatic excellence trumps technical perfection in service of the August 25th, 2025 mission."
 `
   }
 
@@ -1300,7 +1300,7 @@ This is the JAHmere Webb Freedom Portal - an advocacy platform with a July 28th 
   }
 
   assessDeadlinePressureBias() {
-    // Assess bias risk from July 28th deadline pressure
+    // Assess bias risk from August 25th, 2025 deadline pressure
     const daysToDeadline = Math.ceil((new Date('2025-07-28') - new Date()) / (1000 * 60 * 60 * 24))
 
     let riskScore = 0

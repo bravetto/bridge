@@ -1,5 +1,5 @@
 ---
-ai_tags: ["july-28-deadline"]
+ai_tags: ["august-25-deadline"]
 ai_priority: "medium"
 ai_context_type: "reference"
 verification_status: "unverified"
@@ -12,7 +12,7 @@ last_verified: "2025-07-28"
 ## **🎯 STRATEGY OVERVIEW**
 
 ### **Mission**: Transform JAHmere Webb's story into viral content that drives action
-### **Deadline**: July 28th court date - CRITICAL SUCCESS FACTOR
+### **Deadline**: August 25th, 2025 court date - CRITICAL SUCCESS FACTOR
 ### **Target**: 100K+ social impressions, 10K+ actions taken
 
 ---
@@ -37,7 +37,7 @@ last_verified: "2025-07-28"
 1. **Injustice**: 25 years vs 5-7 typical sentence
 2. **Vulnerability**: Mental age 15 at time of crime
 3. **Authority**: Tony Dungy (Super Bowl Champion) support
-4. **Urgency**: July 28th last chance deadline
+4. **Urgency**: August 25th, 2025 last chance deadline
 5. **Hope**: Bridge Project transformation solution
 
 ### **Viral Headlines (A/B Test Ready)**
@@ -45,7 +45,7 @@ last_verified: "2025-07-28"
 Primary: "25 Years. Mental Age 15. One Last Chance."
 Emotional: "What If Your Son Got 25 Years for Having a Mental Age of 15?"
 Authority: "Tony Dungy's Friend Got 25 Years. His Crime? Having a Disability."
-Urgency: "July 28th: JAHmere Webb's Last Chance for Freedom"
+Urgency: "August 25th, 2025: JAHmere Webb's Last Chance for Freedom"
 Injustice: "They Gave Him 25 Years. His Mental Age Was 15."
 ```
 
@@ -58,7 +58,7 @@ Injustice: "They Gave Him 25 Years. His Mental Age Was 15."
 - 🔄 **Images Needed**:
   - `jahmere-freedom-viral.jpg` - Primary hero image
   - `tony-dungy-support.jpg` - Authority credibility
-  - `july-28-countdown.jpg` - Urgency deadline
+  - `august-25-countdown.jpg` - Urgency deadline
   - `character-witness-default.jpg` - Testimonial fallback
   - `campaign-default.jpg` - Action-focused
 
@@ -67,7 +67,7 @@ Injustice: "They Gave Him 25 Years. His Mental Age Was 15."
 1. JAHmere's Photo - Professional, hopeful expression
 2. Text Overlay - "Mental Age 15 → 25 Year Sentence"
 3. Tony Dungy Quote - "JAHmere befriended my son when no one else would"
-4. Countdown Timer - "July 28th - Freedom Day"
+4. Countdown Timer - "August 25th, 2025 - Freedom Day"
 5. Brand Logo - The Bridge Project identifier
 6. Color Scheme - Blue trust + yellow hope accents
 ```
@@ -90,11 +90,11 @@ His mental age was 15.
 
 Tony Dungy believes he deserves freedom.
 
-July 28th is his last chance.
+August 25th, 2025 is his last chance.
 
 Thread 🧵
 
-#FreeJAHmere #July28th #JusticeReform
+#FreeJAHmere #August25th #JusticeReform
 ```
 
 ### **Facebook (2000 characters max)**
@@ -107,7 +107,7 @@ That's JAHmere Webb's story.
 
 NFL Hall of Famer Tony Dungy knows JAHmere personally: "He befriended my son when no one else would."
 
-July 28th is JAHmere's last chance for freedom.
+August 25th, 2025 is JAHmere's last chance for freedom.
 
 This isn't about escaping consequences - it's about proportional justice for people with disabilities.
 ```
@@ -136,7 +136,7 @@ He got 25 years for a crime that typically gets 5-7.
 🏆 Tony Dungy knows JAHmere personally:
 "He befriended my son when no one else would."
 
-⏰ July 28th is his last chance for freedom.
+⏰ August 25th, 2025 is his last chance for freedom.
 
 💛 Every heart = A vote for healing
 📝 Every comment = A voice for change
@@ -151,7 +151,7 @@ Link in bio to learn more and take action.
 
 ### **Primary Tags** (Always Include)
 - `#FreeJAHmere`
-- `#July28th`
+- `#August25th`
 - `#BridgeProject`
 
 ### **Category Tags** (Mix & Match)
@@ -169,7 +169,7 @@ Link in bio to learn more and take action.
 2. **Social Proof** - "Join thousands supporting JAHmere"
 3. **Personal Connection** - "What if this was your son?"
 4. **Authority Endorsement** - Tony Dungy credibility
-5. **Urgency Deadline** - July 28th countdown
+5. **Urgency Deadline** - August 25th, 2025 countdown
 
 ### **Engagement Optimization**
 - **Hook**: First 3 words grab attention
@@ -207,7 +207,7 @@ Link in bio to learn more and take action.
 ### **Phase 2: Image Creation** 🔄
 - [ ] Design `jahmere-freedom-viral.jpg`
 - [ ] Create `tony-dungy-support.jpg`
-- [ ] Generate `july-28-countdown.jpg`
+- [ ] Generate `august-25-countdown.jpg`
 - [ ] Build fallback images for all categories
 
 ### **Phase 3: Platform Integration** 📋
@@ -249,7 +249,7 @@ Link in bio to learn more and take action.
 ### **DO's**
 - ✅ Lead with emotional impact ("Mental age 15")
 - ✅ Use authority figures (Tony Dungy)
-- ✅ Create urgency (July 28th deadline)
+- ✅ Create urgency (August 25th, 2025 deadline)
 - ✅ Make it personal ("What if your son...")
 - ✅ Include specific facts (25 vs 5-7 years)
 

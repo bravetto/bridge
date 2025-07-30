@@ -284,7 +284,7 @@ Next Steps:
 ### Social Media Integration
 - Auto-generated social posts upon sending
 - Share templates for Twitter/Facebook
-- Hashtag strategy: #JAHmereFreedom #July28th #BridgeProject
+- Hashtag strategy: #JAHmereFreedom #August25th #BridgeProject
 - Tag relevant accounts: @TonyDungy, local news, advocacy groups
 
 ### Email Marketing

@@ -1,5 +1,5 @@
 ---
-ai_tags: ["typescript", "next-js", "commands", "july-28-deadline"]
+ai_tags: ["typescript", "next-js", "commands", "august-25-deadline"]
 ai_priority: "medium"
 ai_context_type: "reference"
 verification_status: "unverified"
@@ -9,10 +9,10 @@ last_verified: "2025-07-28"
 # AI Context - DO NOT DELETE
 
 ## What This Project Is
-- **Production advocacy site** for JAHmere Webb's July 28th court date (STABLE - DO NOT BREAK)
+- **Production advocacy site** for JAHmere Webb's August 25th, 2025 court date (STABLE - DO NOT BREAK)
 - Next.js 15.4.2 App Router architecture
 - ~482 TypeScript files, 0 errors maintained
-- Deployed on Vercel: july28freedom.vercel.app
+- Deployed on Vercel: august25freedom.vercel.app
 
 ## Critical Paths (DO NOT CHANGE WITHOUT TESTING)
 1. `/src/app` - App Router pages (97 routes)
@@ -34,7 +34,7 @@ last_verified: "2025-07-28"
 - TypeScript strict mode with 0 errors ✅
 
 ## If AI Suggests Breaking Changes
-1. Ask: "Will this break the July 28th deadline functionality?"
+1. Ask: "Will this break the August 25th, 2025 deadline functionality?"
 2. Test with `npm run build` and `npm run type-check`
 3. Make changes one file at a time
 4. Never change package versions without explicit approval

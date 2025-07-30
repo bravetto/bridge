@@ -250,7 +250,7 @@ function ContactPage() {
                     Follow JAHmere's case and get updates on court proceedings and advocacy efforts.
                   </p>
                   <p className="text-sm text-purple-600">
-                    Court Date: <strong>July 28th</strong> - Your support matters now more than ever.
+                    Court Date: <strong>August 25th, 2025</strong> - Your support matters now more than ever.
                   </p>
                 </div>
               </div>

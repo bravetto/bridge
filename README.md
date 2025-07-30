@@ -1,5 +1,5 @@
 ---
-ai_tags: ["typescript", "next-js", "react", "commands", "july-28-deadline"]
+ai_tags: ["typescript", "next-js", "react", "commands", "august-25-deadline"]
 ai_priority: "medium"
 ai_context_type: "reference"
 verification_status: "unverified"
@@ -30,7 +30,7 @@ The JAHmere Webb Freedom Portal is an advocacy website that:
 - Facilitates petition and letter-writing campaigns
 - Educates about criminal justice reform
 
-**Target court date**: July 28, 2025
+**Target court date**: August 25th, 2025
 
 ## Tech Stack
 
@@ -69,7 +69,7 @@ npm run lint       # ESLint check
 
 ## Deployment
 
-The app is deployed on Vercel at `july28freedom.vercel.app`
+The app is deployed on Vercel at `august25freedom.vercel.app`
 
 Production deployment automatically happens on push to main branch.
 

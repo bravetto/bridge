@@ -18,7 +18,7 @@ Orlando, FL 32801
 
 **Dear Judge Ferrero,**
 
-My name is [YOUR NAME] from [YOUR CITY]. I am writing about JAHmere Webb, who faces sentencing on July 28th.
+My name is [YOUR NAME] from [YOUR CITY]. I am writing about JAHmere Webb, who faces sentencing on August 25th, 2025.
 
 **[CHOOSE ONE PERSONAL CONNECTION:]**
 - As a parent, I cannot imagine my child with developmental delays spending 11 years in prison
@@ -250,5 +250,5 @@ Orange County Courthouse
 Orlando, FL 32801
 
 **Email:** [Include if available]
-**Deadline:** Before July 28th court date
+**Deadline:** Before August 25th, 2025 court date
 **Subject Line:** Always include case number #2021-CF-007843 

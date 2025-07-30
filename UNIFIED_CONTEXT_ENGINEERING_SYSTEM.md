@@ -1,5 +1,5 @@
 ---
-ai_tags: ["typescript", "next-js", "react", "commands", "july-28-deadline"]
+ai_tags: ["typescript", "next-js", "react", "commands", "august-25-deadline"]
 ai_priority: "medium"
 ai_context_type: "reference"
 verification_status: "unverified"
@@ -9,7 +9,7 @@ last_verified: "2025-07-28"
 # 🏆 UNIFIED CONTEXT ENGINEERING SYSTEM (UCES)
 **Battle-Tested Pragmatic Engineering • Synchronized Alignment • Championship Excellence**
 
-*"Pragmatic excellence trumps technical perfection in service of the July 28th mission."*
+*"Pragmatic excellence trumps technical perfection in service of the August 25th, 2025 mission."*
 
 ---
 
@@ -43,7 +43,7 @@ last_verified: "2025-07-28"
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    🎯 MISSION LAYER                         │
-│  JAHmere Webb Freedom • July 28th Deadline • Justice       │
+│  JAHmere Webb Freedom • August 25th, 2025 Deadline • Justice       │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
 │                  🧠 CONTEXT INTELLIGENCE                    │
@@ -333,7 +333,7 @@ interface UnifiedScript {
   
   // Mission Alignment
   businessImpact: ImpactLevel;
-  july28Relevance: boolean;
+  august25Relevance: boolean;
   userExperienceEffect: UXImpact;
 }
 ```
@@ -367,8 +367,8 @@ function measure_performance() {
 
 # Mission Alignment Check
 function check_mission_alignment() {
-  echo "🎯 Verifying July 28th mission alignment..."
-  if [[ "$1" != *"july28"* ]] && [[ "$1" != *"freedom"* ]] && [[ "$1" != *"advocacy"* ]]; then
+  echo "🎯 Verifying August 25th, 2025 mission alignment..."
+  if [[ "$1" != *"august25"* ]] && [[ "$1" != *"freedom"* ]] && [[ "$1" != *"advocacy"* ]]; then
     echo "⚠️  Warning: Operation may not align with core mission"
     read -p "Continue anyway? (y/N): " -n 1 -r
     echo
@@ -492,7 +492,7 @@ interface UnifiedMetrics {
   advocacyMetrics: {
     userEngagement: number;
     conversionRate: number;
-    july28Readiness: number;
+    august25Readiness: number;
   };
 }
 ```
@@ -502,8 +502,8 @@ interface UnifiedMetrics {
 class UnifiedAlertSystem {
   // Intelligent alert prioritization
   assessAlert(metric: Metric, context: SystemContext): AlertPriority {
-    // Mission-critical alerts (July 28th deadline)
-    if (this.affectsJuly28Mission(metric)) {
+    // Mission-critical alerts (August 25th, 2025 deadline)
+    if (this.affectsAugust25Mission(metric)) {
       return 'CRITICAL';
     }
     
@@ -536,7 +536,7 @@ class UnifiedAlertSystem {
 # Component Documentation Template
 
 ## Purpose & Context
-- **Mission Alignment**: How does this serve July 28th advocacy?
+- **Mission Alignment**: How does this serve August 25th, 2025 advocacy?
 - **User Impact**: What user problem does this solve?
 - **Business Value**: Why does this component exist?
 
@@ -553,7 +553,7 @@ class UnifiedAlertSystem {
 // Complex case (still manageable)
 <AdvocacyButton
   variant="urgent"
-  context={{ purpose: 'petition', deadline: 'july28' }}
+  context={{ purpose: 'petition', deadline: 'august25' }}
   analytics={{ track: 'cta_click', campaign: 'freedom' }}
 >
   Sign Petition Now
@@ -599,7 +599,7 @@ test('advocacy button completes user journey', async () => {
 - [ ] Fine-tune performance monitoring
 - [ ] Optimize error recovery patterns
 - [ ] Enhance context-aware decision making
-- [ ] Complete July 28th mission alignment verification
+- [ ] Complete August 25th, 2025 mission alignment verification
 
 ### **Phase 4: Championship (Week 4)**
 - [ ] Achieve <7ms API responses consistently
@@ -626,7 +626,7 @@ test('advocacy button completes user journey', async () => {
 - **Damage Containment**: Failures don't cascade across system
 
 ### **Mission Alignment**
-- **July 28th Readiness**: All critical paths validated
+- **August 25th, 2025 Readiness**: All critical paths validated
 - **Advocacy Effectiveness**: User engagement and conversion optimized
 - **Community Impact**: Platform successfully supports freedom movement
 - **System Reliability**: Zero downtime during critical advocacy periods
@@ -658,7 +658,7 @@ interface PrincipleEvolution {
 - **Pattern Recognition**: AI agents learn from successful implementations
 - **Failure Analysis**: Extract lessons from errors and recovery patterns
 - **Performance Optimization**: Continuous improvement based on metrics
-- **Mission Alignment**: Refine context awareness for July 28th success
+- **Mission Alignment**: Refine context awareness for August 25th, 2025 success
 
 ---
 
@@ -666,4 +666,4 @@ interface PrincipleEvolution {
 
 **ENGINEERING PHILOSOPHY**: *"We absorb complexity so users experience simplicity, measure everything so performance is guaranteed, and test behavior so confidence is earned."*
 
-**MISSION COMMITMENT**: *"Every line of code, every test, every optimization serves JAHmere Webb's freedom and the July 28th deadline."* 
+**MISSION COMMITMENT**: *"Every line of code, every test, every optimization serves JAHmere Webb's freedom and the August 25th, 2025 deadline."* 
