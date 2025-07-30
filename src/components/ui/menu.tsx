@@ -37,8 +37,14 @@ function MenuComponent({
 }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [isHydrated, setIsHydrated] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
+
+  // Prevent hydration mismatch by only showing animations after hydration
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -130,7 +136,8 @@ function MenuComponent({
         <div
           ref={menuRef}
           className={cn(
-            "absolute z-50 min-w-[240px] rounded-xl overflow-hidden animate-in fade-in-0 zoom-in-95 duration-200",
+            "absolute z-50 min-w-[240px] rounded-xl overflow-hidden",
+            isHydrated && "animate-in fade-in-0 zoom-in-95 duration-200",
             menuVariants[variant],
             positionClasses[position]
           )}
@@ -272,6 +279,12 @@ function NavBarComponent({
   variant = 'default'
 }: NavBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  // Prevent hydration mismatch by only showing animations after hydration
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   const navVariants = {
     default: 'bg-white border-b border-gray-200',
@@ -326,12 +339,17 @@ function NavBarComponent({
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden animate-in slide-in-from-top-1 duration-200">
+          <div className={cn(
+            "md:hidden",
+            isHydrated && "animate-in slide-in-from-top-1 duration-200"
+          )}>
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
               {menuItems.map((item, index) => (
                 <div
                   key={item.id}
-                  className="animate-in slide-in-from-left-1 duration-200"
+                  className={cn(
+                    isHydrated && "animate-in slide-in-from-left-1 duration-200"
+                  )}
                 >
                   {item.href ? (
                     <Link
