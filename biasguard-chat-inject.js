@@ -1,5 +1,9 @@
 // BiasGuard Chat Button Injector - JAHmere Webb Mission Enhanced
 ;(() => {
+  // 🔄 PATTERN TRACKING - Prevent neural howlround
+  let recentPatterns = []
+  let recentInputs = []
+  
   function findChatInput() {
     const selectors = ['textarea[placeholder*="message"]','textarea[placeholder*="chat"]','textarea[placeholder*="ask"]','div[contenteditable="true"]','.chat-input','.message-input','[data-testid*="chat"]','[role="textbox"]']
     for (const selector of selectors) {
@@ -12,6 +16,21 @@
   function quickBias(text) {
     let score = 0
     const problems = []
+    
+    // 🚫 SCOPE PROTECTION - Block accessibility pattern detection
+    if (/accessibility|contrast|gradient|WCAG|bg-gradient|color.?theory|typography|visual.?design|ui.?pattern/i.test(text)) {
+      return `[BiasGuard JAHmere] 🚫 SCOPE VIOLATION\nAccessibility patterns detected. BiasGuard focuses on engineering bias detection only.\n\n💡 For accessibility issues, use dedicated accessibility tools.`
+    }
+    
+    // 🔄 HOWLROUND PREVENTION - Detect repetitive patterns
+    const inputHash = text.toLowerCase().replace(/\s+/g, ' ').trim()
+    if (recentInputs.includes(inputHash)) {
+      return `[BiasGuard JAHmere] 🔄 PATTERN LOOP DETECTED\nRepeated input detected. Varying analysis to prevent bias reinforcement.\n\n💡 Try rephrasing or analyzing different content.`
+    }
+    
+    // Track recent inputs (keep last 5)
+    recentInputs.push(inputHash)
+    if (recentInputs.length > 5) recentInputs.shift()
     
     // 🎯 MISSION-CRITICAL PATTERNS (JAHmere Webb Project)
     if (/court.?date/i.test(text)) { 
@@ -30,6 +49,21 @@
     if (/mandato/i.test(text)) { score += 20; problems.push('👑 Authority Bias') }
     if (/obvious|simpl|easil/i.test(text)) { score += 15; problems.push('🤔 Assumption Bias') }
     
+    // 🎲 DIVERSITY INJECTION - Ensure varied bias detection
+    const diversityBiases = [
+      { pattern: /sunk.?cost|already.?spent|invested.?time/i, message: '💸 SUNK COST FALLACY - Past investment doesn\'t justify continuing' },
+      { pattern: /not.?invented.?here|external.?solution|third.?party/i, message: '🏠 NOT INVENTED HERE - Consider proven external solutions' },
+      { pattern: /premature.?optim|performance.?first|micro.?optim/i, message: '⚡ PREMATURE OPTIMIZATION - Profile before optimizing' },
+      { pattern: /analysis.?paralysis|more.?research|need.?to.?study/i, message: '🔄 ANALYSIS PARALYSIS - Start with MVP and iterate' }
+    ]
+    
+    // Apply diversity patterns (rotate to prevent fixation)
+    const currentTime = Math.floor(Date.now() / 60000) // Change every minute
+    const selectedBias = diversityBiases[currentTime % diversityBiases.length]
+    if (selectedBias.pattern.test(text)) {
+      score += 20; problems.push(selectedBias.message)
+    }
+    
     // 🎨 DESIGN SYSTEM PATTERNS
     if (/animation|transition|effect/i.test(text)) { 
       score += 20; problems.push('✨ ANIMATION TRAP - CSS-only, performance first') 
@@ -39,20 +73,26 @@
     }
     
     // 🛡️ MISSION ALIGNMENT CHECK
-    if (!/letter|witness|judge|freedom|support/i.test(text) && text.length > 100) {
-      score += 15; problems.push('🎯 MISSION DRIFT - Does this serve JAHmere\'s case?')
+    if (!/letter|witness|judge|freedom|support|engineering|development|code|bias|technical|architecture/i.test(text) && text.length > 100) {
+      score += 25; problems.push('🎯 MISSION DRIFT - Focus on JAHmere Webb engineering decisions and bias detection')
     }
     
-    const level = score < 30 ? '🟢 GOOD' : score < 60 ? '🟡 BIAS' : '🔴 FIX'
+    // 🎚️ CONFIDENCE LIMITING - Prevent overconfidence bias
+    const maxScore = Math.min(score, 85) // Never claim >85% certainty
+    if (score > maxScore) {
+      problems.push('🎚️ CONFIDENCE LIMITED - Maintaining healthy uncertainty')
+    }
+    
+    const level = maxScore < 30 ? '🟢 GOOD' : maxScore < 60 ? '🟡 BIAS' : '🔴 FIX'
     const missionContext = problems.some(p => p.includes('⏰') || p.includes('🎯')) ? '\n🚨 MISSION-CRITICAL BIAS DETECTED' : ''
     
-    return `[BiasGuard JAHmere] ${level} (${Math.min(score, 100)}%)\n${problems.join(' | ')}${missionContext}`
+    return `[BiasGuard JAHmere] ${level} (${maxScore}%)\n${problems.join(' | ')}${missionContext}`
   }
   
   function createBiasGuardButton() {
     const btn = document.createElement('button')
     btn.innerHTML = '🛡️'
-    btn.title = 'BiasGuard JAHmere - Mission-focused bias detection'
+    btn.title = 'BiasGuard JAHmere - Engineering bias detection ONLY (not accessibility)'
     btn.style.cssText = `background:linear-gradient(45deg,#2563eb,#7c3aed);color:white;border:none;border-radius:6px;padding:8px 12px;margin:0 5px;cursor:pointer;font-size:14px;font-weight:bold;box-shadow:0 4px 12px rgba(37,99,235,0.3);transition:all 0.2s;position:relative`
     
     // Mission indicator pulse
