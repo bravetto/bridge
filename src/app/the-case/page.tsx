@@ -3,29 +3,71 @@ import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { Heading, Text } from '@/components/ui/typography'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
+
+
 
 export const metadata: Metadata = {
   title: 'The Case - JAHmere Webb Freedom Portal',
-  description: 'The legal facts: Why JAHmere deserves treatment, not more prison. 11 years served, $294,000 taxpayer savings possible.',
+  description: 'The legal facts: Why JAHmere deserves treatment, not more prison. 12 years in system since 2013, $294,000 taxpayer savings possible.',
 }
 
-export default function TheCasePage() {
+function TheCasePage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+              <div className="bg-blue-700 text-white py-16 shadow-lg">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             The Facts: Why JAHmere Deserves Treatment, Not More Prison
           </Heading>
-          <Text size="xl" variant="inverse" className="text-blue-100">
-            11 years served. $294,000 taxpayer savings possible. 176% less crime with treatment.
+          <Text size="xl" variant="inverse" className="text-white">
+            12 years in system since 2013. $294,000 taxpayer savings possible. 176% less crime with treatment.
           </Text>
         </Container>
       </div>
 
       <Container size="lg" className="py-12">
+        {/* Legal Case Information */}
+        <section className="mb-16">
+          <div className="bg-blue-50 p-8 rounded-lg border border-blue-200">
+            <Heading as="h2" size="h2" className="mb-4 text-blue-900">
+              JAHmere Webb's Case Details
+            </Heading>
+            <Text className="text-blue-700 mb-4">
+              Complete information about JAHmere's legal situation and the path forward to August 25th, 2025.
+            </Text>
+            <div className="grid md:grid-cols-3 gap-6 mb-6">
+              <div>
+                <h4 className="font-semibold text-blue-700 mb-2">Case Details</h4>
+                <ul className="text-sm space-y-1 text-gray-700">
+                  <li><strong>Case Number:</strong> #2021-CF-007843</li>
+                  <li><strong>Court:</strong> Alachua County, FL</li>
+                  <li><strong>Judge:</strong> Hon. Denise R. Ferrero</li>
+                  <li><strong>Status:</strong> Sentencing Phase</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-700 mb-2">Key Dates</h4>
+                <ul className="text-sm space-y-1 text-gray-700">
+                  <li><strong>Arrest:</strong> 2013 (Age 21)</li>
+                  <li><strong>Evaluation:</strong> 2013 Psychological Assessment</li>
+                  <li><strong>Current:</strong> 12 years in system since 2013</li>
+                  <li><strong>Potential:</strong> Treatment alternative available</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-700 mb-2">Legal Framework</h4>
+                <ul className="text-sm space-y-1 text-gray-700">
+                  <li><strong>Statute:</strong> Florida 10-20-Life Law</li>
+                  <li><strong>Enhancement:</strong> Firearm provisions</li>
+                  <li><strong>Consideration:</strong> Developmental disabilities</li>
+                  <li><strong>Alternative:</strong> Treatment-based sentencing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Case Overview */}
         <section className="mb-16">
           <div className="bg-gray-50 p-8 rounded-lg mb-8">
@@ -36,7 +78,7 @@ export default function TheCasePage() {
                 <ul className="space-y-2 text-gray-700">
                   <li><strong>Age at arrest:</strong> 21 (documented mental age of 15)</li>
                   <li><strong>Sentence:</strong> 25 years (typical: 5-7 years)</li>
-                  <li><strong>Time served:</strong> 11 years (44% of sentence)</li>
+                  <li><strong>Time in system:</strong> 12 years since 2013 (served approximately 2 years total)</li>
                   <li><strong>Current age:</strong> 32</li>
                 </ul>
               </div>
@@ -119,8 +161,8 @@ export default function TheCasePage() {
         {/* The Bridge Project Solution */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">The Bridge Project: Evidence-Based Treatment</h2>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-lg">
-            <p className="text-lg text-gray-700 mb-6">
+          <div className="bg-blue-50 p-8 rounded-lg border border-blue-200">
+            <p className="text-lg text-gray-900 mb-6">
               JAHmere has co-founded an innovative treatment program that transforms his lived experience into community healing. 
               The Bridge Project represents exactly the kind of evidence-based alternative that Judge Ferrero can authorize.
             </p>
@@ -159,7 +201,7 @@ export default function TheCasePage() {
         {/* Tony Dungy's Endorsement */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Champion Endorsement</h2>
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-lg">
+          <div className="bg-blue-700 text-white p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4">
                 <svg className="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -172,7 +214,7 @@ export default function TheCasePage() {
               </div>
             </div>
             <blockquote className="text-xl italic mb-4">
-              "JAHmere befriended my son when no one else would. He has proven that transformation is real. 
+              "JAHmere befriended my son during a difficult time. He has proven that transformation is real. 
               His freedom will create pathways for thousands of others to cross from struggle to success."
             </blockquote>
             <p className="text-blue-200">
@@ -230,18 +272,55 @@ export default function TheCasePage() {
                 </div>
                 <div className="bg-white p-4 rounded border-l-4 border-orange-500">
                   <h4 className="font-semibold text-orange-700">Time Served</h4>
-                  <p className="text-sm text-gray-600">11 years exceeds typical sentences by 57-120%</p>
+                  <p className="text-sm text-gray-600">12 years in system - time for treatment alternative</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Supporting Documentation */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Supporting Documentation</h2>
+          <div className="bg-gray-50 p-8 rounded-lg">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4 text-blue-600">Legal Precedents</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li><strong>ADA Compliance:</strong> Courts must consider developmental disabilities in sentencing</li>
+                  <li><strong>8th Amendment:</strong> Excessive punishment prohibition applies to disabled individuals</li>
+                  <li><strong>Treatment Alternatives:</strong> Evidence-based programs reduce recidivism by 13-40%</li>
+                  <li><strong>Cost-Benefit:</strong> Treatment programs save taxpayers significant resources</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4 text-green-600">Evidence Base</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li><strong>2013 Psychological Report:</strong> Documented developmental delays and treatment recommendations</li>
+                  <li><strong>Character Witnesses:</strong> 14 community members supporting treatment approach</li>
+                  <li><strong>Bridge Project:</strong> Structured treatment program with 24/7 supervision</li>
+                  <li><strong>Expert Support:</strong> Tony Dungy and professional advocates backing case</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 bg-blue-100 rounded-lg border-l-4 border-blue-500">
+              <h4 className="font-semibold text-blue-800 mb-2">Legal Standard for Consideration</h4>
+              <p className="text-blue-700 text-sm">
+                Florida courts have discretion to consider mitigating factors including developmental disabilities, 
+                time served, rehabilitation potential, and community support when determining appropriate sentences. 
+                The Bridge Project represents a viable alternative that addresses public safety while providing 
+                evidence-based treatment for underlying conditions.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-12 rounded-lg">
+          <div className="bg-blue-700 text-white p-12 rounded-lg shadow-lg border-l-4 border-green-500">
             <h2 className="text-3xl font-bold mb-6">The Facts Are Clear - Now Add Your Voice</h2>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-white">
               Judge Ferrero has the legal authority to choose treatment over continued warehousing. 
               Your letter can help her make the right decision.
             </p>
@@ -264,4 +343,6 @@ export default function TheCasePage() {
       </Container>
     </PageLayout>
   )
-} 
+}
+
+export default TheCasePage 

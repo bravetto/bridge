@@ -1,7 +1,18 @@
 /* 🏆 UNIFIED DESIGN SYSTEM - Single Source of Truth */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* CSS Cascade Layers - Expert-Recommended Solution for Specificity Conflicts */
+@layer tw-base, tw-components, tw-utilities;
+
+@layer tw-base {
+  @tailwind base;
+}
+
+@layer tw-components {
+  @tailwind components;
+}
+
+@layer tw-utilities {
+  @tailwind utilities;
+}
 
 /* 🎯 DESIGN TOKEN SYSTEM - JAHmere Webb Freedom Portal */
 :root {
@@ -48,8 +59,8 @@
   
   /* Text */
   --text-primary: var(--blue-900);
-  --text-secondary: var(--blue-700);
-  --text-muted: var(--blue-600);
+  --text-secondary: var(--blue-800);
+  --text-muted: var(--blue-700);
   --text-inverse: #ffffff;
   
   /* States */
@@ -130,6 +141,7 @@
 }
 
 /* 🚀 BATTLE-TESTED ANIMATION SYSTEM - Hardware Accelerated */
+@layer tw-components {
 
 /* Foundation Animations - Phase 2A */
 .slide-up {
@@ -227,17 +239,14 @@
   }
 }
 
-/* Blue-themed Gradient Animations */
-.blue-gradient-hero {
-  background: linear-gradient(135deg, var(--blue-50) 0%, white 50%, var(--blue-100) 100%);
-  background-size: 200% 200%;
-  animation: blueShimmer 8s ease-in-out infinite;
+/* Blue-themed Solid Color Backgrounds - Zero Gradients Policy */
+.blue-hero-bg {
+  background: var(--blue-50); /* SOLID COLOR ONLY */
+  transition: background-color var(--animation-speed-normal) var(--animation-ease);
 }
 
-@keyframes blueShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.blue-hero-bg:hover {
+  background: var(--blue-100); /* SOLID COLOR TRANSITION */
 }
 
 .blue-pulse {
@@ -255,9 +264,9 @@
 
 /* 🎨 COMPONENT SYSTEM - Production-Ready Patterns */
 
-/* Global Application */
+/* Global Application - Solid Color Only */
 body {
-  background: linear-gradient(135deg, var(--surface) 0%, white 100%);
+  background: var(--surface); /* SOLID COLOR ONLY - NO GRADIENTS */
   color: var(--text-primary);
   transition: background-color var(--animation-speed-normal) var(--animation-ease);
 }
@@ -408,6 +417,157 @@ a:hover {
   outline-offset: 2px;
 }
 
+/* === MOBILE TOUCH TARGET OPTIMIZATION === */
+/* WCAG 2.1 AA: Minimum 44x44px touch targets */
+@media (max-width: 768px) {
+  /* Ensure all interactive elements meet minimum touch target size */
+  button, 
+  [role="button"], 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"],
+  a[href],
+  select,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+    /* Add padding if content is smaller than minimum */
+    padding: max(12px, var(--space-sm)) max(16px, var(--space-md));
+  }
+
+  /* Mobile menu and navigation optimizations */
+  .mobile-menu-button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px;
+    /* Larger touch area for primary navigation */
+  }
+
+  /* Mobile navigation links */
+  .mobile-nav-link {
+    min-height: 48px;
+    padding: 14px 16px;
+    /* Increased vertical padding for easier tapping */
+  }
+
+  /* Form inputs on mobile */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="url"],
+  textarea,
+  select {
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  /* Radio buttons and checkboxes */
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    /* Wrapper should provide the 44px touch area */
+  }
+
+  /* Radio/checkbox wrapper for larger touch area */
+  .touch-target-wrapper {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  /* CTA buttons get extra attention */
+  .btn-primary,
+  .btn-secondary {
+    min-height: 48px;
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  /* Mobile CTA enhancements */
+  .mobile-cta-primary {
+    min-height: 56px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    /* High contrast for better visibility */
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-cta-primary:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+  }
+
+  .mobile-cta-secondary {
+    min-height: 48px;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    background: white;
+    color: #1f2937;
+    border: 2px solid #e5e7eb;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-cta-secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* CTA group spacing for mobile */
+  .mobile-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .mobile-cta-group > * {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Responsive CTA adjustments */
+  @media (min-width: 768px) {
+    .mobile-cta-group {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .mobile-cta-group > * {
+      width: auto;
+      flex: 0 0 auto;
+    }
+  }
+
+  /* Ensure adequate spacing between touch targets */
+  .touch-spacing > * + * {
+    margin-top: 8px;
+  }
+
+  .touch-spacing-horizontal > * + * {
+    margin-left: 8px;
+  }
+}
+
 /* Glass Card Compatibility */
 .glass-card-v10 {
   background: rgba(255, 255, 255, 0.1);
@@ -420,3 +580,5 @@ a:hover {
 .animate-pulse {
   animation: none;
 }
+
+} /* End tw-components layer */

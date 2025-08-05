@@ -1,0 +1,467 @@
+{
+  "files": [
+    "src/agents/bias-detection/biasguard-integration.ts",
+    "src/agents/bias-detection/biasguard-methodology-v1.ts",
+    "src/agents/bias-detection/cursor-extension-core.js",
+    "src/agents/bias-detection/cursor-extension-core.ts",
+    "src/agents/bias-detection/enhanced-pattern-detector.ts",
+    "src/agents/bias-detection/unified-biasguard.ts",
+    "src/agents/core/agent-orchestrator.js",
+    "src/agents/core/agent-orchestrator.ts",
+    "src/agents/core/aria-protocol.js",
+    "src/agents/core/aria-protocol.ts",
+    "src/agents/core/pattern-blindness-detector.js",
+    "src/agents/core/pattern-blindness-detector.ts",
+    "src/agents/core/runtime-error-detector.ts",
+    "src/agents/dashboard/performance-monitor.tsx",
+    "src/agents/scripts/check-hooks-safety.ts",
+    "src/app/bridge-project/page.tsx",
+    "src/app/contact/__tests__/page.test.tsx",
+    "src/app/contact/page.tsx",
+    "src/app/design-system/page.tsx",
+    "src/app/global-error.tsx",
+    "src/app/layout.tsx",
+    "src/app/metadata.ts",
+    "src/app/page.tsx",
+    "src/app/the-case/page.tsx",
+    "src/app/witnesses/page.tsx",
+    "src/app/write-letter/page.tsx",
+    "src/components/layout/site-navigation.tsx",
+    "src/components/ui/badge.tsx",
+    "src/components/ui/button.tsx",
+    "src/components/ui/card.tsx",
+    "src/components/ui/container.tsx",
+    "src/components/ui/error-boundary.tsx",
+    "src/components/ui/input.tsx",
+    "src/components/ui/menu.tsx",
+    "src/components/ui/radio-group.tsx",
+    "src/components/ui/textarea.tsx",
+    "src/components/ui/typography.tsx",
+    "src/lib/utils.ts",
+    "src/setupTests.ts",
+    "src/test-utils/index.tsx",
+    "src/test-utils/mocks/handlers.ts",
+    "src/test-utils/mocks/server.ts"
+  ],
+  "relationships": {
+    "src/agents/bias-detection/biasguard-integration.ts": {
+      "imports": [
+        "@/lib/biasguard-context-manager",
+        "./unified-biasguard"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/bias-detection/biasguard-methodology-v1.ts": {
+      "imports": [
+        "./unified-biasguard"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/bias-detection/cursor-extension-core.js": {
+      "imports": [],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/bias-detection/cursor-extension-core.ts": {
+      "imports": [
+        "../core/aria-protocol",
+        "../core/agent-orchestrator"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/bias-detection/enhanced-pattern-detector.ts": {
+      "imports": [
+        "../core/aria-protocol"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/bias-detection/unified-biasguard.ts": {
+      "imports": [
+        "../core/aria-protocol"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/agent-orchestrator.js": {
+      "imports": [
+        "./runtime-error-detector"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/agent-orchestrator.ts": {
+      "imports": [
+        "./runtime-error-detector",
+        "./pattern-blindness-detector"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/aria-protocol.js": {
+      "imports": [],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/aria-protocol.ts": {
+      "imports": [],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/pattern-blindness-detector.js": {
+      "imports": [],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/pattern-blindness-detector.ts": {
+      "imports": [
+        "./aria-protocol"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/core/runtime-error-detector.ts": {
+      "imports": [
+        "fs/promises",
+        "path",
+        "glob",
+        "@/lib/logger"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/dashboard/performance-monitor.tsx": {
+      "imports": [
+        "react",
+        "@/components/ui/card"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/agents/scripts/check-hooks-safety.ts": {
+      "imports": [
+        "fs/promises",
+        "glob"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/bridge-project/page.tsx": {
+      "imports": [
+        "next/link",
+        "@/components/ui/error-boundary",
+        "@/components/ui/typography",
+        "@/components/ui/card",
+        "@/components/ui/container",
+        "@/components/ui/button"
+      ],
+      "type": "page",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/app/contact/__tests__/page.test.tsx": {
+      "imports": [
+        "@/test-utils",
+        "../page"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/contact/page.tsx": {
+      "imports": [
+        "react",
+        "next/link",
+        "@/components/ui/error-boundary",
+        "@/components/layout/site-navigation",
+        "@/components/ui/typography",
+        "@/components/ui/card",
+        "@/components/ui/container",
+        "@/components/ui/button"
+      ],
+      "type": "page",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/app/design-system/page.tsx": {
+      "imports": [
+        "react",
+        "@/components/ui/button",
+        "@/components/ui/card",
+        "@/components/ui/container",
+        "@/components/ui/typography",
+        "@/components/ui/input",
+        "@/components/ui/textarea",
+        "@/components/ui/radio-group",
+        "@/components/ui/badge",
+        "@/components/ui/menu",
+        "@/components/ui/error-boundary",
+        "@/components/layout/site-navigation",
+        "@/components/ui/menu"
+      ],
+      "type": "page",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/app/global-error.tsx": {
+      "imports": [],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/layout.tsx": {
+      "imports": [
+        "next",
+        "next/font/google",
+        "@/components/layout/site-navigation"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/metadata.ts": {
+      "imports": [
+        "next"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/page.tsx": {
+      "imports": [
+        "next",
+        "next/link",
+        "@/components/ui/typography",
+        "@/components/ui/card",
+        "@/components/ui/button",
+        "@/components/ui/container"
+      ],
+      "type": "page",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/the-case/page.tsx": {
+      "imports": [
+        "next",
+        "next/link",
+        "@/components/layout/site-navigation",
+        "@/components/ui/typography",
+        "@/components/ui/container",
+        "@/components/ui/button"
+      ],
+      "type": "page",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/witnesses/page.tsx": {
+      "imports": [
+        "react",
+        "next",
+        "next/link",
+        "@/components/layout/site-navigation",
+        "@/components/ui/typography",
+        "@/components/ui/card",
+        "@/components/ui/container",
+        "@/components/ui/button"
+      ],
+      "type": "page",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/app/write-letter/page.tsx": {
+      "imports": [
+        "react",
+        "next/link",
+        "@/components/ui/error-boundary",
+        "@/components/layout/site-navigation",
+        "@/components/ui/typography",
+        "@/components/ui/card",
+        "@/components/ui/container",
+        "@/components/ui/button"
+      ],
+      "type": "page",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/components/layout/site-navigation.tsx": {
+      "imports": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "@/components/ui/menu",
+        "@/components/ui/error-boundary"
+      ],
+      "type": "component",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/components/ui/badge.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/button.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/card.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/container.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/error-boundary.tsx": {
+      "imports": [
+        "react"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": true,
+      "usesCn": false
+    },
+    "src/components/ui/input.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/menu.tsx": {
+      "imports": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "@/lib/utils",
+        "@/components/ui/error-boundary"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": true,
+      "usesCn": true
+    },
+    "src/components/ui/radio-group.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/textarea.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/components/ui/typography.tsx": {
+      "imports": [
+        "react",
+        "@/lib/utils"
+      ],
+      "type": "ui",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/lib/utils.ts": {
+      "imports": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "type": "utility",
+      "hasErrorBoundary": false,
+      "usesCn": true
+    },
+    "src/setupTests.ts": {
+      "imports": [
+        "./lib/unified-logger",
+        "./test-utils/mocks/server"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/test-utils/index.tsx": {
+      "imports": [
+        "react",
+        "@testing-library/react",
+        "@/components/animation-context"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/test-utils/mocks/handlers.ts": {
+      "imports": [
+        "msw"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    },
+    "src/test-utils/mocks/server.ts": {
+      "imports": [
+        "msw/node",
+        "./handlers"
+      ],
+      "type": "other",
+      "hasErrorBoundary": false,
+      "usesCn": false
+    }
+  },
+  "essentials": {
+    "universalUtils": "src/lib/utils.ts",
+    "errorBoundary": "src/components/ui/error-boundary.tsx",
+    "mainPage": "src/app/page.tsx",
+    "layout": "src/app/layout.tsx",
+    "mostImported": [
+      "@/lib/utils",
+      "@/components/ui/card",
+      "@/components/ui/typography",
+      "@/components/ui/container",
+      "@/components/ui/button"
+    ]
+  }
+}

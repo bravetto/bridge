@@ -26,7 +26,7 @@ Facts + humanity = action
 
 "Three co-founders: JAHmere Webb, Jordan Dungy, Michael Mataluni"
 
-"Tony Dungy: 'JAHmere befriended my son when no one else would.'"
+"Tony Dungy: 'JAHmere befriended my son during a difficult time.'"
 
 "Retweet to amplify JAHmere's story"
 ```

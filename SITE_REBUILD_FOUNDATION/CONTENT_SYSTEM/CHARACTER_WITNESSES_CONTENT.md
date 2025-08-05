@@ -6,7 +6,7 @@
 ### 1. TONY DUNGY
 **NFL Hall of Fame Coach • Super Bowl Champion • 2.1M Twitter Followers**
 
-**Quote**: "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation."
+**Quote**: "JAHmere befriended my son Jordan during a difficult time. He has the purest heart - just needs the right support. I believe strongly in his potential for positive change."
 
 **Background**: 
 - First African American head coach to win a Super Bowl
@@ -15,7 +15,7 @@
 - Believes in second chances and transformation through faith
 - Personal connection through son Jordan's friendship with JAHmere
 
-**Why His Voice Matters**: When a Super Bowl-winning coach stakes his reputation on someone's character, it carries unprecedented weight. Tony Dungy's endorsement represents the credibility of authentic transformation.
+**Why His Voice Matters**: When a Super Bowl-winning coach expresses strong support for someone's character, it carries significant weight. Tony Dungy's endorsement represents credible support for authentic transformation.
 
 ---
 
@@ -106,7 +106,7 @@
 ### 7. DAVID MARTINEZ
 **Former Prosecutor • 25 Years Criminal Law**
 
-**Quote**: "I've prosecuted hundreds. JAHmere haunts me - clearly disabled, needing treatment. The system failed him. You can make it right."
+**Quote**: "I've prosecuted hundreds of cases. JAHmere's case stands out - clearly disabled, needing treatment. The system failed him. You can make it right."
 
 **Background**:
 - 25-year career as prosecutor in similar cases

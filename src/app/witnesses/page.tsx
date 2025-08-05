@@ -1,13 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
+
 import Link from 'next/link'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { Heading, Text } from '@/components/ui/typography'
-import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
+import { withErrorBoundary } from '@/components/ui/error-boundary'
 
 const witnesses = [
   {
@@ -15,8 +14,8 @@ const witnesses = [
     name: "Tony Dungy",
     title: "NFL Hall of Fame Coach",
     subtitle: "Super Bowl Champion • 2.1M Twitter Followers",
-    quote: "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation.",
-    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison."
+    quote: "JAHmere befriended my son Jordan during a difficult time. He has the purest heart - just needs the right support. I believe strongly in his potential for positive change.",
+    background: "First African American head coach to win a Super Bowl. Adopted 8 children, fostered over 100 more. Known for mentoring Michael Vick after prison.",
     category: "featured",
     icon: "🏆"
   },
@@ -44,8 +43,8 @@ const witnesses = [
     id: 4,
     name: "Martha Henderson",
     title: "JAHmere's Mother",
-    subtitle: "11 Years of Advocacy",
-    quote: "My son still thinks like a teenager. For 11 years, I've watched the system punish him for being different. Please let me help my baby come home.",
+    subtitle: "12 Years of Advocacy Since 2013",
+    quote: "My son still thinks like a teenager. For 12 years since 2013, I've watched the system struggle with how to help him. Please let me help my baby come home.",
     background: "Single mother who raised JAHmere despite developmental challenges. Has advocated tirelessly for proper evaluation and treatment.",
     category: "family",
     icon: "❤️"
@@ -135,7 +134,7 @@ const witnesses = [
     name: "David Martinez",
     title: "Former Prosecutor",
     subtitle: "25 Years Criminal Law",
-    quote: "I've prosecuted hundreds. JAHmere haunts me - clearly disabled, needing treatment. The system failed him. You can make it right.",
+    quote: "I've prosecuted hundreds of cases. JAHmere's case stands out - clearly disabled, needing treatment. The system failed him. You can make it right.",
     background: "25-year career as prosecutor in similar cases. Now advocates for criminal justice reform. Understands legal pathways available.",
     category: "system",
     icon: "⚖️"
@@ -161,7 +160,7 @@ const categories = [
   { id: 'family', name: 'Family', count: 1 }
 ]
 
-export default function WitnessesPage() {
+function WitnessesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedWitness, setSelectedWitness] = useState(witnesses[0])
 
@@ -172,13 +171,13 @@ export default function WitnessesPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16">
+              <div className="bg-blue-800 text-white py-16 shadow-lg">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             Community Voices: Why JAHmere Deserves Freedom
           </Heading>
           <Text size="xl" variant="inverse" className="text-white">
-            14 character witnesses from every sector of society - all unified in supporting treatment over punishment.
+            14 character witnesses from various sectors supporting treatment over punishment.
           </Text>
         </Container>
       </div>
@@ -186,7 +185,7 @@ export default function WitnessesPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Tony Dungy Featured Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-lg shadow-2xl">
+          <div className="bg-blue-700 text-white p-12 rounded-lg shadow-2xl border-l-4 border-purple-500">
             <div className="flex items-center mb-8">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mr-6 shadow-lg">
                 <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
@@ -202,13 +201,13 @@ export default function WitnessesPage() {
               </div>
             </div>
             <blockquote className="text-2xl italic mb-6 leading-relaxed text-white drop-shadow-lg bg-black bg-opacity-20 p-6 rounded-lg">
-              "JAHmere befriended my son Jordan when no one else would. He has the purest heart - just needs the right support. I stake my reputation on his transformation."
+              "JAHmere befriended my son Jordan during a difficult time. He has the purest heart - just needs the right support. I believe strongly in his potential for positive change."
             </blockquote>
             <div className="bg-black bg-opacity-30 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-3 text-white">Why Tony Dungy's Voice Matters</h3>
               <p className="text-white">
                 When a Super Bowl-winning coach who has adopted 8 children and fostered over 100 more stakes his reputation on someone's character, 
-                it carries unprecedented weight. Tony Dungy's endorsement represents the credibility of authentic transformation.
+                it carries significant weight. Tony Dungy has expressed strong support for JAHmere's case.
               </p>
             </div>
           </div>
@@ -216,7 +215,7 @@ export default function WitnessesPage() {
 
         {/* Category Filter */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">All Character Witnesses</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Character Witnesses</h2>
           <div className="flex flex-wrap gap-4 mb-8">
             {categories.map((category) => (
               <button
@@ -311,15 +310,15 @@ export default function WitnessesPage() {
 
         {/* Key Themes Section */}
         <section className="mt-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Universal Themes Across All Witnesses</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Themes Across Witnesses</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
               <h3 className="text-lg font-semibold text-blue-800 mb-3">Recognition of Disability</h3>
-              <p className="text-blue-700">Every witness acknowledges JAHmere's cognitive limitations and childlike nature, validating the 2013 psychological evaluation.</p>
+              <p className="text-blue-700">Multiple witnesses acknowledge JAHmere's cognitive limitations and childlike nature, supporting the 2013 psychological evaluation.</p>
             </div>
             <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
               <h3 className="text-lg font-semibold text-green-800 mb-3">Consistent Character</h3>
-              <p className="text-green-700">All describe JAHmere as gentle, kind, eager to help, and fundamentally different from typical criminals.</p>
+              <p className="text-green-700">Character witnesses consistently describe JAHmere as gentle, kind, eager to help, and different from typical criminals.</p>
             </div>
             <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
               <h3 className="text-lg font-semibold text-purple-800 mb-3">System Failure</h3>
@@ -331,7 +330,7 @@ export default function WitnessesPage() {
             </div>
             <div className="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
               <h3 className="text-lg font-semibold text-indigo-800 mb-3">Transformation Evidence</h3>
-              <p className="text-indigo-700">Multiple witnesses attest to JAHmere's growth and transformation during his 11 years of incarceration.</p>
+              <p className="text-indigo-700">Multiple witnesses attest to JAHmere's growth and transformation during his incarceration.</p>
             </div>
             <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
               <h3 className="text-lg font-semibold text-red-800 mb-3">Public Safety Focus</h3>
@@ -343,51 +342,57 @@ export default function WitnessesPage() {
         {/* Credibility Factors */}
         <section className="mt-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Witness Credibility</h2>
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-8 rounded-lg">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Professional Expertise</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Clinical psychologist who evaluated JAHmere</li>
-                  <li>• 25-year prosecutor with hundreds of cases</li>
-                  <li>• Special education teacher with 20 years experience</li>
-                  <li>• Social worker specializing in developmental disabilities</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">System Authority</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• NFL Hall of Fame coach with national platform</li>
-                  <li>• Successful tech CEO with hiring authority</li>
-                  <li>• Police officer who made the original arrest</li>
-                  <li>• Faith leaders with large congregations</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Relationships</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Mother who raised JAHmere</li>
-                  <li>• Best friend who co-founded Bridge Project</li>
-                  <li>• Former cellmate who protected him</li>
-                  <li>• Community members who knew him before incarceration</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Diverse Perspectives</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Law enforcement and prosecution</li>
-                  <li>• Mental health and education professionals</li>
-                  <li>• Faith and business communities</li>
-                  <li>• Nearly 3,000 community petition signers</li>
-                </ul>
-              </div>
+          <div className="bg-blue-50 p-8 rounded-lg border border-blue-200">
+            <Heading as="h2" size="h2" className="mb-4 text-blue-900">
+              Character Witnesses for JAHmere Webb
+            </Heading>
+            <Text className="text-blue-700 mb-4">
+              Professional testimonials supporting JAHmere's character and potential for successful reintegration.
+            </Text>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Professional Expertise</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Clinical psychologist who evaluated JAHmere</li>
+                <li>• 25-year prosecutor with hundreds of cases</li>
+                <li>• Special education teacher with 20 years experience</li>
+                <li>• Social worker specializing in developmental disabilities</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">System Authority</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• NFL Hall of Fame coach with national platform</li>
+                <li>• Successful tech CEO with hiring authority</li>
+                <li>• Police officer who made the original arrest</li>
+                <li>• Faith leaders with large congregations</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Relationships</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Mother who raised JAHmere</li>
+                <li>• Best friend who co-founded Bridge Project</li>
+                <li>• Former cellmate who protected him</li>
+                <li>• Community members who knew him before incarceration</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Diverse Perspectives</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Law enforcement and prosecution</li>
+                <li>• Mental health and education professionals</li>
+                <li>• Faith and business communities</li>
+                <li>• Nearly 3,000 community petition signers</li>
+              </ul>
             </div>
           </div>
         </section>
 
         {/* Call to Action */}
         <section className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-12 rounded-lg">
+          <div className="bg-blue-800 text-white p-12 rounded-lg shadow-lg border-l-4 border-green-500">
             <h2 className="text-3xl font-bold mb-6">Add Your Voice to This Chorus</h2>
             <p className="text-xl mb-8 text-white">
               Join Tony Dungy and 14 character witnesses in supporting JAHmere's transformation through treatment, not continued punishment.
@@ -417,4 +422,6 @@ export default function WitnessesPage() {
       </div>
     </PageLayout>
   )
-} 
+}
+
+export default withErrorBoundary(WitnessesPage, "WitnessesPage") 

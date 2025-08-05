@@ -66,7 +66,7 @@ Injustice: "They Gave Him 25 Years. His Mental Age Was 15."
 ```
 1. JAHmere's Photo - Professional, hopeful expression
 2. Text Overlay - "Mental Age 15 → 25 Year Sentence"
-3. Tony Dungy Quote - "JAHmere befriended my son when no one else would"
+3. Tony Dungy Quote - "JAHmere befriended my son during a difficult time"
 4. Countdown Timer - "August 25th, 2025 - Freedom Day"
 5. Brand Logo - The Bridge Project identifier
 6. Color Scheme - Blue trust + yellow hope accents
@@ -105,7 +105,7 @@ The system gives them 25 years for a crime that typically gets 5-7.
 
 That's JAHmere Webb's story.
 
-NFL Hall of Famer Tony Dungy knows JAHmere personally: "He befriended my son when no one else would."
+NFL Hall of Famer Tony Dungy knows JAHmere personally: "He befriended my son during a difficult time."
 
 August 25th, 2025 is JAHmere's last chance for freedom.
 
@@ -121,7 +121,7 @@ JAHmere Webb's case highlights a critical flaw in our justice system:
 • No treatment provided in 11+ years of incarceration
 • Cost to taxpayers: $403,200 for remaining sentence
 
-NFL Hall of Famer Tony Dungy advocates for JAHmere: "He befriended my son when no one else would."
+NFL Hall of Famer Tony Dungy advocates for JAHmere: "He befriended my son during a difficult time."
 
 What's your take on proportional sentencing for intellectual disabilities?
 ```
@@ -134,7 +134,7 @@ At 21, he had the mental capacity of a 15-year-old.
 He got 25 years for a crime that typically gets 5-7.
 
 🏆 Tony Dungy knows JAHmere personally:
-"He befriended my son when no one else would."
+"He befriended my son during a difficult time."
 
 ⏰ August 25th, 2025 is his last chance for freedom.
 

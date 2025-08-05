@@ -326,7 +326,7 @@ export function PerformanceMonitor() {
       </Card>
 
       {/* Championship Status */}
-      <Card className="p-4 bg-gradient-to-r from-blue-50 to-purple-50">
+                      <Card className="p-4 bg-blue-50 border border-blue-200">
         <h3 className="text-lg font-bold mb-2">🏆 Championship Status</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>

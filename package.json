@@ -2,7 +2,7 @@
   "name": "july-28-freedom-portal",
   "version": "1.0.0",
   "private": true,
-  "description": "Divine Freedom Portal for JAHmere Webb - July 28th Freedom Movement",
+  "description": "Divine Freedom Portal for JAHmere Webb - Freedom Movement",
   "author": "Divine Development Team",
   "license": "MIT",
   "repository": {
@@ -80,7 +80,8 @@
     "env:help": "node scripts/detect-platform-and-upload.js --help",
     "enforce:proactive": "node scripts/codification-enforcer.js proactive",
     "enforce:reactive": "node scripts/codification-enforcer.js reactive",
-    "enforce:pre-commit": "node scripts/codification-enforcer.js proactive && echo '✅ Codification compliance verified'"
+    "enforce:pre-commit": "node scripts/codification-enforcer.js proactive && echo '✅ Codification compliance verified'",
+    "xray": "node scripts/ai-xray-vision.js"
   },
   "bin": {
     "jahmere": "./scripts/jahmere-cli.js"

@@ -5,9 +5,7 @@ import Link from 'next/link'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
 import { PageLayout } from '@/components/layout/site-navigation'
 import { Heading, Text } from '@/components/ui/typography'
-import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -44,12 +42,12 @@ function ContactPage() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
+              <div className="bg-blue-700 text-white py-16 shadow-lg">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             Get Involved in JAHmere's Case
           </Heading>
-          <Text size="xl" variant="inverse" className="text-blue-100">
+          <Text size="xl" variant="inverse" className="text-white">
             Your voice, support, and advocacy can make a difference. Join the movement for justice and transformation.
           </Text>
         </Container>
@@ -62,7 +60,7 @@ function ContactPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <Link 
               href="/write-letter"
-              className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-6 rounded-lg hover:from-blue-700 hover:to-green-700 transition-colors"
+                              className="bg-blue-700 text-white p-6 rounded-lg hover:bg-blue-800 transition-colors shadow-lg border-l-4 border-green-500"
             >
               <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -70,12 +68,12 @@ function ContactPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Write to Judge</h3>
-              <p className="text-blue-100">Send a letter supporting treatment over incarceration</p>
+              <p className="text-white">Send a letter supporting treatment over incarceration</p>
             </Link>
             
             <Link 
               href="/witnesses"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors"
+                              className="bg-purple-700 text-white p-6 rounded-lg hover:bg-purple-800 transition-colors shadow-lg border-l-4 border-blue-500"
             >
               <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -88,7 +86,7 @@ function ContactPage() {
             
             <Link 
               href="/the-case"
-              className="bg-gradient-to-r from-orange-600 to-red-600 text-white p-6 rounded-lg hover:from-orange-700 hover:to-red-700 transition-colors"
+                              className="bg-orange-700 text-white p-6 rounded-lg hover:bg-orange-800 transition-colors shadow-lg border-l-4 border-red-500"
             >
               <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -196,7 +194,7 @@ function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 px-6 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-blue-700 text-white py-3 px-6 rounded-lg font-bold text-lg hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -260,9 +258,9 @@ function ContactPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-12 rounded-lg">
-            <h2 className="text-3xl font-bold mb-6">Every Voice Matters</h2>
-            <p className="text-xl mb-8 text-blue-100">
+          <div className="bg-blue-700 text-white p-12 rounded-lg shadow-lg border-l-4 border-green-500">
+            <h2 className="text-3xl font-bold mb-6">Your Voice Matters</h2>
+            <p className="text-xl mb-8 text-white">
               Join Tony Dungy and thousands of supporters advocating for treatment over punishment.
             </p>
             <Link 

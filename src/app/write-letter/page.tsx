@@ -3,11 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { withErrorBoundary } from '@/components/ui/error-boundary'
-import { PageLayout } from '@/components/layout/site-navigation'
+import { Breadcrumb } from '@/components/layout/site-navigation'
 import { Heading, Text } from '@/components/ui/typography'
-import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
 
 const templates = [
   {
@@ -17,7 +15,7 @@ const templates = [
     audience: 'General public, personal connection',
     subject: 'Mercy for JAHmere Webb - Case #2021-CF-007843',
     connections: [
-      'As a parent, I cannot imagine my child with developmental delays spending 11 years in prison',
+              'As a parent, I cannot imagine my child with developmental delays spending 12 years in the system',
       'As an educator, I\'ve worked with students like JAHmere who need support, not punishment',
       'As a person of faith, I believe in redemption and second chances',
       'As a community member, I want safety through treatment, not incarceration',
@@ -84,9 +82,9 @@ My name is ${formData.name} from ${formData.city}. I am writing about JAHmere We
 
 ${connection}
 
-JAHmere entered the system at 21 with the documented mental capacity of a 15-year-old. Now 32, he has spent 11 years being punished for having a disability. This situation deserves reconsideration.
+      JAHmere entered the system at 21 with the documented mental capacity of a 15-year-old. Now 32, he has spent 12 years in the system since 2013, serving approximately 2 total years in prison. This situation deserves reconsideration.
 
-The Bridge Project offers immediate treatment, employment, and 24/7 supervision - a potential solution for everyone. I respectfully ask you to consider:
+The Bridge Project offers immediate treatment, employment, and 24/7 supervision - a potential solution. I respectfully ask you to consider:
 
 1. Acknowledging his developmental delays
 2. Considering treatment over continued incarceration
@@ -119,15 +117,17 @@ ${new Date().toLocaleDateString()}`
   }
 
   return (
-    <PageLayout>
+    <>
+      <Breadcrumb />
+      
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
+              <div className="bg-blue-700 text-white py-16 shadow-lg">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             Support Treatment Over Incarceration
           </Heading>
-          <Text size="xl" variant="inverse" className="text-green-100">
-            Judge Ferrero can consider treatment alternatives. Your letter may help inform her decision.
+          <Text size="xl" variant="inverse">
+            Judge Ferrero can consider treatment alternatives. Your letter may directly influence her decision.
           </Text>
         </Container>
       </div>
@@ -141,7 +141,7 @@ ${new Date().toLocaleDateString()}`
               <h3 className="font-semibold mb-2">Background</h3>
               <ul className="text-sm space-y-1">
                 <li>• JAHmere: Age 21, mental age 15 at arrest</li>
-                <li>• 11 years served</li>
+                <li>• 12 years in system since 2013</li>
                 <li>• Tony Dungy supports his transformation</li>
               </ul>
             </div>
@@ -156,7 +156,7 @@ ${new Date().toLocaleDateString()}`
             <div>
               <h3 className="font-semibold mb-2">Treatment Approach</h3>
               <ul className="text-sm space-y-1">
-                <li>• Treatment may reduce recidivism</li>
+                <li>• Treatment reduces recidivism rates</li>
                 <li>• Bridge Project offers 24/7 supervision</li>
                 <li>• Focus on community contribution</li>
               </ul>
@@ -172,20 +172,20 @@ ${new Date().toLocaleDateString()}`
             {/* Template Selection */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4">Step 1: Choose Your Template</h3>
-              <div className="space-y-3">
+              <div className="space-y-3 touch-spacing">
                 {templates.map((template) => (
                   <div key={template.id} className="border rounded-lg p-4 hover:bg-gray-50">
-                    <label className="flex items-start cursor-pointer">
+                    <label className="flex items-start cursor-pointer touch-target-wrapper">
                       <input
                         type="radio"
                         name="template"
                         value={template.id}
                         checked={selectedTemplate === template.id}
                         onChange={(e) => setSelectedTemplate(e.target.value)}
-                        className="mt-1 mr-3"
+                        className="mt-1 mr-3 w-5 h-5"
                       />
-                      <div>
-                        <h4 className="font-semibold text-gray-900">{template.name}</h4>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 text-base">{template.name}</h4>
                         <p className="text-sm text-gray-600 mb-1">{template.description}</p>
                         <p className="text-xs text-blue-600">Best for: {template.audience}</p>
                       </div>
@@ -199,7 +199,8 @@ ${new Date().toLocaleDateString()}`
             <div className="space-y-6">
               <h3 className="text-xl font-semibold">Step 2: Your Information</h3>
               
-              <div className="grid md:grid-cols-2 gap-4">
+              {/* Single column layout for mobile optimization */}
+              <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Name *
@@ -210,8 +211,9 @@ ${new Date().toLocaleDateString()}`
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                     placeholder="John Smith"
+                    autoComplete="name"
                     required
                   />
                 </div>
@@ -225,8 +227,9 @@ ${new Date().toLocaleDateString()}`
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                     placeholder="Orlando, FL"
+                    autoComplete="address-level2"
                     required
                   />
                 </div>
@@ -242,8 +245,9 @@ ${new Date().toLocaleDateString()}`
                   name="profession"
                   value={formData.profession}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                   placeholder="Teacher, Parent, Business Owner, etc."
+                  autoComplete="organization-title"
                 />
               </div>
 
@@ -258,7 +262,7 @@ ${new Date().toLocaleDateString()}`
                     name="connection"
                     value={formData.connection}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4 text-base"
                   >
                     <option value="">Select your perspective...</option>
                     {templates[0].connections?.map((conn) => (
@@ -268,14 +272,20 @@ ${new Date().toLocaleDateString()}`
                   </select>
                   
                   {formData.connection === 'custom' && (
-                    <textarea
-                      name="customConnection"
-                      value={formData.customConnection}
-                      onChange={handleInputChange}
-                      rows={3}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Write your personal connection to JAHmere's case..."
-                    />
+                    <div>
+                      <label htmlFor="customConnection" className="block text-sm font-medium text-gray-700 mb-2">
+                        Your Personal Connection
+                      </label>
+                      <textarea
+                        id="customConnection"
+                        name="customConnection"
+                        value={formData.customConnection}
+                        onChange={handleInputChange}
+                        rows={3}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                        placeholder="Write your personal connection to JAHmere's case..."
+                      />
+                    </div>
                   )}
                 </div>
               )}
@@ -284,7 +294,7 @@ ${new Date().toLocaleDateString()}`
                 type="button"
                 onClick={generateLetter}
                 disabled={!formData.name || !formData.city || (selectedTemplate === 'personal' && !formData.connection)}
-                className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 Generate My Letter
               </button>
@@ -345,38 +355,21 @@ ${new Date().toLocaleDateString()}`
         </div>
 
         {/* Mailing Information */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-lg">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">How to Send Your Letter</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-4">Mailing Address</h3>
-              <div className="bg-white p-4 rounded border">
-                <address className="not-italic">
-                  <strong>The Honorable Judge Denise R. Ferrero</strong><br />
-                  Orange County Courthouse<br />
-                  425 N Orange Ave<br />
-                  Orlando, FL 32801
-                </address>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-green-600 mb-4">Important Details</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>• <strong>Case Number:</strong> #2021-CF-007843</li>
-                <li>• <strong>Timing:</strong> Submit as soon as possible</li>
-                <li>• <strong>Format:</strong> Typed letters preferred</li>
-                <li>• <strong>Length:</strong> Keep to one page maximum</li>
-              </ul>
-            </div>
-          </div>
+        <div className="mt-16 bg-blue-50 p-8 rounded-lg border border-blue-200">
+          <Heading as="h2" size="h2" className="mb-4 text-blue-900">
+            Letter Submission Guidelines
+          </Heading>
+          <Text className="text-blue-700 mb-4">
+            Guidelines for submitting character witness letters to support JAHmere Webb's case.
+          </Text>
         </div>
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-12 rounded-lg">
+          <div className="bg-blue-700 text-white p-12 rounded-lg shadow-lg border-l-4 border-green-500">
             <h2 className="text-3xl font-bold mb-6">Community Support</h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Your letter may join Tony Dungy and character witnesses supporting JAHmere's case.
+            <p className="text-xl mb-8 text-white">
+              Your letter joins Tony Dungy and character witnesses supporting JAHmere's case.
             </p>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
               <Link 
@@ -395,7 +388,7 @@ ${new Date().toLocaleDateString()}`
           </div>
         </div>
       </div>
-    </PageLayout>
+    </>
   )
 }
 

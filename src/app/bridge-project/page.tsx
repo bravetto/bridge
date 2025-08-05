@@ -1,24 +1,25 @@
-'use client'
-
+import { Metadata } from 'next'
 import Link from 'next/link'
-import { PageLayout } from '@/components/layout/site-navigation'
-import { withErrorBoundary } from '@/components/ui/error-boundary'
+
 import { Heading, Text } from '@/components/ui/typography'
-import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { Button } from '@/components/ui/button'
+
+export const metadata: Metadata = {
+  title: 'The Bridge Project - JAHmere Webb Freedom Portal',
+  description: 'Revolutionary AI-powered platform transforming lives through mentor matching and blockchain rewards. Evidence-based treatment alternative.',
+}
 
 function BridgeProjectPage() {
   return (
-    <PageLayout>
+    <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16">
+              <div className="bg-blue-800 text-white py-16 shadow-lg">
         <Container size="lg">
           <Heading as="h1" size="hero" className="text-white mb-6">
             The Bridge Project: From Prison to Purpose
           </Heading>
           <Text size="xl" variant="inverse" className="text-purple-100">
-            JAHmere's innovative treatment solution - transforming lives through technology, mentorship, and community support.
+            A structured reentry program supporting formerly incarcerated individuals in their journey back to society
           </Text>
         </Container>
       </div>
@@ -27,8 +28,14 @@ function BridgeProjectPage() {
         {/* Co-Founders Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Three Co-Founders, One Vision</h2>
+          <div className="mb-8 bg-blue-100 p-6 rounded-lg border-l-4 border-blue-600">
+            <Text className="text-blue-800 font-medium">
+              🎯 <span className="font-semibold">Mission Critical:</span> Support JAHmere Webb's freedom advocacy for his August 25th, 2025 court date.
+            </Text>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border-l-4 border-blue-500">
+            <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -37,30 +44,50 @@ function BridgeProjectPage() {
               <h3 className="text-xl font-bold text-blue-800 mb-3">JAHmere Webb</h3>
               <p className="text-blue-700 mb-4">Co-Founder & Lived Experience Expert</p>
               <p className="text-sm text-blue-600">
-                11 years of transformation in the system. Developed the AI algorithm for mentor matching based on shared experiences.
+                12 years of growth in the system since 2013. Developed the AI algorithm for mentor matching based on shared experiences.
               </p>
             </div>
             
-                            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-l-4 border-green-500">
+                            <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-green-500">
               <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-green-800 mb-3">Jordan Dungy</h3>
-              <p className="text-green-700 mb-4">Co-Founder & Community Bridge</p>
+              <h3 className="text-xl font-bold text-green-800 mb-3">
+                <Link href="/jordan-dungy" className="hover:underline">Jordan Dungy</Link>
+              </h3>
+              <p className="text-green-700 mb-4">Co-Founder & Confidence Support Specialist</p>
               <p className="text-sm text-green-600">
-                Tony Dungy's son. Rare medical condition creates unique empathy. Bridges communities and builds support networks.
+                <strong>Tony Dungy's son with full family backing.</strong> 4.0 GPA graduate who chose personal fulfillment over traditional paths. 
+                Helps people build confidence and explore their potential. Personal friendship with JAHmere spans years.
               </p>
+              <div className="mt-3 p-3 bg-green-50 rounded border-l-2 border-green-500">
+                <p className="text-xs text-green-600">
+                  <strong>Foundation:</strong> "Be strong and courageous... for the Lord your God will be with you wherever you go." - Joshua 1:9
+                </p>
+              </div>
+              <div className="mt-2 p-3 bg-green-50 rounded border-l-2 border-green-500">
+                <p className="text-xs text-green-600">
+                  <strong>Approach:</strong> Shows young people that success can include both achievement and personal happiness.
+                </p>
+              </div>
+              <div className="mt-3 p-3 bg-white rounded border-l-2 border-blue-500">
+                <p className="text-xs text-blue-700 italic">
+                  "JAHmere befriended my son during a difficult time. I believe strongly in his potential for positive change." - Tony Dungy
+                </p>
+              </div>
             </div>
             
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-lg border-l-4 border-orange-500">
+            <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-orange-500">
               <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a2 2 0 104 0 2 2 0 00-4 0zm6 0a2 2 0 104 0 2 2 0 00-4 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-orange-800 mb-3">Michael Mataluni</h3>
+              <h3 className="text-xl font-bold text-orange-800 mb-3">
+                <Link href="/michael-mataluni" className="hover:underline">Michael Mataluni</Link>
+              </h3>
               <p className="text-orange-700 mb-4">Co-Founder & Technology CEO</p>
               <p className="text-sm text-orange-600">
                 $25M company builder. Provides technology platform, employment pathway, and business infrastructure.
@@ -186,16 +213,16 @@ function BridgeProjectPage() {
 
         {/* JAHmere's Personal Journey */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-lg">
+          <div className="bg-blue-700 text-white p-12 rounded-lg shadow-lg border-l-4 border-purple-500">
             <h2 className="text-3xl font-bold mb-6">From Participant to Co-Founder</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-blue-200">The Transformation</h3>
-                <p className="text-blue-100 mb-4">
+                <p className="text-white mb-4">
                   JAHmere entered prison at 21 with a mental age of 15. Instead of just serving time, 
-                  he used his 11 years to develop solutions for others facing similar challenges.
+                  he used his 12 years in the system to develop solutions for others facing similar challenges.
                 </p>
-                <p className="text-blue-100">
+                <p className="text-white">
                   His AI algorithm emerged from understanding that traditional matching systems failed 
                   because they didn't account for lived experience and trauma-informed connections.
                 </p>
@@ -203,9 +230,9 @@ function BridgeProjectPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-purple-200">The Vision</h3>
                 <p className="text-purple-100 mb-4">
-                  "I realized that my 11 years weren't wasted if I could use them to help others avoid 
+                  "I realized that my 12 years in the system weren't wasted if I could use them to help others avoid 
                   the same path. The Bridge Project isn't just about me - it's about creating a bridge 
-                  for everyone who needs a second chance."
+                  for people who need a second chance."
                 </p>
                 <p className="text-purple-100">
                   <em>- JAHmere Webb, Co-Founder</em>
@@ -227,7 +254,7 @@ function BridgeProjectPage() {
                 <h4 className="font-semibold text-green-700 mb-3">Immediate Support Structure</h4>
                 <ul className="space-y-2 text-green-600">
                   <li>• 24/7 supervision through Bridge Project</li>
-                  <li>• Guaranteed employment with Michael's company</li>
+                  <li>• Employment opportunity with Michael's company</li>
                   <li>• Housing assistance through community partners</li>
                   <li>• Ongoing counseling and support services</li>
                   <li>• Community service requirements built-in</li>
@@ -257,7 +284,7 @@ function BridgeProjectPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-12 rounded-lg">
+          <div className="bg-blue-800 text-white p-12 rounded-lg shadow-lg border-l-4 border-blue-600">
             <h2 className="text-3xl font-bold mb-6">Support Innovation Over Incarceration</h2>
             <p className="text-xl mb-8 text-purple-100">
               The Bridge Project represents exactly the kind of evidence-based treatment alternative 
@@ -286,8 +313,8 @@ function BridgeProjectPage() {
           </div>
         </section>
       </div>
-    </PageLayout>
+    </>
   )
 }
 
-export default withErrorBoundary(BridgeProjectPage, "BridgeProjectPage") 
+export default BridgeProjectPage 

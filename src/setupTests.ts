@@ -37,10 +37,10 @@ jest.mock("next/image", () => ({
 // Mock DivineParticles to avoid tsparticles import issues
 jest.mock("@/components/divine-particles", () => ({
   __esModule: true,
-  default: function DivineParticles({ children, ...props }: any) {
+  default: function DivineParticles({ children }: any) {
     return children || null;
   },
-  DivineParticles: function DivineParticles({ children, ...props }: any) {
+  DivineParticles: function DivineParticles({ children }: any) {
     return children || null;
   },
 }));

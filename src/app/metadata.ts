@@ -21,7 +21,7 @@ const siteConfig = {
     "faith-based rehabilitation",
     "Tony Dungy",
     "Judge Ferrero",
-    "Orange County justice",
+    "Alachua County justice",
     "community bridges",
     "positive change",
   ],
